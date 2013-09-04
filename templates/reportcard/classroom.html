@@ -1,0 +1,118 @@
+{% extends "homebase.html" %}
+{% block title %}
+    成绩单--课堂作业
+{% endblock %}
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/reportcard.css'|staticurl }}" />
+    <link rel="stylesheet" type="text/css" href="{{ '/static/css/modules/upload.css'|staticurl }}" />
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/apps/reportcard.js'|staticurl }}"></script>
+    {% if g.user.isteacher %}
+        <script type="text/javascript" src="{{ '/static/js/lib/plupload.js'|staticurl }}"></script>
+    {% endif %}
+    <script type="text/javascript" src="{{ '/static/js/modules/vselfuploader.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block centerbody %}
+<div class="cl">
+    <div class="tag title">
+        {% if g.user.isteacher %}
+        <div class="panel clearfix">
+            <div class="export-class left"></div>
+        </div>
+        {% else %}
+        <div class="panel clearfix">
+            <div class="export-class2 left"></div>
+        </div>
+        {% endif %}
+    </div>
+    {% if g.user.isteacher %}
+        {% if error %}
+            <div class="alert error">{{error}}</div>
+        {% endif %}
+        <form class="import" action="" method="post" enctype="multipart/form-data">
+            <input class="selectfile" type="file" name="file" value="浏览...">
+            <input type='hidden' name='class_id' />
+            <div class='item clearfix'>
+                <div class="left sendfont">发&nbsp;&nbsp;布&nbsp;&nbsp;到：</div>
+                <div id="selectclass" class="selectclass left"></div>
+                <div class="btn right"><span class="uparrow_icon"></span><input type='submit' value="上传" /></div>
+            </div>
+            <ul id="myclasses" class="myclasses">
+                {% for classgrade in classgrades %}
+                    <li classid="{{ classgrade.class_id }}" title="{{ classgrade.school.school_name }} >> {{ classgrade.class_name }}">
+                        <div>
+                            <input type="checkbox"/>
+                            <span>{{ classgrade.class_name }}</span>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="panel info">
+                        你没有班级，<a href="/class/create/">立刻创建</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </form>
+    {% endif %}
+    <div class="clear"></div>
+    <div class="border"></div>
+    <div>
+        <div class="classtagpanel">
+            <ul class="clearfix">
+                {% for classgrade in classgrades %}
+                    <li class="{{ 'active'|ifdefault(classgrade.class_id==class_id) }}">
+                        {% if g.user.isparent%}
+                            <a href="/reportcard/classroom/child/{{child_id}}/{{ classgrade.class_id }}/">{{ classgrade.class_name }}</a>
+                        {% else %}
+                            <a href="/reportcard/classroom/{{ classgrade.class_id }}/">{{ classgrade.class_name }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% for reportcard in reportcards %}
+            {% if g.user.isteacher %}
+                {% set rc = reportcard %}
+                {% set user = g.user %}
+            {% else %}
+                {% set rc = reportcard.ReportCard %}
+                {% set user = reportcard.User %}
+            {% endif %}
+            <div class="cl-content clearfix">
+                {% if g.user.isteacher %}
+                    <div class="right">
+                        <span class="update" data-reportcard_id={{rc.reportcard_id}}>更新</span>
+                    </div>
+                    <div class="clear"></div>
+                {% endif %}
+                <div class="left">
+                    <img title="{{user.nickname}}" src="{{user|avatar}}"/>
+                </div>
+                <div class="cl-info left">
+                    {% if user.user_id == g.user.user_id%}
+                        您
+                    {% else %}
+                        {{user.nickname}}{{user.course}}老师
+                    {% endif %}
+                    于{{ rc.created|datetime('date') }}
+                    发布课堂成绩单
+                    <a href="{{rc.reportcard_path}}">{{rc.reportcard_name}}</a>
+                </div>
+            </div>
+        {% else %}
+        <div class="noitem panel">还没有发布班级的课堂成绩呀！</div>
+        {% endfor %}
+    </div>
+    {% if g.user.isteacher %}
+        <div id="vselfupload" class="clearfix">
+             {% include "inc/vselfupload.html" %}
+             <input class="upload_params" type="hidden" name="reportcard_id"/>
+             <input class="upload_params" type="hidden" name="SESSION" value="{{ session.sid }}" />
+             <div class="title">
+                <span class="tag warning">只能上传excel文件。</span>
+             </div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

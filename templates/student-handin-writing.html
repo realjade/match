@@ -1,0 +1,13 @@
+{% extends "homebase.html" %}
+{% block title %}
+    学生--交作业
+{% endblock %}
+{% block centerbody %}
+<div class="main_wrap_center">
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% else %}
+        文档作业
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends "iread/base.html" %}
+
+{% block title %}
+    iRead首页
+{% endblock %}
+
+{% block stylesheets %}
+<style type="text/css">
+    .box{
+        background:url('/static/iread/subway.jpg') no-repeat scroll top center #f7f8fa;
+    }
+    .linebox{
+        padding:15px 30px;
+    }
+    .imgnote{
+        position: relative;
+        top: -156px;font-size: 13px;
+        left: 12px;
+        color:#f54144;
+        font-weight:bold;
+    }
+    img{overflow：hidden}
+</style>
+{% endblock %}
+
+{% block link %}
+<a href="/iread/schedule/">
+    <a href="/iread/day1/">
+        <div class="btn right">
+            详细信息
+        </div>
+    </a>
+    <a href="/iread/schedule/">
+        <div class="btn right" style="margin-right:15px;">
+            日程安排
+        </div>
+    </a>
+</a>
+{% endblock %}
+
+{% block mainbody %}
+<div class ="box">
+    <div class="clearfix linebox">
+        <div class="left">
+            <img src="/static/iread/01.png" />
+        </div>
+        <div class="left" style="margin-left:34px;">
+            <img src="/static/iread/02.png" />
+        </div>
+        <div class="left" style="margin-left:34px;">
+            <img src="/static/iread/03.png" />
+        </div>
+    </div>
+
+    <div class="clearfix linebox">
+        <div class="left">
+            <img src="/static/iread/04.png" />
+            <div class="imgnote">Buckingham Palace</div>
+        </div>
+        <div class="left" style="margin-left:26px;">
+            <img src="/static/iread/05.png" />
+            <div class="imgnote">Changing the Guard</div>
+        </div>
+        <div class="left" style="margin-left:26px;">
+            <img src="/static/iread/06.png" />
+            <div class="imgnote">London for Kids</div>
+        </div>
+        <div class="left" style="margin-left:26px;">
+            <img src="/static/iread/07.png" />
+        </div>
+        <div class="left" style="margin-left:26px;">
+            <img src="/static/iread/08.png" />
+        </div>
+    </div>
+
+    <div class="clearfix linebox">
+        <div class="left">
+            <img src="/static/iread/09.png" />
+            <div class="imgnote">Palace of Westminster</div>
+        </div>
+        <div class="left" style="margin-left:32px;">
+            <img src="/static/iread/10.png" />
+            <div class="imgnote">St Pauls Cathedral</div>
+        </div>
+        <div class="left" style="margin-left:32px;">
+            <img src="/static/iread/11.png" />
+        </div>
+    </div>
+
+    <div class="clearfix linebox">
+        <div class="left">
+            <img src="/static/iread/12.png" />
+            <div class="imgnote">Piccadilly Circus</div>
+        </div>
+        <div class="left" style="margin-left:11px;">
+            <img src="/static/iread/13.png" />
+            <div class="imgnote">Kew Gardens</div>
+        </div>
+        <div class="left" style="margin-left:12px;">
+            <img src="/static/iread/14.png" />
+            <div class="imgnote">London Eye</div>
+        </div>
+        <div class="left" style="margin-left:11px;">
+            <img src="/static/iread/15.png" />
+            <div class="imgnote">Tower Bridge</div>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix right" style="padding:0px 30px;">
+本次活动最终解释权归iRead国际英语俱乐部所有
+</div>
+
+{% endblock %}

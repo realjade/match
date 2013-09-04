@@ -1,0 +1,4 @@
+10.24 
+    增加 engine_script.py 用于批量数据库修改
+    增加period_classroom 处理没有period和classroom情况
+    增加 alter_db 用于处理数据库结构改变

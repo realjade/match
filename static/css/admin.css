@@ -1,0 +1,42 @@
+/**播放器**/
+a.beishuPlayer {
+  display: block;
+  text-align: center;
+  background: no-repeat;
+  background-position: center;
+  border: 1px solid #fcfabc;
+}
+a.beishuPlayer img {
+  margin-top: 72px;
+  border: 0px;
+}
+a.videostop {
+  display: block;
+  z-index: 3;
+  position: absolute;
+  bottom: -28px;
+  left: 200px;
+  width: 60px;
+  height: 28px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 28px;
+}
+.beishuVideo {
+  position: relative;
+}
+.beishuVideo .playicon {
+  position: absolute;
+  top: 80px;
+  left: 110px;
+}
+.webcam-container {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #000000;
+}
+.size640x480 {
+  width: 480px;
+  height: 360px;
+}
+/**播放器结束**/

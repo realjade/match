@@ -1,0 +1,13 @@
+{% if page and page.pages > 1 %}
+<ul class="page clearfix">
+    <li>
+        <a class="{% if page.curpage <= 1 %}disable{% endif %}" {% if page.curpage >1 %}href="?page={{ page.curpage-1 }}"{% endif %}>上一页</a>
+    </li>
+    {% for index in range(page.pages) %}
+        <li><a class="{% if page.curpage == index+1 %}active{% endif %}" {% if page.curpage != index+1 %}href="?page={{ index+1 }}"{% endif %}>{{ index+1 }}</a></li>
+    {% endfor %}
+    <li>
+        <a class="{% if page.curpage == page.pages %}disable{% endif %}" {% if page.curpage<page.pages %}href="?page={{ page.curpage+1 }}"{% endif %}>下一页</a>
+    </li>
+</ul>
+{% endif %}

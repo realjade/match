@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+  <link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/index.css'|staticurl }}" />
+  <!--[if lt IE 7]>
+    <style type="text/css">
+    .slide #box_1 .navsumary,.slide #box_2 .navsumary,.slide #box_3 .navsumary,.slide #box_4 .navsumary,.slide .navbox .navsumary{padding:0;width:160px;height:90px;overflow:hidden}
+    .slide .navsumary div.txt{padding:10px;width:160px;}
+    </style>
+  <![endif]-->
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ '/static/js/apps/index.js'|staticurl }}"></script>
+<script src="{{ '/static/js/apps/login.js'|staticurl }}"></script>
+<script type="text/javascript" src="{{ '/static/js/modules/index_video.js'|staticurl }}"></script>
+{% include "inc/videoplayer_header.html" %}
+{% endblock %}
+
+{% block logo %}
+  <div class="logosp">
+    <a href="/"><img class="fix-png" src="/static/images/logo/logos.png" /></a>
+  </div>
+{% endblock %}
+
+{% block mainbody %}
+<div class="content_top clearfix">
+
+   <div class="idx_left">
+        <dl class="logindl">
+            <dt class="idx_error">
+                <label>&nbsp;&nbsp;&nbsp;&nbsp;</label>
+            </dt>
+            
+            <div style="padding:10px 5px;">
+                <a href="/demo/teacher/login/" style="font-size: 20px;">
+                    <span style="font-size: 20px;color:red;">老师</span>测试账户登录
+                </a>
+            </div>
+            <div style="padding:10px 5px;">
+                <a href="/demo/student/login/" style="font-size: 20px;">
+                    <span style="font-size: 20px;color:red;">学生</span>测试账户登录
+                </a>
+            </div>
+            <div style="padding:10px 5px;">
+                <a href="/demo/parent/login/" style="font-size: 20px;">
+                    <span style="font-size: 20px;color:red;">家长</span>测试账户登录
+                </a>
+            </div>
+            <dd class="boldline"></dd>
+            <dd class="btn-register">
+                <a class="btn primary" href="javascript:void(0)" onclick="alert('注册请去beishu8.com')">学生及家长注册</a>
+            </dd>
+            <dd class="btn-register">
+                <a class="btn primary" href="javascript:void(0)" onclick="alert('注册请去beishu8.com')">老师注册</a>
+            </dd>
+            
+            <div class="update">
+                <div class="help" onclick="changeIntroStatus(3)">
+                    <img src="/static/images/main/teacher.jpg">
+                </div>
+                <div class="help" onclick="changeIntroStatus(4)">
+                    <img src="/static/images/main/student.jpg">
+                </div>
+            </div>
+        </dl>
+
+        <div class="idx_bottom">
+            <div>
+                <p class="tip">
+                    &nbsp;&nbsp;&nbsp;&nbsp;在使用背书吧的过程中，如出现问题，请先尝试使用chrome浏览器和狸窝视频转换器，更快更便捷。
+                </p>
+            </div>
+            <div class="mt12">
+                <img src="/static/images/main/mp4.png" />
+                    &nbsp;<a href="/static/tools/视频压缩器下载.rar" target="_blank" class="first">视频转换器下载</a>
+                    &nbsp;&nbsp;<img src="/static/images/main/chrome_red.png" />
+                    <a href="/static/tools/chrome高级浏览器.exe" target="_blank">浏览器下载</a>
+            </div>
+        </div>
+    </div>
+   
+    <div class="idx_right">
+        <div class="baseinfo" id="info">
+            <!--slide-->
+            <div class="slide clearfix bg1" id="slide">
+                <div class="slide_box bg1" style="background-position:0 0;">
+                    <div id="box_1" class="navbox">
+                        <div class="navsumary" style="display:block">
+                            <div class="bg"></div>
+                            <div class="txt">用视频记录课后学习过程，把学习搬到屏幕上</div>
+                        </div>
+                        <div class="navtitle">
+                            <div class="bg"></div>
+                            <div class="txt">
+                                <a href="/"><img src="/static/images/banner/ban_1.jpg" alt="全新的学习理念" />全新的学习理念</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+                <div class="slide_box bg1" style="background-position:-160px 0;">
+                    <div id="box_2" class="navbox">
+                        <div class="navsumary">
+                            <div class="bg"></div>
+                            <div class="txt">家长，老师，学生共同交流的平台，指尖轻轻一点就这么简单</div>
+                        </div>
+                        <div class="navtitle">
+                            <div class="bg"></div>
+                            <div class="txt">
+                                <a href="/"><img src="/static/images/banner/ban_2.jpg" alt="全新的交流方式" />全新的交流方式</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="slide_box bg1" style="background-position:-320px 0;">
+                    <div id="box_3" class="navbox">
+                        <div class="navsumary">
+                            <div class="bg"></div>
+                            <div class="txt">三种角色之间配合不再有障碍，完成自己的工作就像玩微博一样简单</div>
+                        </div>
+                        <div class="navtitle">
+                            <div class="bg"></div>
+                            <div class="txt">
+                                <a href="/"><img src="/static/images/banner/ban_3.jpg" alt="完美的相互配合" />完美的相互配合</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
+                <div class="slide_box bg1 last" style="background-position:-480px 0;">
+                    <div id="box_4" class="navbox">
+                        <div class="navsumary">
+                            <div class="bg"></div>
+                            <div class="txt">及时发布，及时获取，及时分享，让作业成为学生课余生活的乐趣</div>
+                        </div>
+                        <div class="navtitle">
+                            <div class="bg"></div>
+                            <div class="txt">
+                                <a href="/"><img src="/static/images/banner/ban_4.jpg" alt="快速的作业渠道" />快速的作业渠道</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--slide end-->
+
+            <div class="function clearfix">
+                <div class="intro_1">“背书吧”是家长给孩子的最好的礼物。</div>
+                <div class="intro_2">“背书吧”是学校、老师、家长和孩子间全新的沟通工具。</div>
+                <div class="intro_3">“背书吧”可以成为老师检查学生无法量化的背书、朗诵作业的好方法，减少了老师的工作量，提升了工作效率。</div>
+                <div class="intro_4">“背书吧”可以方便的发布老师组织的活动视频、图片，让学生和家长共同分享那瞬间的快乐。</div>
+           </div>
+
+            <div class="seemore" onclick="changeIntroStatus(2)">
+                不同的角色在背书吧找到了不同的功能，你也想试试吗？<a href="javascript:void(0)">了解详情</a>
+            </div>
+        </div>
+
+        <!-- 了解详情 -->
+        <div id="intro" class="baseinfo hide">
+            <div class="seemore" onclick="changeIntroStatus(1)">
+                <a class="back" href="javascript:void(0)">^</a>
+            </div>
+
+            <div class="title">
+                <h3>背书吧可以做什么？</h3>
+                <p>通过定位您的角色，帮您解决不一样的问题</p>
+            </div>
+
+            <div class="banner box1 clearfix">
+                <div class="desc">
+                    <strong><h4>我是老师</h4></strong>
+                    <p>作为一名老师，我在背书吧里可以自由管理我的班级，随时随地通过网站发布作业，并对学生们提交的作业进行批改，再也不用约束在办公室里办公了，还可同学生的家长们一起来管理孩子，实在是太方便了。</p>
+                    <a href="/register/teacher/">立即注册</a>
+                </div>
+            </div>
+
+            <div class="banner box2 clearfix">
+                <div class="desc">
+                    <strong><h4>我是学生</h4></strong></strong>
+                    <p>作为一名学生，我在背书吧里可以自由加入班级，在课余时间跟踪老师的进度，还能够通过视频录像的方式直接把自己的背诵情况反映给老师，再也不用去老师的办公室里排长队了，还能够及时得到老师的评价，观看其他同学优秀的作业，对我的提高有很大的帮助。</p>
+                    <a href="/register/parent_student/">立即注册</a>
+                </div>
+            </div>
+
+            <div class="banner box3 clearfix">
+                <div class="desc">
+                    <strong><h4>我是家长</h4></strong>
+                    <p>作为孩子的家长，最担心孩子不能够认真完成作业了，现在在背书吧里，可以全程跟踪孩子在学校里的课业情况，能够及时得知老师每天安排的任务，即便不在孩子身边，也能看到孩子的完成情况，这下可再也不用那么担心了。</p>
+                    <a href="/register/parent_student/">立即注册</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 教师视频帮助 -->
+        <div id="video1" class="baseinfo hide">
+            <div class="seemore" onclick="changeIntroStatus(1)">
+                <a href="javascript:void(0)">^</a>
+            </div>
+
+            <div class="title">
+                <h3>老师注册指南</h3>
+            </div>
+
+            <div class="banner2 clearfix">
+                <div class="video">
+                    <div class="beishuVideo clearfix">
+                        <a id="videoteacher" class="beishuPlayer clearfix" href="/static/images/main/teacherhelp_convert1.mp4">
+                            <div style="position:relative">
+                                <img src="/static/images/main/video.jpg" style="width:100%;height:100%;margin:0px" alt="" />
+                                <img class="videostartbtn" style="position:absolute;top:38%;left:41%;margin:0px;height: 110px;" src="/static/images/main/ready.png" />
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- 家长学生视频帮助 -->
+        <div id="video2" class="baseinfo hide">
+            <div class="seemore" onclick="changeIntroStatus(1)">
+                <a href="javascript:void(0)">^</a>
+            </div>
+
+            <div class="title">
+                <h3>学生及家长注册指南</h3>
+            </div>
+
+            <div class="banner2 clearfix">
+                <div class="video">
+                    <div class="beishuVideo clearfix">
+                        <a id="videostudent" class="beishuPlayer clearfix" href="/static/images/main/studenthelp_convert.mp4">
+                            <div style="position:relative">
+                                <img src="/static/images/main/video.jpg" style="width:100%;height:100%;margin:0px" alt="" />
+                                <img class="videostartbtn" style="position:absolute;top:38%;left:41%;margin:0px;height: 110px;" src="/static/images/main/ready.png" />
+                            </div>
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "iread/base.html" %}
+
+{% block title %}
+    iRead日程
+{% endblock %}
+
+{% block stylesheets %}
+<style type="text/css">
+    .linebox{
+        padding:15px 30px;
+    }
+    
+    .desc .english,.desc .chinese{
+        margin:30px 50px;
+        font-size:15px;
+        line-height:20px;
+    }
+    .desc span{
+        font-size:15px;
+        color:#f54144;
+    }
+    .point{margin:30px 0px 0px 350px;}
+    .point .blue{
+        margin:0px 2px;
+    }
+    .point .grep{
+        margin:1px 2px;
+    }
+    
+    .prev{
+        margin-left:230px;font-size:14px;color:#9d9d9d;font-weight:bold;line-height:40px;
+    }
+    .prev a{
+        font-size:14px;color:#332df3;font-weight:bold;
+    }
+    .now{
+        margin-left:95px;text-align: center;font-weight:bold;font-size:20px;
+    }
+    .next{
+        margin-left:95px;line-height:40px;font-size:14px;color:#9d9d9d;font-weight:bold;
+    }
+    .next a{
+        font-size:14px;color:#332df3;font-weight:bold;
+    }
+    .descimg .note{
+        font-size:13px;
+    }
+    .descimg .note span{
+        font-size:13px;
+        font-weight:bold;
+    }
+</style>
+{% endblock %}
+
+{% block link %}
+<a href="/iread/foodstay/">
+    <a href="/iread/foodstay/">
+        <div class="btn right">
+            食宿信息
+        </div>
+    </a>
+    <a href="/iread/schedule/">
+        <div class="btn right" style="margin-right:15px;">
+            日程安排
+        </div>
+    </a>
+</a>
+{% endblock %}
+
+{% block mainbody %}
+<div class="clearfix linebox" style="padding-bottom:0px;">
+    <div style="font-size:20px;"><span style="font-size:20px;font-weight:bold;">London</span> detailed routine <span style="font-weight:bold;font-size:14px;color:#ff2725;">日程安排</span></div>
+    <div class="clearfix">
+        <div class="left prev">
+            {% block prev %}
+                <<前一天
+            {% endblock %}
+        </div>
+        <div class="left now">
+            {% block now %}
+                第1天<br />Day1
+            {% endblock %}
+        </div>
+        <div class="left next">
+            {% block next %}
+                前一天>>
+            {% endblock %}
+        </div>
+    </div>
+</div>
+
+<div class="clearfix linebox" style="padding-bottom:0px;padding-top:0px;">
+    <div class="left desc">
+    {% block desc %}
+        · Gatwick Airport express to <span>London Victoria Station</span>, check-in at hotel and dinner at a traditional English pub.<br />
+            从北京飞往Gatwick机场,然后搭乘机场快车至伦敦维多利亚车站,入驻酒店,品尝传统的英国。
+    {% endblock %}
+    </div>
+</div>
+
+
+<div class="descimg">
+{% block descimg %}
+{% endblock %}
+</div>
+
+
+<div class="clearfix" style="padding:15px 30px;text-align: center;">
+<div class="left point">
+{% block point %}
+    <div class="left blue"><img src="/static/iread/blue_point.png"></div>
+    <div class="left grep" ><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+{% endblock %}
+</div>
+</div>
+<div class="clearfix right" style="padding:15px 30px;">
+本次活动最终解释权归iRead国际英语俱乐部所有
+</div>
+
+{% endblock %}

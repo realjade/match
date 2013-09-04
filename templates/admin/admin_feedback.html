@@ -1,0 +1,40 @@
+{% extends "admin/base.html" %}
+{% block title %}背书吧-管理后台-用户反馈{% endblock %}
+
+{% block centerbody %}
+<div >
+   <div >
+    {% if feedbacks|length %}
+        <table class="table">
+                <thead>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                    <th>内容</th>
+                    <th>反馈时间</th>
+                    <th>状态</th>
+                </thead>
+                {% for feedback in feedbacks %}
+                    <tr>
+                        <td>{{ feedback.name }}</td>
+                        <td>
+                        	{{ feedback.email }}
+                        </td>
+                        <td>
+                        	{{ feedback.content }}
+                        </td>
+                        <td>{{ feedback.created|datetime }}</td>
+                        <td>
+                        	{% if feedback.readed %}
+                        		已处理
+                        	{% else %}
+                        		未处理
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+        </table>
+    {% endif %}
+    </div>
+</div>
+{% include "admin/pagination.html" %}
+{% endblock %}

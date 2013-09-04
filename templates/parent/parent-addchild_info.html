@@ -1,0 +1,49 @@
+{% extends "homebase.html" %}
+{% block title %}
+    家长--账号信息
+{% endblock %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/parent.css'|staticurl }}" />
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/vself.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ '/static/js/apps/parent.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block centerbody %}
+<div class="main_wrap_center">
+    <h3>以下信息非常重要，请家长复制到手机中并牢记</h3>
+    
+    <div class="account-panel">
+        <div class="info-panel">
+            <div class="account-info">
+                家长姓名:{{ g.user.nickname }}<br />
+                家长登录帐号:<span class="info">{{ g.user.mobile }}</span>
+            </div>
+            
+            {% for child in g.user.children %}
+             <div class="account-info">
+                学生姓名:{{ child.nickname }}<br />
+                学生登录帐号:<span class="info">{{ child.email }}</span>
+            </div>
+            {% endfor %}
+            
+            <div class="account-info">
+                如果<a href="/forget/">忘记密码？</a><br />
+                家长用户请使用手机号找回<br />
+                学生账户用邮箱找回
+            </div>
+        </div>
+    </div>
+
+    <div class="clearfix">
+        <!--a href="/class/join/">
+            <div class="btn right btn-panel">下一步</div>
+        </a -->
+        <a href="/register/info/download/">
+            <div class="btn right btn-panel">保存至桌面</div>
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,124 @@
+@import "../global";
+.task{
+    width:100%;
+    padding:0px 0px 20px 0px;
+    min-height:400px;
+    .noitem{
+      margin-top:10px;
+      padding:10px;
+      text-align:center;
+      height:30px;
+      line-height:30px;
+    } 
+    .export-all{
+      margin-top:10px;
+      a{
+        color:#fff;
+      }
+    }
+    .task-container{
+      background-color:#fff;
+      padding:15px 0 10px 10px;
+      border-bottom:1px solid #dfdfdf;
+      &.preview{
+        background-color:#E3F4F6;
+      }
+      .avatar{
+        margin-right:10px;
+        img{
+          width:50px;
+          height:50px;
+        }
+      }
+      .task-info{
+        .task-baseinfo{
+          width:460px;
+          background:#f8f8f8;
+          padding:10px 0px 1px 20px;
+          color:#626262;
+          .task-title{
+            a{
+              color:#8bc4e1;
+            }
+          }
+          .task-content{
+            margin:10px 0px;
+          }
+          .task-content,.task-content a{
+              color:#323232;
+              font-size:14px;
+              font-weight:bolder;
+          }
+          .task-property{
+            .task-deadline{
+              font-weight:bolder;
+            }
+            div{
+              margin-bottom:5px;
+              span{
+                  textarea{
+                    width:300px;
+                    height:100px;
+                    border: 1px solid #c1c1c1;
+                  }
+              }
+            }
+          }
+          .task-attachment{
+            margin-bottom:5px;
+            strong{
+              color:#3FA7CB;
+            }
+          }
+        }
+        .task-state{
+          padding-left:20px;
+          margin-top:10px;
+          .task-unhandincount{cursor: pointer;}
+          .task-unhandinstudent{
+            display:none;
+            position:absolute;
+            color:#fff;
+            background-color: #72c4dd;
+            padding: 8px;
+            width:440px;
+            z-index:5;
+            ul{
+              padding:0px 8px;
+              li{
+                margin:8px 0px;
+                float:left;
+                width:60px;
+              }
+            }
+          }
+          .export{
+            a{
+              color:#fff;
+            }
+          }
+        }
+        .task-op{
+          clear:both;
+          padding-top:10px;
+          .task-preview-cancel{
+            margin-right:10px;
+          }
+        }
+        .task-confirm{
+          cursor:pointer;
+          color:#0000ee;
+        }
+        .task-confirm:hover{
+          color:#f28a19;
+          div{
+            background-position-y:-80px;
+          }
+        }
+      }
+    }
+    .task-page{
+      margin:10px;
+      float:right;
+    }
+}

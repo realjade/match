@@ -1,0 +1,56 @@
+{% extends "/mobile/homebase.html" %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block scripts %}
+    
+{% endblock %}
+{% block centerbody %}
+{% set indexdata = g.user.indexdata %}
+<ul data-role="listview">
+    <li data-theme="b" data-icon="false"><a href="/m/task/" data-ajax="false">作业</a></li>
+    <li data-icon="false">
+        <a href="/m/task/notreaded/" data-ajax="false">
+            {% if g.user.isteacher %}
+                未批改
+            {% else %}
+                当前作业
+            {% endif %}
+            {% if indexdata.get('task_todo',0) !=0 %}
+                <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{indexdata.get('task_todo',0)}}</span>
+            {% endif %}
+            {% if indexdata.get('notread',0) !=0 %}
+                <span class="ui-li-count ui-btn-up-c ui-btn-corner-all">{{indexdata.get('notread',0)}}</span>
+            {% endif %}
+        </a>
+    </li>
+    <li data-icon="false">
+        <a href="/m/task/readed/" data-ajax="false">
+            {% if g.user.isteacher %}
+                已批改
+            {% else %}
+                已完成作业
+            {% endif %}
+        </a>
+    </li>
+    {% if g.user.isparent %}
+    <li data-icon="false">
+        <a href="/m/task/writing/" data-ajax="false">
+            笔头作业
+        </a>
+    </li>
+    {% endif %}
+    <li data-theme="b" data-icon="false"><a href="/m/notify/" data-ajax="false">通知</a></li>
+    
+    <li data-theme="b" data-icon="false"><a>班级管理</a></li>
+    {% set classgrades = g.user.classgrades %}
+    {% for classgrade in classgrades %}
+        <li data-icon="false">
+            <a href="/m/class/{{ classgrade.class_id }}/" data-ajax="false">
+                {{ classgrade.class_name }}
+            </a>
+        </li>
+    {% endfor %}
+    <li data-theme="b" data-icon="false"><a href="/m/logout/" data-ajax="false" >退出</a></li>
+</ul>
+{% endblock %}

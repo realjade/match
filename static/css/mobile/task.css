@@ -1,0 +1,119 @@
+/*基本类和函数*/
+/***************border圆角**********************/
+/***************方块阴影**********************/
+/***************元素过度效果**********************/
+/****************旋转，转换***********************/
+/****************线性颜色渐变***********************/
+/****************快速颜色渐变***********************/
+/****************镜像效果***********************/
+/****************透明效果***********************/
+/****************处理越界***********************/
+.font-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.task_publish .task-type-panel .task-type {
+  cursor: pointer;
+  padding: 5px;
+  margin-right: 10px;
+  font-size: 14px;
+}
+.task_publish .task-type-panel .task-type:hover {
+  background: #cde0f1;
+  color: #0065cf;
+}
+.task_publish .task-type-panel .task-type.active {
+  background: #cde0f1;
+  color: #0065cf;
+}
+.task_publish .task-type-panel .task-type span {
+  margin-right: 8px;
+}
+.task_publish .time-setting {
+  margin-top: 10px;
+}
+.task_publish .time-setting .deadline {
+  height: 20px;
+  width: 120px;
+  line-height: 12px;
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  cursor: text;
+  display: inline;
+}
+.task_publish .operator {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.task_publish .operator .item {
+  margin-right: 8px;
+}
+.task_publish .operator .item .sendfont {
+  padding-top: 3px;
+}
+.task_publish .operator .selectclass {
+  cursor: text;
+  min-height: 20px;
+  width: 120px;
+  border: 1px solid #d1d1d1;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+}
+.task_publish .operator ul.myclasses {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  width: 140px;
+  background-color: white;
+  border: #EEE solid 1px;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+}
+.task_publish .operator ul.myclasses li {
+  cursor: pointer;
+  border-top: 1px solid #d1d1d1;
+}
+.task_publish .operator ul.myclasses li div {
+  margin: 8px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.task_publish .operator .attachmentpanel .addattachment {
+  margin-top: 5px;
+  width: 70px;
+  color: #0001ec;
+  cursor: pointer;
+}
+.task_publish .operator .attachmentpanel .addattachment.active {
+  color: #f28a19;
+}
+.task_publish .operator .attachmentpanel .addattachment.active div {
+  background-position-y: -80px;
+}
+.task_publish .operator .attachmentpanel .addattachment:hover {
+  color: #f28a19;
+}
+.task_publish .operator .attachmentpanel .addattachment:hover div {
+  background-position-y: -80px;
+}
+.task_publish .operator .attachmentpanel .attachmentuploader {
+  border: 1px solid #cccccc;
+  padding: 5px 10px;
+  background: #fff;
+  position: absolute;
+  left: -10000px;
+  width: 300px;
+  z-index: 2;
+}
+.task_publish .operator .attachmentpanel .attachmentuploader .attachmentdesc {
+  margin-top: 10px;
+  color: #848484;
+}

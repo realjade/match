@@ -1,0 +1,450 @@
+#header {
+  background: #3fa7cb;
+}
+#header .slogan {
+  color: #3fa7cb;
+}
+#header .logo {
+  background: #3fa7cb;
+}
+#header .logosp {
+  background: #f9f9f9;
+  _background: #f9f9f9;
+}
+.content_top {
+  width: 960px;
+  margin: 0 auto;
+}
+/* button */
+.btn-login, .btn-register {
+  width: 100%;
+}
+.btn-login input, .btn-register input {
+  width: 100%;
+  font-weight: bold;
+}
+.btn-register a {
+  display: block;
+  text-align: center;
+}
+.btn-login input {
+  padding: 8px 20px;
+}
+/* button end */
+/* left */
+.idx_left {
+  float: left;
+  width: 260px;
+  border: #dfdfdf solid 1px;
+  border-top: none;
+  background: #f9f9f9;
+  background: -webkit-linear-gradient(top, #f9f9f9 0%, #f1f1f1 100%);
+  background: -moz-linear-gradient(top, #f9f9f9 0%, #f1f1f1 100%);
+  background: -o-linear-gradient(top, #f9f9f9 0%, #f1f1f1 100%);
+  background: -ms-linear-gradient(top, #f9f9f9 0%, #f1f1f1 100%);
+  background: linear-gradient(top, #f9f9f9 0%, #f1f1f1 100%);
+  -webkit-border-bottom-left-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom: 1px solid #dfdfdf;
+  padding-bottom: 10px;
+}
+.idx_left .logindl {
+  width: 205px;
+  height: 480px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+.idx_left .logindl dd {
+  margin-top: 15px;
+}
+.idx_left .logindl dd.logindd .forgetpassword {
+  display: inline-block;
+  float: right;
+}
+.idx_left .logininput {
+  width: 190px;
+  padding: 0 8px;
+  border: #adb6c9 solid 1px;
+  border-radius: 3px;
+  box-shadow: 0 1px #ebeff5 inset;
+  background-color: #FFF;
+}
+.idx_left .logininput span {
+  display: block;
+  float: left;
+  background: url(/static/images/home/hack/login.png) no-repeat 0 0px;
+  height: 16px;
+  width: 14px;
+  margin-top: 8px;
+}
+.idx_left .logininput span.name {
+  background-position: 0 -50px;
+}
+.idx_left .input {
+  border: 0;
+  padding: 8px 0;
+  margin-top: 1px;
+  padding-left: 5px;
+  width: 165px;
+  _padding: 5px 0;
+}
+.idx_left .boldline {
+  background: url(/static/images/home/xian.png) no-repeat 0 0;
+  height: 3px;
+  margin: 0 auto;
+  width: 206px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+/* left bottom */
+.idx_bottom {
+  margin-top: 10px;
+}
+.idx_bottom .tip {
+  border-top: 1px dotted;
+}
+.idx_bottom {
+  padding: 0 10px;
+  position: relative;
+  top: -1px;
+  z-index: 0;
+}
+/* left top error */
+.idx_error {
+  height: 16px;
+  margin-top: 12px;
+}
+.idx_error span {
+  display: inline-block;
+  font-size: 12px;
+  color: #fd1102;
+  text-align: center;
+  width: 100%;
+  line-height: 16px;
+}
+/* left end */
+/* right */
+.idx_right {
+  float: right;
+  width: 695px;
+  padding: 20px 0;
+}
+.baseinfo {
+  width: 643px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.seemore {
+  padding: 6px;
+  height: 24px;
+  width: 644px;
+  line-height: 24px;
+  font-size: 14px;
+  background: aliceblue;
+  text-align: center;
+}
+.seemore .back {
+  font-size: 20px;
+  font-weight: bold;
+}
+/* right end */
+/* slide */
+.slide {
+  width: 643px;
+  height: 320px;
+}
+.slide_box {
+  width: 160px;
+  height: 320px;
+  overflow: hidden;
+  position: relative;
+  float: left;
+  border-right: 1px solid #e2e2e2;
+  cursor: pointer;
+  background-repeat: no-repeat;
+}
+.slide_box.last {
+  border-right-width: 0;
+}
+.slide .bg1 .navbox {
+  width: 160px;
+}
+.slide #box_1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.slide #box_1 .navtitle {
+  width: 160px;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  font-size: 20px;
+  text-align: center;
+}
+.slide #box_1 .navsumary {
+  padding: 10px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  line-height: 26px;
+}
+.slide #box_2 {
+  position: absolute;
+  left: 0;
+  bottom: 45px;
+}
+.slide #box_2 .navtitle {
+  width: 160px;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  font-size: 20px;
+  text-align: center;
+}
+.slide #box_2 .navsumary {
+  padding: 10px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  line-height: 26px;
+}
+.slide #box_3 {
+  position: absolute;
+  left: 0;
+  bottom: 90px;
+}
+.slide #box_3 .navtitle {
+  width: 160px;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  font-size: 20px;
+  text-align: center;
+}
+.slide #box_3 .navsumary {
+  padding: 10px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  line-height: 26px;
+}
+.slide #box_4 {
+  position: absolute;
+  left: 0;
+  bottom: 45px;
+}
+.slide #box_4 .navtitle {
+  width: 160px;
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  font-size: 20px;
+  text-align: center;
+}
+.slide #box_4 .navsumary {
+  padding: 10px;
+  margin-bottom: 3px;
+  font-size: 12px;
+  line-height: 26px;
+}
+.slide .navbox .navsumary {
+  color: #fff;
+  display: none;
+  padding: 10px;
+}
+.navtitle img {
+  display: none;
+}
+.slide .navbox .navtitle a, .slide .navbox .navtitle a:link, .slide .navbox .navtitle a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+.slide .navbox .navtitle a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+.slide .navtitle, .slide .navsumary {
+  position: relative;
+}
+.slide div.bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  left: 0;
+  top: 0;
+}
+.slide div.txt {
+  position: relative;
+  z-index: 2;
+}
+.slide div.bg {
+  filter: alpha(opacity=60);
+  opacity: 0.6;
+}
+.slide #box_1 div.bg {
+  background-color: #00ffea;
+}
+.slide #box_2 div.bg {
+  background-color: #9d9d9d;
+}
+.slide #box_3 div.bg {
+  background-color: #c020e8;
+}
+.slide #box_4 div.bg {
+  background-color: #e4ff00;
+}
+.bg1 {
+  background-image: url(/static/images/banner/ban_1.jpg);
+}
+.bg2 {
+  background-image: url(/static/images/banner/ban_2.jpg);
+}
+.bg3 {
+  background-image: url(/static/images/banner/ban_3.jpg);
+}
+.bg4 {
+  background-image: url(/static/images/banner/ban_4.jpg);
+}
+/* slide end */
+/* function */
+.function {
+  height: 179px;
+  width: 642px;
+  margin: 0;
+  background: url(/static/images/main/intro.jpg) bottom center no-repeat;
+  position: relative;
+}
+.function .intro_1 {
+  position: absolute;
+  top: 40px;
+  left: 21px;
+  width: 106px;
+}
+.function .intro_2 {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  width: 154px;
+}
+.function .intro_3 {
+  position: absolute;
+  top: 119px;
+  left: 79px;
+  width: 202px;
+}
+.function .intro_4 {
+  position: absolute;
+  top: 103px;
+  right: 89px;
+  width: 202px;
+}
+/* function end */
+/* banner */
+.idx_right .title {
+  margin: 0 auto;
+  padding: 20px 0;
+}
+.idx_right .title h3 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+}
+.idx_right .title p {
+  text-align: center;
+  color: #9f9f9f;
+  line-height: 24px;
+}
+.idx_right .banner {
+  width: 622px;
+  height: 200px;
+  margin: 10px 20px;
+  border-bottom: 1px dotted #cccccc;
+}
+.box1 {
+  background: url(/static/images/banner/teacher_center.jpg) top right no-repeat #ffffff;
+}
+.box2 {
+  background: url(/static/images/banner/student_center.jpg) top left no-repeat #ffffff;
+}
+.box3 {
+  background: url(/static/images/banner/parent_center.jpg) top right no-repeat #ffffff;
+}
+.idx_right .banner .desc {
+  padding: 30px;
+  width: 240px;
+}
+.idx_right .banner .desc h4 {
+  font-size: 16px;
+  color: #111111;
+  padding-bottom: 12px;
+}
+.idx_right .banner .desc p {
+  font-size: 12px;
+  color: #333333;
+  line-height: 16px;
+}
+.idx_right .banner .desc a {
+  line-height: 20px;
+}
+.box1 .desc, .box3 .desc {
+  float: left;
+}
+.box2 .desc {
+  float: right;
+}
+/* banner end */
+/* video css */
+.idx_right .banner2 {
+  height: 500px;
+}
+/* video css end */
+/* beishuPlayer 视频样式 */
+.beishuPlayer {
+  height: 480px;
+  width: 640px;
+}
+/* beishuPlayer 视频样式 end */
+.login-input {
+  width: 190px;
+  height: 35px;
+  padding: 0px 8px;
+  border: #adb6c9 solid 1px;
+  border-radius: 3px;
+  box-shadow: 0 1px #ebeff5 inset;
+  background-color: #FFF;
+}
+.login-input label {
+  top: 10px;
+}
+.login-input input {
+  width: 185px;
+  line-height: 20px;
+  padding: 7px 8px 7px 0px;
+}
+.update .help {
+  margin: 7px 0px;
+}
+.update {
+  margin-top: 10px;
+}
+.update .version {
+  color: #22A0B9;
+  font-size: 14px;
+  font-weight: bolder;
+  margin-right: 10px;
+}
+.update .updatetime {
+  color: #999;
+}
+.update ul {
+  margin-left: 30px;
+}
+.update ul li {
+  display: list-item;
+  list-style-type: decimal;
+}

@@ -1,0 +1,29 @@
+{{#imageshow}}
+<div class="imageshow">
+    <div class="carouselbox clearfix">
+        <div class="turnleft left">
+            <div class="left_icons"></div>
+        </div>
+        <div class="carousel">
+            <ul class="thumbnails">
+                {{#images}}
+                    <li>
+                        <img src="{{ thumbnail }}" data-path="{{path}}" />
+                    </li>
+                {{/images}}
+            </ul>
+        </div>
+        <div class="turnright left">
+            <div class="right_icons"></div>
+        </div>
+    </div>
+    <div class="showbox">
+        <img class="factimage" src="" title="点击查看原图"/>
+    </div>
+    <div class="operator">
+        <span class="remove btn">删除</span>
+        <span class="close btn">关闭</span>
+    </div>
+    <div class="clear"></div>
+</div>
+{{/imageshow}}

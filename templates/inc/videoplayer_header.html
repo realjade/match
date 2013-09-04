@@ -1,0 +1,6 @@
+{% if not g.using_html5 %}
+<script type="text/javascript" src="{{ '/static/js/lib/flowplayer-3.2.10.min.js'|staticurl }}"></script>
+{% else %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/lib/video-js.min.css'|staticurl }}" />
+<script type="text/javascript" src="{{ '/static/js/lib/video.js'|staticurl }}"></script>
+{% endif %}

@@ -1,0 +1,32 @@
+{{#task}}
+    <li data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-icon="arrow-r" data-iconpos="right" data-theme="c" class="ui-btn ui-btn-icon-right ui-li-has-arrow ui-li ui-li-has-thumb ui-btn-up-c">
+        <div class="ui-btn-inner ui-li">
+            <div class="ui-btn-text">
+                <a {{#isvideo}}href="/m/works/{{task_id}}/"{{/isvideo}} class="ui-link-inherit">
+                    <img src="{{teacher.smallavatar}}" class="ui-li-thumb">
+                    <h3 class="ui-li-heading">{{task_content}}</h3>
+                    {{#user.istudent}}
+                    <p>发布老师：{{ user.nickname }}老师</p>
+                    {{/user.istudent}}
+                    
+                    {{^isnotify}}
+                    <p>作业类型：{{task_type_text}}作业</p>
+                    {{/isnotify}}
+                    <p>发布班级：
+                        {{#classgrades}}
+                            &nbsp;@{{class_name}}&nbsp;
+                        {{/classgrades}}
+                    </p>
+                    <p>截止日期：<span class="task-deadline">{{deadline}}</span></p>
+                    <p>作业说明：<span class="up-text">{{description}}</span></p>
+                    {{#attachments}}
+                    <p>附件：{{filename}}&nbsp;<strong>下载</strong></p>
+                    {{/attachments}}
+                    {{#statistics}}
+                        <p>作业状态：已{{^isvideo}}确认{{/isvideo}}{{#isvideo}}提交{{/isvideo}}{{confirmed.count}}人，未{{^isvideo}}确认{{/isvideo}}{{#isvideo}}提交{{/isvideo}}{{unconfirmed.count}}人</p>
+                    {{/statistics}}
+                </a>
+            </div>
+        </div>
+    </li>
+{{/task}}

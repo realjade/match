@@ -1,0 +1,151 @@
+@charset "utf-8";
+/*基本类和函数*/
+/***************border圆角**********************/
+/***************方块阴影**********************/
+/***************元素过度效果**********************/
+/****************旋转，转换***********************/
+/****************线性颜色渐变***********************/
+/****************快速颜色渐变***********************/
+/****************镜像效果***********************/
+/****************透明效果***********************/
+/****************处理越界***********************/
+.font-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+/* ---- header in main page ---- */
+#header {
+  height: 64px;
+  width: 100%;
+  background: #3FA7CB;
+}
+#header .wrapper {
+  width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+#header .wrapper a.link,
+#header .wrapper a.visited,
+#header .wrapper a.link:hover {
+  background: none;
+}
+/* logo */
+#header .wrapper .logo {
+  float: left;
+  width: 224px;
+  margin-top: -3px;
+}
+#header .wrapper .logosp {
+  float: left;
+  height: 58px;
+  width: 208px;
+  padding: 6px 0 0 52px;
+  border-left: #dfdfdf;
+  border-right: #dfdfdf;
+  margin-left: 1px;
+}
+/* slogan */
+#header .wrapper .navigation {
+  float: left;
+  width: 580px;
+  height: 24px;
+}
+#header .wrapper .navigation img {
+  margin-top: 20px;
+  margin-left: 90px;
+}
+#header .navigation h4.slogan {
+  font-size: 18px;
+}
+/* navigation */
+#header .wrapper .quick-menu {
+  float: right;
+  position: relative;
+  margin-right: 25px;
+  line-height: 64px;
+}
+#header .wrapper .quick-menu li {
+  float: left;
+}
+#header .wrapper .quick-menu .index,
+#header .wrapper .quick-menu .dream {
+  width: 34px;
+  text-align: right;
+}
+#header .wrapper .quick-menu .devide {
+  width: 3px;
+  text-align: right;
+  margin-left: 2px;
+}
+#header .wrapper .quick-menu li span.shu {
+  border-right: 2px solid #7bc8e3;
+  display: block;
+  float: left;
+  position: absolute;
+  top: 50%;
+  margin-top: -6px;
+  width: 2px;
+  height: 12px;
+  line-height: 12px;
+}
+#header .wrapper .quick-menu li a {
+  color: #ffffff;
+}
+/* ---- header in home page ---- */
+.home-header {
+  height: 45px;
+  width: 100%;
+  z-index: 100;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #3fa7cb;
+}
+.home-header .header-main {
+  width: 960px;
+  margin: 0 auto;
+}
+.home-header .header-main .logo {
+  float: left;
+  width: 148px;
+  margin-left: 10px;
+}
+.home-header .header-main .logo img {
+  height: 40px;
+}
+.home-header .header-main .navigation a {
+  color: #FFF;
+  text-decoration: none;
+  float: left;
+  display: block;
+  padding: 15px 15px;
+  _padding: 15px 10px;
+}
+.home-header .header-main .navigation a:hover {
+  background: none repeat scroll 0 0 #4eb2d4;
+  color: #FFF;
+}
+.home-header .header-main .navigation a.current {
+  background: none repeat scroll 0 0 #4EB2D4;
+  color: white;
+}
+.home-header .header-main .accountmenu li {
+  float: left;
+}
+.home-header .header-main .accountmenu li span {
+  color: #ff0200;
+}
+.home-header .header-main .accountmenu a {
+  color: #FFF;
+  text-decoration: none;
+  float: left;
+  display: block;
+  padding: 15px 15px;
+  _padding: 15px 10px;
+}
+.home-header .header-main .accountmenu a:hover {
+  background: none repeat scroll 0 0 #4eb2d4;
+  color: #FFF;
+}

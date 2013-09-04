@@ -1,0 +1,71 @@
+{% extends "homebase.html" %}
+{% block title %}
+    {{ g.user|gettext }} -- {% if title %}{{ title }}{% else %}作业{% endif %}
+{% endblock %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/task_works.css'|staticurl }}" />
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/lib/jquery.rating.css'|staticurl }}" />
+<link rel="stylesheet" type="text/css" href="{{ '/static/css/modules/upload.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/apps/task.js'|staticurl }}"></script>
+    <script type="text/javascript" src="{{ '/static/js/lib/jquery.rating.js'|staticurl }}"></script>
+    <script type="text/javascript" src="{{ '/static/js/lib/rotate.js'|staticurl }}"></script>
+    {% if not g.user.isteacher %}
+    <script type="text/javascript" src="{{ '/static/js/lib/plupload.js'|staticurl }}"></script>
+    {% endif %}
+    <script type="text/javascript" src="{{ '/static/js/modules/vselfuploader.js'|staticurl }}"></script>
+    <script type="text/javascript" src="{{ '/static/js/modules/video.js'|staticurl }}"></script>
+    {% include "inc/videoplayer_header.html" %}
+{% endblock %}
+
+{% block centerbody %}
+<div class="panel task">
+    <div class="task-main">
+        {% for work in result %}
+            {{ render_mustache('task/task_works_tmpl.html',work=work) }}
+        {% else %}
+            <div class="noitem panel">没有学生的作业信息</div>
+        {% endfor %}
+    </div>
+    <div class="task-page">
+        {% include "page_floor.html" %}
+    </div>
+</div>
+
+{% if not g.user.isteacher %}
+    <div id="videoupload" class="clearfix">
+         {% include "inc/vselfupload.html" %}
+         <input class="upload_params" type="hidden" name="task_id" />
+         <input class="upload_params" type="hidden" name="child_id"/>
+         <input class="upload_params" type="hidden" name="SESSION" value="{{ session.sid }}" />
+         <div class="title">文件大小必须小于200M,
+            <span class="tag warning">只有家长点评过的作业，老师才能看到哟。</span>
+         </div>
+    </div>
+    <div id="imageupload" class="clearfix">
+         {% include "inc/vselfupload.html" %}
+         <input class="upload_params" type="hidden" name="task_id" />
+         <input class="upload_params" type="hidden" name="child_id"/>
+         <input class="upload_params" type="hidden" name="SESSION" value="{{ session.sid }}" />
+         <div class="title">可以上传多张图片,
+            <span class="tag warning">只有家长点评过的作业，老师才能看到哟。</span>
+         </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block template %}
+    {% if not g.user.isteacher %}
+        <script id="vselfTempl" class="mustache-template" type="text/template">
+            {{ include_mustache('task/task_works_tmpl.html',scriptag=False) }}
+            {{ include_mustache('task/rotate_video_tmpl.html',scriptag=False) }}
+            {{ include_mustache('task/img_show_tmpl.html',scriptag=False) }}
+        </script>
+    {% else %}
+        <script id="vselfTempl" class="mustache-template" type="text/template">
+            {{ include_mustache('task/img_show_tmpl.html',scriptag=False) }}
+        </script>
+    {% endif %}
+{% endblock %}

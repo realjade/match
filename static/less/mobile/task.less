@@ -1,0 +1,100 @@
+@import "../global";
+@import "../variables";
+.task_publish{
+    .task-type-panel{
+        .task-type{
+            cursor:pointer;
+            padding:5px;
+            margin-right:10px;
+            font-size:14px;
+            &:hover{
+              background:@blueBG;
+              color:@blueActiveColor;
+            }
+            &.active{
+              background:@blueBG;
+              color:@blueActiveColor;
+            }
+            span{
+              margin-right:8px;
+            }
+        }
+    }
+    .time-setting{
+        margin-top:10px;
+        .deadline{
+          height: 20px;
+          width: 120px;
+          line-height: 12px; 
+          border: 1px solid #d1d1d1; 
+          .border-radius(2px);
+          cursor:text;
+          display: inline;
+        }
+    }
+    .operator{
+        margin-top:10px;
+        margin-bottom:15px;
+        .item{
+          margin-right:8px;
+          .sendfont{padding-top: 3px;}
+        }
+        .selectclass{
+          cursor:text;
+          min-height: 20px;
+          width: 120px;
+          border: 1px solid #d1d1d1;
+          .border-radius(2px);
+        }
+        ul.myclasses{
+          display:none;
+          position:absolute;
+          z-index:3;
+          width: 140px;
+          background-color: white;
+          border: #EEE solid 1px;
+          .box-shadow;
+          li{
+            cursor:pointer;
+            border-top: 1px solid #d1d1d1;
+            div{
+              margin:8px 20px;
+              .font-wrap;
+            }
+          }
+        }
+        .attachmentpanel{
+          .addattachment{
+            margin-top:5px;
+            width:70px;
+            color:#0001ec;
+            cursor:pointer;
+            &.active{
+              color:#f28a19;
+              div{
+                background-position-y:-80px;
+              }
+            }
+            &:hover{
+              color:#f28a19;
+              div{
+                background-position-y:-80px;
+              }
+            }
+          }
+          .attachmentuploader{
+            border:1px solid #cccccc;
+            padding:5px 10px;
+            background:#fff;
+            position:absolute;
+            left:-10000px;
+            width: 300px;
+            z-index:2;
+            .attachmentdesc{
+              margin-top:10px;
+              color:#848484;
+            }
+          }
+      }
+    }
+}

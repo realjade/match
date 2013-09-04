@@ -1,0 +1,53 @@
+{% extends "admin/base.html" %}
+{% block title %}背书吧-管理后台-系统通知{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    function opinion(){
+        if(confirm("确认删除通知？")){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
+</script>
+{% endblock %}
+
+{% block centerbody %}
+<form class="form-horizontal" method="POST">
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">通知内容</label>
+    <div class="controls">
+      <textarea class="input-xxlarge" name="content" rows="5"></textarea>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">发布</button>
+    </div>
+  </div>
+</form>
+  
+<table class="table">
+    <thead>
+        <th>通知内容</th>
+        <th>通知时间</th>
+        <th>删除</th>
+    </thead>
+    {% for notice in noticelist %}
+    <tr>
+        <td>{{ notice.content }}</td>
+        <td>{{ notice.created|datetime }}</td>
+        <td>
+            <a href="/admin/system/notice/delete/{{ notice.id }}/" onclick="return opinion();">
+            删除
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+  
+
+{% endblock %}

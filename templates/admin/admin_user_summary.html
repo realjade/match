@@ -1,0 +1,127 @@
+{% extends "admin/base.html" %}
+
+{% block centerbody %}
+<div >
+    <div class="span6">
+        <table class="table table-bordered">
+            <tr>
+                <td>姓名</td>
+                <td>{{ user.nickname }}</td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td>{% if user.email %}
+                        {{ user.email }}
+                    {% else %}
+                        未填写
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>手机号</td>
+                <td>{% if user.mobile %}
+                        {{ user.mobile }}
+                        {% else %}
+                        未填写
+                        {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>注册日期</td>
+                <td>{{ user.created|datetime }}</td>
+            </tr>
+            <tr>
+                <td>最后登录时间</td>
+                <td>{{ user.updated|datetime }}</td>
+            </tr>
+            <tr>
+                <td>身份</td>
+                <td>{% if user.is_student %}
+                            学生
+                        {% elif user.is_teacher %}
+                            老师
+                        {% elif user.is_parent %}
+                            家长
+                        {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>其他</td>
+                <td>
+                    {% if user.is_student %}
+                        {% if user.parent %}
+                        <span>家长：{{ user.parent }}</span>
+                        {% endif %}
+                        {% for class in user.classgrades %}
+                        <span title="{{ class.school.fullname|safe }}">班级：{{ class.class_name }}</span>
+                        {% endfor %}
+                    {% if user.vieoworks %}
+                    <span>上交视频作业：{{ user.videoworks }}, 家长审核过：{{ user.videoworks_approved }}</span>
+                    {% endif %}
+                    {% elif user.is_teacher %}
+                        {% for class in user.classgrades %}
+                        <span title="{{ class.school.fullname|safe }}">班级：{{ class.class_name }}</span>
+                        {% endfor %}
+                    {% elif user.is_parent %}
+                        {% for child in user.children %}
+                        <span>子女：{{ user.children.get(child,'') }}</span>
+                        {% endfor %}
+                    {% endif %}
+                </td>
+            </tr>
+            {% if user.is_student %}
+            <tr>
+                <td>上传视频数：</td>
+                <td>{{ works|count }}</td>
+            </tr>
+            {% endif %}
+            {% if user.is_teacher %}
+            <tr>
+                <td>发布作业数：</td>
+                <td>{{ tasks|count }}</td>
+            </tr>
+            {% endif %}
+        </table>
+        {% if False %}
+        <div>
+            <form class="form-horizontal" method="post" action="/admin/user/{{ user.user_id }}/delete/">
+              <div class="control-group">
+                <div class="controls">
+                  <button type="submit" class="btn btn-danger">删除用户</button>
+                </div>
+              </div>
+            </form>
+        </div>
+        {% endif %}
+    </div>
+    <div>
+        {% if works|length %}
+            <table class="table">
+                    <thead>
+                        <th>作业</th>
+                        <th>班级</th>
+                        <th>完成时间</th>
+                        <th>视频</th>
+                    </thead>
+                    {% for w in works %}
+                        <tr>
+                            <td>
+                                {{ w.task_content }}
+                            </td>
+                            <td>
+                                {{ w.class_name }}
+                            </td>
+                            <td>{{ w.created|datetime }}</td>
+                            <td>
+                                {% if w.video_path %}
+                              {{ render_mustache("admin/videoitem.html", video=w) }}
+                                {% endif %}
+                            </td>
+                            <td></td>
+                        </tr>
+                    {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/vtime.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    function resetPosition(offset){
+        jQuery('html,body').animate({scrollTop:offset},500);
+    }
+ </script>
+{% endblock %}
+
+{% block mainbody %}
+<div class="content jcontent_top clearfix">
+   <div class="jct_left">
+    <dl class="jctlogindl clearfix">
+          <dt class="vdream">
+            <span><label>梦</label>想</span>
+          </dt>
+          <dd>
+            <a href="javascript:void(0)" onclick="resetPosition(0)">我们的梦想</a>
+            <a href="javascript:void(0)" onclick="resetPosition(220)">背书吧的六大好处</a>
+          </dd>
+      </dl>
+      <dl class="jctlogindl clearfix bordertop">
+          <dt class="vjob margintop10">
+            <span><label>视</label>频作业时代</span>
+          </dt>
+          <dd>
+            <a href="javascript:void(0)" onclick="resetPosition(500)">协作,可量化的视频家庭作业</a>
+            <a href="javascript:void(0)" onclick="resetPosition(810)">家庭作业有助学习成绩</a>
+            <a href="javascript:void(0)" onclick="resetPosition(970)">家庭作业的七大秘密</a>
+          </dd>
+      </dl>
+   </div>
+   <div class="jct_right clearfix">
+        <div class="jvcont">
+            <div class="rel red">
+                <a class="sanjiao"></a>
+                <dl>
+                    <dt>我们的梦想</dt>
+                    <dd>
+                        <p>我们梦想每一个老师都可以便捷的应用“背书吧”为学生们布置每天必须完成的作业。</p>
+                        <p>我们梦想每一个学生在应用“背书吧”以后不再用每天找老师排队背书，有更多的时间去玩耍，学习成绩越来越好。</p>
+                        <p>我们梦想每一位家长都可以通过“背书吧”了解学生在学校的情况，了解每天作业的具体内容，与老师实现更好的交流与沟通。</p>
+                        <p>我们梦想，“背书吧”成为华人学习语言最大、最好的教学辅助平台。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="jvcont margintop">
+            <div class="rel red">
+                <a class="sanjiao"></a>
+                <dl>
+                    <dt>背书吧的六大好处</dt>
+                    <dd>
+                        <p>1. “背书吧”是学校、老师、家长和孩子间全新的沟通工具，通过统一的官方的渠道发布通知、作业内容。让老师和家长之间的沟通变得更加通畅。</p>
+                        <p>2. “背书吧”可以成为老师检查学生无法量化的背书、朗诵作业的好方法，减少了老师的工作量，提升了工作效率。</p>
+                        <p>3. 老师可以将优秀学生的背诵视频分享给其他同学看，激发同学们的争优的欲望，从而提升整个班级、年级乃至整个学校的朗读和背诵水平。</p>
+                        <p>4. “背书吧”将一些原先无法标准化的内容，如坐姿、眼保健操、体操等内容进行发布，建议家长监督和督促学生按照标准学习。</p>
+                        <p>5. “背书吧”可以方便的发布老师组织的活动视频、图片，让学生和家长共同分享那瞬间的快乐。</p>
+                        <p>6. “背书吧”最终将为孩子留下一份珍贵的礼物，从一年级到6年级，到初中、高中，每年将近200段视频背诵的内容，记录了孩子成长的过程，展现了孩子从无知无畏到自信成熟的心路历程，是家长给孩子最好的礼物。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="jvcont margintop">
+            <div class="rel blue">
+                <a class="sanjiao"></a>
+                <dl>
+                    <dt>协作，可量化的视频家庭作业</dt>
+                    <dd>
+                        <p>听说读写，在传统的教育体系中，只有“写”可以实现量化，学生交作业，老师判作业。“听说读”的作业怎么办？</p>
+                        <p>熟读、背诵，这些年少时的功课，总让孩子们觉得无法完美的完成，因为它们从来无法量化。</p>
+                        <p>家长天天盯着孩子背，老师每天花大量的时间听孩子们背书，孩子们一个一个的排队找老师背书，这件事情逐渐变成了老师、家长和孩子们最不愿意去做的事情。</p>
+                        <p>家长天天盯着孩子背，老师每天花大量的时间听孩子们背书，孩子们一个一个的排队找老师背书，这件事情逐渐变成了老师、家长和孩子们最不愿意去做的事情。</p>
+                        <p>将原先无法量化的熟读和背诵作业通过视频的方式量化下来，家长帮助孩子们将背书的作业录制下来，上传到“背书吧”的班级中，老师通过平台随时观看和检查孩子们的作业，解决了老师、家长和孩子三方面的问题。我们相信，这就是跨入二十一世纪的“V作业时代”。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="jvcont margintop">
+            <div class="rel blue">
+                <a class="sanjiao"></a>
+                <dl>
+                    <dt>家庭作业有助学习成绩</dt>
+                    <dd>
+                        <p>研究表明花在家庭作业上的时间直接影响一个孩子的学习成绩。那些一直完成家庭作业的孩子比那些不做家庭作业的孩子在学习上取得的成绩更好。</p>
+                        <p>学生们通过完成家庭作业可以在所有的科目上取得进步。这种现象在各年级中都有出现，无论学生的学习能力强还是弱。家长理解家庭作业的目的和其价值后可以最大限度的帮助孩子从中获益。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="jvcont margintop">
+            <div class="rel blue">
+                <a class="sanjiao"></a>
+                <dl>
+                    <dt>家庭作业的七大秘密</dt>
+                    <dd>
+                        <p>1. <strong>责任感：</strong>家庭作业是孩子的责任。如果家长替孩子完成作业，那么家长就剥夺了孩子承担责任的机会，同时这样做也仅仅是完成作业本身而已，真正的知识孩子没有学到。</p>
+                        <p>2. <strong>独立性：</strong>对于孩子来说，这可能是第一次家长以外的人给他们布置作业，家庭作业可能是非常新奇的事情。如何引导孩子认识家庭作业可以给他们以后的进步带来帮助也可以让他们向错误的方向发展。</p>
+                        <p>3. <strong>坚持力：</strong>如果每次孩子遇到困难家长就帮孩子解决掉，那么家庭作业就没有任何意义了。让孩子自己尽力去解决问题会比较合适。</p>
+                        <p>4. <strong>管理时间：</strong>我们应该告诉孩子何时完成作业，而不是何时开始做作业。这样，孩子就会学会如何有效使用时间而不是学会浪费时间。</p>
+                        <p>5. <strong>自发性：</strong>自发性就像肌肉一样，越锻炼就越强。所以，培养孩子能够自己决定应该什么时候开始做作业的能力是非常关键的。</p>
+                        <p>6. <strong>自信度：</strong>家庭作业能够强化孩子“我能做到！”这种感觉。如果家庭作业安排不合理，那么也可以伤害孩子的这种自信。基本上没有介于这两者之间的情况。</p>
+                        <p>7. <strong>适应力：</strong>对于人类而言，碰到困难的时候是否具有能力找到新的解决方法是非常重要的。家庭作业可以培养孩子突破思维定势的思考能力，问题的解决能力和其他适应性能力，这些可以帮助他们以后更好的适应成年人的世界。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+   </div>
+</div>
+{% endblock %}

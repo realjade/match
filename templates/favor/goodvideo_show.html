@@ -1,0 +1,105 @@
+{% extends "homebase.html" %}
+{% block title %}
+    视频推荐
+{% endblock %}
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/fav.css'|staticurl }}" />
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{{ '/static/js/modules/video.js'|staticurl }}"></script>
+{% include "inc/videoplayer_header.html" %}
+{% endblock %}
+
+{% block centerbody %}
+{% set video = favvideo.item.video %}
+{#% set fav = favor.TeacherFavor %#}
+
+<div class="send-video"></div>
+
+<div class="fav_video" id="fav_video">
+    <div>
+        {{ render_mustache('inc/videoitem.html',video=video) }}
+    </div>
+    <!--div class="clearfix">
+        <div id="favor_love" class="left" style="background-color: #F2F2F2;padding: 8px 7px;color:#545454;cursor: pointer;">
+            <div class="left fav_love{% if islove %}_black{% endif %}"></div>喜欢<span style="color:red;">{#{ fav.love }#}</span>
+        </div>
+        <div id="favor_coll" class="left" style="background-color: #F2F2F2;padding: 8px 7px;color:#545454;cursor: pointer;margin-left:10px;">
+            <div class="left fav_love{% if islove %}_black{% endif %}"></div>收藏<span style="color:red;">{#{ fav }#}</span>
+        </div>
+        <div class="right" style="padding: 8px 7px;color:#545454;" title="播放">
+            <div class="left fav_click"></div>{#{ fav.click }#}
+        </div>
+    </div -->
+    <div class="info">
+        <div class="clearfix">
+            <h3 class="left" style="font-size:14px;color:#40a7ca;">{{ favvideo.name }}</h3>
+            <!--span id="imginfo" style="font-size:14px;margin-left:20px;">{{ favvideo.item.name }}</span-->
+        </div>
+        <div class="video-title clearfix">
+            <div class="left">老师{{ favvideo.user.nickname }}于{{ favvideo.created|datetime }}发布</div>
+        </div>
+        <div class="clearfix" style="border-bottom: 1px solid;margin:5px 0px;border-bottom-color: #c7c7c7;width: 490px;"></div>
+        <div class="clearfix">
+            <div class="allcoments left">所有评论({{ favvideo.reply }})</div>
+            <!--div class="right">查看所有评论</div -->
+        </div>
+        <div id="replydiv" style="display:none;">
+            回复：<span></span>
+            <input type="hidden" value="">
+            <div class="right close">X</div>
+        </div>
+        <div class="comment clearfix">
+             <textarea placeholder="请发表评论!"></textarea>
+        </div>
+        <div class="comment-send clearfix right" id="sendcomment" style="cursor:pointer;color:blue;">发表</div>
+        <div id="comment" class="clearfix" style="color:#545454;margin-top:15px;">
+        
+        </div>
+    </div>
+    
+</div>
+
+<script type="text/javascript">
+jQuery(function(){
+    //初始化视频
+    jQuery(function(){
+        $('.beishuPlayer').each(function(){
+            load_videoplayer($(this).attr('id'));
+        });
+    });
+    
+    $("#comment").load("./comment/");
+    
+    //发表评论
+    $("#sendcomment").click(function(){
+        var comment = $(".comment textarea").val();
+        if(comment.length == 0){
+            smallnote('请输入评论');
+            return
+        }
+        var reply_id = $("#replydiv input").val();
+        jQuery.ajax({
+            url: './sendcomment/',
+            data:{"comment":comment,"reply_id":reply_id},
+            type: "POST",
+            dataType: 'json',
+            success: function(response) {
+                if(response.code=='0') {
+                    $("#commentlist").append("<div class=clearfix><div class=left>我</div><div class=left style=margin-left:15px;>刚刚儿</div><div class=clearfix></div><div >"+comment+"</div><div class=right>回复</div></div>")
+                    smallnote('评论成功');
+                    $(".comment textarea").val("")
+                }else{
+                    smallnote('评论失败');
+                }
+            },
+            error: function() {
+                smallnote('评论失败');
+            }
+        });
+    });
+    
+});
+</script>
+
+{% endblock %}

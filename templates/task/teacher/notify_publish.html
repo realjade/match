@@ -1,0 +1,49 @@
+<div class="task_publish panel">
+    <div class="panel clearfix">
+         <div class="prompt-notify left"></div>
+         <div class="right">
+            <div id="task_type" class="task-type active" data-type="3">
+            </div>
+        </div>
+    </div>
+    <div class="content-panel clearfix">
+        <div class="content left">
+            <textarea id="task_content" placeholder="请输入通知内容"></textarea>
+        </div>
+    </div>
+    <div class="operator panel clearfix">
+        <div class='item left clearfix'>
+            <div class="left sendfont">发布到：</div>
+            <div id="selectclass" class="selectclass left"></div>
+        </div>
+        <ul id="myclasses" class="myclasses">
+            {% for classgrade in g.user.classgrades %}
+                <li classid="{{ classgrade.class_id }}" title="{{ classgrade.school.school_name }} >> {{ classgrade.class_name }}">
+                    <div>
+                        <input type="checkbox"/>
+                        <span>{{ classgrade.class_name }}</span>
+                    </div>
+                </li>
+            {% else %}
+                <li class="panel info">
+                    你没有班级，<a href="/class/create/">立刻创建</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class='item left time-setting' style="margin-top:0px;">
+            <span>截止时间：
+                <input id="task_deadline" class='deadline datepicker' type="text" readonly="true" value="{{ weekday }}"/>
+            </span>
+        </div>
+        <div id="attachmentpanel" class='item attachmentpanel left'>
+            <div id="addattachment" class="addattachment clearfix"><div class="addattachment_icon left"></div>添加附件</div>
+            <div id="attachmentuploader" class="attachmentuploader clearfix">
+                {% include "inc/vselfupload.html" %}
+                <div class="attachmentdesc">文件大小必须小于200M</div>
+            </div>
+        </div>
+         <div class="previewbtn right">
+            <a id="publishbtn" class="btn disable">预览</a>
+        </div>
+    </div>
+</div>

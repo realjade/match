@@ -1,0 +1,17 @@
+*.pyc
+*.db
+*.mp4
+*.flv
+*~
+build
+.svn
+.DS_Store
+logs/vself.log
+config.py
+static/videos
+static/avatars
+static/attachment
+*.sql
+.project
+.pydevproject
+.settings

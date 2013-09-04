@@ -1,0 +1,20 @@
+{% extends "/mobile/homebase.html" %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/task.css'|staticurl }}" />
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/apps/task.js'|staticurl }}"></script>
+{% endblock %}
+{% block centerbody %}
+<div class="panel task">
+    {% include '/mobile/modules/page_floor.html' %}
+    <div class="task-main">
+        {% for task in result %}
+            {{ render_mustache('/mobile/modules/task_item_tmpl.html',task=task) }}
+        {% else %}
+            <div class="noitem panel">您还没有发布过通知</div>
+        {% endfor %}
+    </div>
+    {% include '/mobile/modules/page_floor.html' %}
+</div>
+{% endblock %}

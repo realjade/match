@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/aboutus.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+    function resetPosition(offset){
+        jQuery('html,body').animate({scrollTop:offset},500);
+    }
+
+    jQuery(document).ready(function(){
+
+        // hide #back-top first
+        jQuery("#back-top").hide();
+        
+        // fade in #back-top
+        jQuery(function () {
+            jQuery(window).scroll(function () {
+                if (jQuery(this).scrollTop() > 100) {
+                    jQuery('#back-top').fadeIn();
+                } else {
+                    jQuery('#back-top').fadeOut();
+                }
+            });
+            // scroll body to 0px on click
+            jQuery('#back-top a').click(function () {
+                jQuery('body,html').animate({
+                    scrollTop: 0
+                }, 800);
+                return false;
+            });
+        });
+
+    });
+    </script>
+{% endblock %}
+
+{% block mainbody %}
+<div class="content jcontent_top clearfix jcontent">
+   <div class="jct_left">
+      
+      <dl class="jctlogindl clearfix">
+          <dt class="vjob vabout">
+            <span>关于<br/>我们</span>
+          </dt>
+          <dd>
+            <a href="javascript:void(0)" onclick="resetPosition(90)">道路曲折的中国传统教育</a>
+            <a href="javascript:void(0)" onclick="resetPosition(322)">无法量化的中小学作业</a>
+            <a href="javascript:void(0)" onclick="resetPosition(580)">统一的通知、作业发布，家校沟通平台</a>
+            <a href="javascript:void(0)" onclick="resetPosition(990)">成人培训中的盲区</a>
+            <a href="javascript:void(0)" onclick="resetPosition(990)">背书吧”视频教育服务平台</a>
+          </dd>
+      </dl>
+      
+   </div>
+   <div class="jct_right clearfix">
+        
+        <div class="jvcont margintop">
+            <div class="rel purp">
+                <dl>
+                    <dt>道路曲折的中国传统教育</dt>
+                    <dd>
+                        <p>目前，中国传统教育的重点均在面授课程上，而在家庭作业方面却仍然沿用传统教学的方式，很多培训机构甚至没有家庭作业，殊不知家庭作业是学生提高学习成绩非常重要的学习方法。学校与家长理解家庭作业的目的和其价值后可以最大限度的帮助孩子从中获益。</p>
+                        <p>研究表明花在家庭作业上的时间直接影响一个孩子的学习成绩。那些一直完成家庭作业的孩子比那些不做家庭作业的孩子在学习上取得的成绩更好。学生们通过完成家庭作业可以在所有的科目上取得进步。这种现象在各年级中都有出现。它对学生责任感、独立性、坚持力、管理时间、自发性、自信度和适应力等方面能力的培养起着非常重要的作用。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="jvcont margintop">
+            <div class="rel purp">
+                <dl>
+                    <dt>无法量化的中小学作业</dt>
+                    <dd>
+                        <p>在中小学教育中，无论是任何学科，针对老师课堂讲解的内容，学生都需要在课后进行重复观看、有针对性的复习和预习、熟读和背诵、练习，即所谓的听、说、读和写，然而在传统教育体系只有“写”能够被简单的量化，而其他作业则一直是无法量化的。</p>
+                        <p>在无法量化的情况下，家长也就对这种作业采取了做就做了，没时间做就算了的态度，因为老师根本无法检查这些作业的完成情况。尤其在艺术类培训中，回家后的练习量直接影响学生的培训水平。</p>
+                        <p>将学生以往无法量化的作业通过视频的方式发布到平台上，通过家长、老师的共同监督和管理，将有效的解决听说读的量化学习的问题。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="jvcont margintop">
+            <div class="rel purp">
+                <dl>
+                    <dt>统一的通知、作业发布，家校沟通平台</dt>
+                    <dd>
+                        <p>老师目前也没有一个统一的发布通知、作业、检查作业，与家长沟通的渠道，学生们在课堂上记录的作业本上很多时候没有将作业记全，据此家长根本无法判断老师究竟留了哪些作业。</p>
+                        <p>部分学生的作业无法完成、通知没有到达的原因均源于此，这直接导致了家校间的信息不对称问题，间接激发了家校矛盾。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="jvcont margintop">
+            <div class="rel purp">
+                <dl>
+                    <dt>成人培训中的盲区</dt>
+                    <dd>
+                        <p>在成人教育体系中，我们也同样缺乏家庭作业的概念，其主要原因在于成人学习有自觉性。但是，这种自觉性更多的体现在读和写的方面，在自我展示、逻辑思维方面的系统性学习则严重缺乏。</p>
+                        <p>乔布斯在演讲前一定会使用视频将自己的练习录制下来，反复的观看寻找自己的不足并加以改善。在中国的成人培训中，这一直是一个盲区，有系统的让每个参与培训的成年人将自己的学习所得录制下来，反复观看并逐步改变自己，将会对成年人在未来的工作中起到极大的帮助作用。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="jvcont margintop">
+            <div class="rel purp">
+                <dl>
+                    <dt>“背书吧”视频教育服务平台</dt>
+                    <dd>
+                        <p>“背书吧”视频教育服务平台建立以视频作业为核心应用的视频教育服务平台，可以独立存在也可与学校的原有网络教学系统无缝接合，进而帮助学校和老师逐步形成个性化的、可量化的课上教育、课下预复习的教学系统。</p>
+                        <p>“背书吧”以视频作业为核心应用，以为老师提供便利服务为核心诉求。</p>
+                        <p>我们针对老师、家长和学生三种角色，提供不同的服务功能。网站使用了HTML5，Flash等技术，用户可以通过网站调用摄像头录制或自行拍摄影片，并通过上传提交自己的工作，不同的角色通过在线视频的方式即可看到您上传的内容，方便使用。为了更好地体验我们的功能，推荐您使用对IE9+，FireFox，Chrome等浏览器。</p>
+                        <p>老师在“背书吧”注册后，要求自己班级的学生和家长也在“背书吧”平台进行注册，通过“背书吧”平台，老师可以共享标准化的教学视频内容，管理、发布文字、视频作业以及班级的通知、活动，审核学生们上传完成的视频作业，内网、外网共享优秀学生的视频；</p>
+                        <p>学生和家长自行注册登录到自己的班级中，每天登陆查看老师的通知，按照老师的要求完成文字作业和视频作业，家长需要对每项作业的内容进行审核和确认，保证学生是按照老师的要求完成作业的。家长也可以通过网络平台与老师、学校进行文字或视频沟通，加强家校沟通。</p>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        
+   </div>
+</div>
+<p id="back-top">
+    <a href="#top"><span></span>回到顶部</a>
+</p>
+{% endblock %}

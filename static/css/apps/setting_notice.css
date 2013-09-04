@@ -1,0 +1,30 @@
+.settingindex {
+  background: #ffffff;
+  padding-bottom: 10px;
+}
+.settingindex .notread {
+  font-weight: bold;
+}
+.settingindex .read {
+  color: #333;
+}
+.settingindex .line {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  margin-bottom: 20px;
+}
+.settingindex .line .title {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  background: #f6f6f6;
+  color: #0a8cd2;
+  font-size: 14px;
+  font-weight: bold;
+}
+.settingindex .line .content {
+  padding: 15px 40px;
+}
+.settingindex .line .content span {
+  color: #999;
+}

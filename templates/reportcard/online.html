@@ -1,0 +1,62 @@
+{% extends "homebase.html" %}
+{% block title %}
+    成绩单--线上作业
+{% endblock %}
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/reportcard.css'|staticurl }}" />
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{{ '/static/js/apps/reportcard.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block centerbody %}
+<div class="panel clearfix">
+    <div class="export-online left"></div>
+</div>
+<div class="panel">
+    <div class="clearfix">
+        <div class="right clearfix">
+            <span>选择班级：</span>
+            
+            <select id='classgrade'>
+                {% for cl in classes %}
+                <option {{ 'selected="selected"'|ifdefault(cl.class_id==class_id,'') }} value="{{ cl.class_id }}">{{ cl.class_name }}</option>
+                {% endfor %}
+            </select>
+            {% if g.user.isteacher %}
+                <span class="export"><span class="export_icon"></span>导出</span>
+            {% endif %}
+        </div>
+    </div>
+    <div class="ol-result clearfix">
+        <div class="ol-header tag title">{{year}}学年{{period}}学期视频作业统计</div>
+        <div class="ol-student left">
+            <table id="ol-users" width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tr><td>姓名</td></tr>
+                {% for student in students %}
+                <tr {% if not g.user.isteacher and curstudent.user_id == student.User.user_id %}class="current"{% endif %}><td>{{ student.User.nickname}}</td></tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="ol-task right">
+            <table id="ol-results" width="100%" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                {% for task in tasksarray %}
+                    <td title="{{ tasks.get(task).task_content }}">{{ tasks.get(task).task_content }}</td>
+                {% endfor %}
+            </tr>
+            {% for index in range(count) %}
+                <tr class="ol-report">
+                    {% for task in tasksarray %}
+                        <td>{{ results.get(task)[index] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+    </div>
+    {% if g.user.isteacher %}
+        <a href="/task/export/" target="_blank"><div class="export-all btn right" style="margin-top:10px;">导出全部作业成绩</div></a>
+    {% endif %}
+</div>
+{% endblock %}

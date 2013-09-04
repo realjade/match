@@ -1,0 +1,50 @@
+{% extends "school/class.html" %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/apps/class_members.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block innertab %}
+    <div class="class-members">
+        <dl>
+            <dd>
+                <ul class="clearfix">
+                    <li>
+                        <div class="member-item">
+                            <div class="member-avatar" title="{{classgrade.teacher.nickname}}">
+                                <img alt="{{classgrade.teacher.nickname}}" src="{{classgrade.teacher|avatar}}" />
+                            </div>
+                            <div class="member-nickname" title="{{classgrade.teacher.nickname}}">
+                                {{classgrade.teacher.nickname}}<br />
+                                {{classgrade.teacher.course}}{{ classgrade.teacher|gettext }}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </dd>
+        </dl>
+        
+        <dl>
+            {% if g.user.isteacher %}
+            <dd style="padding:0px 0px 10px 465px;"><a href="javascript:void(0);" onclick="$('li .delete_icon').toggle()">管理</a></dd>
+            {% endif %}
+            <dd>
+                <ul class="clearfix">
+                    {% for student in classgrade.students %}
+                        <li>
+                            <div class="member-item">
+                                <a href="/class/{{ subtab }}/member/{{student.user_id}}/">
+                                    <div class="member-avatar" title="{{student.nickname}}">
+                                        <img alt="{{student.nickname}}" src="{{student|avatar}}" />
+                                    </div>
+                                    <div class="member-nickname" title="{{student.nickname}}">{{student.nickname}}</div>
+                                </a>
+                            </div>
+                            <div class="delete_icon" data="{{ student.user_id }}" data2={{subtab}} data3={{student.nickname}}></div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </dd>
+        </dl>
+    </div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<div class="panel favor">
+    <div class="title">
+        <div class="right_favor tilte-icon left"></div>
+        推荐视频
+    </div>
+    <div class="content">
+        <ul>
+            {% set boxs =  favor_box() %}
+            {% for box in boxs %}
+                <li>
+                    <div class="video-img">
+                        <a href="/favor/video/{{box.TeacherFavor.works_id}}/">
+                            <img alt="" src="{{ box.Video.thumbnail_path }}">
+                        </a>
+                    </div>
+                    <div class="fav-info">
+                        <div class="fav-title">
+                            {{ box.Task.task_content|revise_name }}
+                        </div>
+                        <div class="fav-desc student">{{ box.Works.user.nickname }}</div>
+                        <div class="fav-desc">{{ box.User.nickname }}推荐</div>
+                        <div class="fav-desc">{{ box.TeacherFavor.created|datetime }}</div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

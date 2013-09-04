@@ -1,0 +1,488 @@
+/*基本类和函数*/
+/***************border圆角**********************/
+/***************方块阴影**********************/
+/***************元素过度效果**********************/
+/****************旋转，转换***********************/
+/****************线性颜色渐变***********************/
+/****************快速颜色渐变***********************/
+/****************镜像效果***********************/
+/****************透明效果***********************/
+/****************处理越界***********************/
+.font-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+/*邀请同学*/
+.class-item {
+  background-color: #f1f1f1;
+  margin-bottom: 5px;
+  padding: 20px;
+}
+.class-item h4 a {
+  color: #0001ec;
+  font-size: 16px;
+}
+.class-item dl {
+  width: 100%;
+}
+.class-item dl .ddsecond {
+  float: left;
+  width: 438px;
+}
+.class-item dl .ddsecond li a {
+  color: #1f4a7d;
+}
+.class-item dl dd:first-child {
+  float: left;
+  padding-right: 20px;
+}
+.class-item li {
+  margin-top: 5px;
+}
+.class-item li span textarea {
+  width: 300px;
+  height: 100px;
+  border: 1px solid #c1c1c1;
+}
+.class-item .class-code {
+  color: #0e9de1;
+  font-size: 14px;
+}
+.class-item .class-count {
+  color: #ef471a;
+}
+.class-item-border {
+  border-left: 1px solid #40a6cc;
+  border-right: 1px solid #40a6cc;
+  border-bottom: 1px solid #40a6cc;
+  background-color: #f1f1f1;
+}
+.class-invitation-btn {
+  margin-top: 10px;
+  color: #3b86ad;
+  font-size: 10px;
+  font-weight: bold;
+}
+.class-invitation {
+  display: none;
+  margin-top: 10px;
+}
+.class-invitation h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+.class-invitation h3 span {
+  font-size: 20px;
+  font-weight: bold;
+  color: red;
+}
+.class-invitation h4 {
+  font-size: 14px;
+}
+.class-invitation p {
+  text-indent: 2em;
+  font-size: 14px;
+}
+.class-invitation p span {
+  font-size: 14px;
+  color: #4f81be;
+}
+.class-invitation .content {
+  background-color: #FFFFFF;
+  padding: 10px;
+  border: 2px solid #87c5da;
+}
+.class-invitation .invitation-print {
+  margin-top: 15px;
+  margin-left: 15px;
+  text-align: center;
+  height: 20px;
+}
+.class-members {
+  border-left: 1px solid #40a6cc;
+  border-right: 1px solid #40a6cc;
+  border-bottom: 1px solid #40a6cc;
+  background-color: #F1F1F1;
+}
+.class-members dl {
+  padding: 20px 20px 0px 20px;
+  margin-bottom: 5px;
+}
+.class-members dt {
+  color: #4f81be;
+  font-size: 16px;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+.class-members dd ul li {
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 10px;
+}
+.class-members dd ul li .member-item img {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+}
+.class-members dd ul li .member-item .member-nickname {
+  margin-top: 5px;
+  width: 50px;
+  text-align: center;
+}
+.class-members dd ul li .delete_icon {
+  position: relative;
+  top: -75px;
+  left: 45px;
+  cursor: pointer;
+  display: none;
+}
+.class-create {
+  margin-top: 15px;
+}
+.class-create .createinfo {
+  margin-top: 10px;
+}
+.class-create .createinfo div, .class-create .createinfo span {
+  font-size: 14px;
+}
+.class-create .createinfo .infoleft {
+  width: 75px;
+  line-height: 27px;
+  margin-right: 20px;
+}
+.class-create .createinfo .school-type {
+  line-height: 27px;
+}
+.class-create .createinfo .school-type span {
+  color: #7d7d7d;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.class-create .createinfo .school-type span.active {
+  background: #d9edf4;
+}
+.class-create .createinfo .school-type span:hover {
+  background: #d9edf4;
+}
+.class-create .createinfo .school-name {
+  width: 270px;
+  height: 25px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.class-create .createinfo .school-name input {
+  width: 270px;
+  height: 25px;
+}
+.class-create .createinfo .school-name label {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.class-create .createinfo .email {
+  width: 270px;
+  height: 27px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.class-create .createinfo .email input {
+  width: 270px;
+  height: 25px;
+}
+.class-create .createinfo .email label {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.class-create .createinfo .class-select select {
+  width: 270px;
+  height: 25px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin-right: 10px;
+}
+.class-create .createinfo .class-preiod select {
+  width: 75px;
+  height: 25px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  margin-right: 10px;
+}
+.class-create .createinfo .class-name {
+  width: 270px;
+  height: 27px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.class-create .createinfo .class-name input {
+  width: 270px;
+  height: 25px;
+}
+.class-create .createinfo .class-name label {
+  margin-top: 5px;
+  margin-left: 5px;
+}
+.class-create .createinfo .class-desc {
+  width: 440px;
+  height: 85px;
+  border: 1px solid #666666;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.class-create .createinfo .class-desc textarea {
+  width: 436px;
+  height: 80px;
+}
+.class-create .createinfo .class-desc label {
+  margin: 5px;
+}
+.class-create .createbtn {
+  margin-top: 10px;
+  margin-left: 95px;
+  width: 30px;
+}
+.class-create #school {
+  position: absolute;
+  z-index: 99;
+}
+.create-done {
+  display: none;
+}
+.create-done .desc {
+  margin-bottom: 10px;
+}
+.create-done .class-item-border {
+  border: 0;
+  margin-bottom: 10px;
+}
+.class-join {
+  margin-top: 15px;
+}
+.class-join .join-input {
+  position: relative;
+  left: 2px;
+  border: 1px solid #b6b6b6;
+  border-right: 0px;
+  width: 480px;
+  height: 26px;
+}
+.class-join .join-input input {
+  position: relative;
+  left: 2px;
+  width: 480px;
+  height: 24px;
+}
+.class-join .join-input label {
+  margin-top: 5px;
+}
+.class-join .joinclass {
+  margin-top: 5px;
+  display: none;
+}
+.class-join .classgrade {
+  margin: 10px 0px;
+}
+.class-demand {
+  background-color: #f1f1f1;
+  border-left: 1px solid #40a6cc;
+  border-right: 1px solid #40a6cc;
+  border-bottom: 1px solid #40a6cc;
+  color: #909090;
+}
+.class-demand .demandform h5 {
+  margin-left: 10px;
+  padding: 10px 0px 15px;
+  color: #3EA6CB;
+}
+.class-demand .demandform .selectclass {
+  cursor: text;
+  color: #000000;
+  min-height: 20px;
+  width: 180px;
+  border: 1px solid #cccccc;
+  border-radius: 2px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  background-color: #FFFFFF;
+}
+.class-demand .demandform ul.myclasses {
+  display: none;
+  position: absolute;
+  z-index: 3;
+  width: 140px;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.5);
+}
+.class-demand .demandform ul.myclasses li {
+  cursor: pointer;
+  border-top: 1px solid #d1d1d1;
+}
+.class-demand .demandform ul.myclasses li div {
+  margin: 8px 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.class-demand .demandform .demandtitle {
+  margin-left: 10px;
+  height: 25px;
+  width: 530px;
+  background-color: #FFFFFF;
+  border: 1px solid #cccccc;
+  border: #cccccc solid 1px;
+}
+.class-demand .demandform .demandtitle label {
+  margin: 5px;
+}
+.class-demand .demandform .demandtitle input {
+  width: 530px;
+  height: 25px;
+}
+.class-demand .demandform .demandcontent {
+  background-color: #FFFFFF;
+  margin: 20px 10px 0px 10px;
+  height: 165px;
+  width: 530px;
+  border: #cccccc solid 1px;
+}
+.class-demand .demandform .demandcontent textarea {
+  width: 528px;
+  height: 165px;
+}
+.class-demand .demandform .operator {
+  margin: 20px 10px 0px 10px;
+  height: 35px;
+}
+.class-demand .demandlist {
+  padding: 0px 10px 10px 10px;
+}
+.class-demand .demandlist .demandshow {
+  margin-top: 10px;
+  width: 530px;
+  border-top: 2px #828282 dotted;
+}
+.class-demand .demandlist .demandshow .top {
+  margin-top: 10px;
+}
+.class-demand .demandlist .demandshow .top .title {
+  color: #7caec7;
+  font-weight: bold;
+}
+.class-demand .demandlist .demandshow .top a {
+  float: left;
+}
+.class-demand .demandlist .demandshow .buttom div {
+  margin-top: 5px;
+}
+.class-demand .demandlist .demandshow span {
+  margin-top: 5px;
+}
+.class-demand .demandlist .demandshow p {
+  margin-top: 10px;
+  text-indent: 2em;
+}
+.class-history {
+  background-color: #f1f1f1;
+  border-left: 1px solid #40a6cc;
+  border-right: 1px solid #40a6cc;
+  border-bottom: 1px solid #40a6cc;
+  color: #909090;
+}
+.class-history .top {
+  color: #000;
+  margin: 0px 10px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #40a6cc;
+}
+.class-history .top .line {
+  line-height: 22px;
+  padding: 5px;
+}
+.class-history .top .line .title span {
+  display: inline-block;
+  text-align: right;
+  margin-right: 10px;
+  width: 52px;
+}
+.class-history .top .line input, .class-history .top .line select {
+  border: 1px solid #7e7e7e;
+}
+.class-history .top .line input[type=text] {
+  margin-right: 10px;
+  height: 20px;
+}
+.class-history .top .line label {
+  margin-right: 20px;
+}
+.class-history .top .line .btn {
+  padding: 1px 20px;
+}
+.class-history .top .line .total {
+  margin-right: 10px;
+}
+.class-history .top .line .total span {
+  color: red;
+}
+.class-history .top .line span[data] {
+  display: inline-block;
+  color: #1576ba;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+.class-history .top .line span[data].active {
+  background-color: #1576ba;
+  color: #ffffff;
+}
+.class-history .result {
+  margin: 10px;
+}
+.class-history .result .order {
+  margin-left: 458px;
+}
+.class-history .result .order span[order] {
+  cursor: pointer;
+  color: #3FA7CB;
+  margin-left: 10px;
+}
+.class-history .result .order span[order].active {
+  background: #3FA7CB;
+  color: white;
+}
+.class-history .result .empty {
+  padding: 20px;
+  text-align: center;
+}
+.class-history .result .linebox {
+  padding: 10px 0px;
+  border-bottom: 1px solid #e4e7e2;
+}
+.class-history .result .linebox .beishuVideo {
+  padding-right: 20px;
+}
+.class-history .result .linebox .line {
+  line-height: 22px;
+}
+.class-history .result .linebox .line .title {
+  color: #323232;
+  font-size: 14px;
+  font-weight: bolder;
+}

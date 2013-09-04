@@ -1,0 +1,120 @@
+@import "../global";
+@import "../variables";
+.page-title{
+  font-size: 14px;
+  color: @linkColor;
+  a{
+    font-size: 14px;
+    color: @linkColor;
+  }
+}
+
+.order{
+  margin-top: 3px;
+  a{
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    color: @blueColor;
+    padding: 2px 4px;
+    cursor: pointer;
+    &:hover, &.active{
+      background: #3FA7CB;
+      color: white;
+    }
+  }
+}
+
+.tabtitle{
+    border-bottom:1px solid #e4e7e2;margin-top: 5px;
+    .first{
+        font-size: 16px;
+        padding: 3px 10px;
+        position: relative;
+        top: 1px;
+        color:#808080;
+    }
+    .second{
+        font-size: 16px;
+        padding: 3px 10px;
+        position: relative;
+        top: 1px;
+        color:#808080;
+    }
+    .active{
+        border-left: 1px solid #e4e7e2;
+        border-right: 1px solid #e4e7e2;
+        border-top: 1px solid #e4e7e2;
+        background:#ebf6fa;
+        color: #3FA7CB;
+    }
+}
+
+.fav-line{
+    background: #ffffff;
+    border-bottom: #d1d1d1 dotted 1px;
+    padding:10px 0; 
+}
+.fav-line .clear{
+  clear: both;
+  height: 1px;
+}
+.fav-line .video-item{
+  float: left;
+  position: relative;
+}
+.fav-line .des-row{
+  float: left;
+  margin-left:25px;
+  margin-top:10px;
+}
+.favor_div{cursor: pointer;}
+
+.fav-line .des-row dt p{
+  font-size: 14px;
+  padding-bottom: 10px;
+  color:#333;
+}
+.fav-line .des-row dd{
+  padding:3px;
+  color:@grayColor;
+}
+.fav-line .fav-task{
+  background: #e2e2e2;
+}
+
+
+/* favor_video.html */
+.fav_video{
+    padding:30px;
+    .comment{
+          background-color: #FFFFFF;
+          margin:0px;
+          height: 55px;
+          width:490px;
+          border: #cccccc solid 1px;
+          label{
+            margin:5px;
+          }
+          textarea{
+            width:498px;
+            height:55px;
+            margin-bottom:5px;
+            padding:5px;
+          }
+    }
+}
+.allcoments{
+  font-size:14px;
+  font-weight:bolder;
+  color:@grayColor;
+  margin:10px 0px;
+}
+.comment-send{
+  cursor:pointer;
+  color:@linkColor;
+  margin-top:5px;
+}
+.video-title{
+  margin-top:10px;
+}

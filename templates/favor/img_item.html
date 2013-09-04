@@ -1,0 +1,46 @@
+{% for favimg in pagination.items %}
+<div class="img_comment clearfix">
+    <div class="avatar left">
+        <img style="margin-left:12px;" src="/static/images/home/teacher.png" width="50px" height="50px">
+    </div>
+    
+    <div class="img-item comment left">
+        <div class="top">
+            <div class="item">老师{{ favimg.user.nickname }} 于 {{ favimg.created|datetime }} 发布相册 
+                {% for classgrade in favimg.classgrades %}
+                    <span style="color:#78BAD2;">@{{ classgrade.class_name }}</span>
+                {% endfor %}
+            </div>
+            <div class="item title">相册名称：<a href="/favor/img/{{favimg.favimg_id}}/show/">{{ favimg.name }}</a></div>
+            <div class="item reason">推荐理由：{{ favimg.reason }}</div>
+            <div class="item piclist clearfix">
+                {% for img in favimg.items %}
+                <a href="/favor/img/{{favimg.favimg_id}}/show/">
+                <div class="left pic">
+                    <img src="{{ img.thumbnail }}" width="80px" height="60px">
+                    <!--div class="right">{{ img.name }}</div-->
+                </div>
+                </a>
+                {% if loop.index == 3 %}
+                    <div class="left pic">
+                        <div class="left" style="margin-top:48px;"><a href="/favor/img/{{favimg.favimg_id}}/show/">more...</a></div>
+                    </div>
+                {% endif %}
+                {% endfor %}
+                
+            </div>
+        </div>
+        <div class="item status">相册状态：已观看{{ favimg.read }}人；未观看<span>{{ favimg.noread }}</span>人</div>
+    </div>
+    
+</div>
+{% endfor %}
+{% include "page_floor_ajax.html" %}
+<script type="text/javascript">
+jQuery(function(){
+    $(".page_floor a[data]").click(function(){
+        page = $(this).attr("data");
+        $("#comment").load("/favor/img/item/?page="+page);
+    });
+});
+</script>

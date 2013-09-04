@@ -1,0 +1,47 @@
+{% extends "iread/day.html" %}
+
+
+{% block prev %}
+    <a href="/iread/day1/"><<前一天</a>
+{% endblock %}
+{% block now %}
+    第2天<br />Day2
+{% endblock %}
+{% block next %}
+    <a href="/iread/day3/">后一天>></a>
+{% endblock %}
+
+{% block desc %}
+    <div class="english">
+    ﻿Morning walk around the Thames. Sights: <span>London Eye, Houses of Parliament, Big Ben, Battersea Park.</span><br />
+    Night: Traditional English Dinner + London <span>Ripley’s Believe it or Not Museum + Covent Garden</span>
+    </div>
+    <div class="chinese">
+    漫步泰晤士河畔，参观伦敦眼、国会大厦、大本钟和Battersea公园。<br />
+    品尝传统英国晚餐，参观伦敦市中心充满梦幻的Ripley“信不信由你”博物馆伦敦小商品集散地Covent公园游玩。
+    </div>
+
+{% endblock %}
+
+{% block descimg %}
+    <div class="left" style="margin-left:15px;">
+        <img src="/static/iread/travel/02/03.png" />
+        <div class="note right">London Eye</div>
+    </div>
+    <div class="left" style="margin-left:15px;">
+        <img src="/static/iread/travel/02/04.png" />
+        <div class="note right">The river Thames</div>
+    </div>
+{% endblock %}
+
+{% block point %}
+    <div class="left grep" ><img src="/static/iread/grey_point.png"></div>
+    <div class="left blue"><img src="/static/iread/blue_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+{% endblock %}
+

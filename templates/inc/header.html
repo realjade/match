@@ -1,0 +1,25 @@
+<div class="home-header">
+    <div class="header-main panel clearfix">
+         <div class="logo">
+            <a href="/"><img class="fix-png" src="/static/images/logo/logo.png" height=“40” alt="背书吧"></a>
+        </div>
+        <div class="navigation left clearfix">
+            <ul>
+               <a href="/home/" class="current">个人主页</a>
+               <a href="/vtime/" class="">梦想</a>
+            </ul>
+        </div>
+        <div class="right">
+            <a href="#returntop" target="_self">
+                <div class="returntop"></div>
+            </a>
+        </div>
+        <div class="accountmenu right clearfix">
+            <ul>
+                <li><a href="/settings/notice/">系统通知{% if g.user.noticecount %}<span>({{g.user.noticecount}})</span>{% endif %}</a></li>
+                <li><a href="/settings/">帐号设置</a></li>
+                <li><a href="/logout/">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+{% extends "iread/day.html" %}
+
+
+{% block prev %}
+    <<前一天
+{% endblock %}
+{% block now %}
+    第1天<br />Day1
+{% endblock %}
+{% block next %}
+    <a href="/iread/day2/">后一天>></a>
+{% endblock %}
+
+{% block desc %}
+    <div class="english">
+    Gatwick Airport express to <span>London Victoria Station</span>,check-in at hotel and dinner at a traditional English pub.
+    </div>
+    <div class="chinese">
+        从北京飞往Gatwick机场，然后搭乘机场快车至伦敦维多利亚车站，入住酒店。品尝传统英国晚餐
+    </div>
+        
+{% endblock %}
+
+{% block descimg %}
+    <div class="left" style="margin-left:30px;">
+        <img src="/static/iread/travel/01/01.png" />
+        <div class="note  right">The <span>Sherlock Holmes</span> - traditional English pub</div>
+    </div>
+    <div class="left" style="margin-left:30px;">
+        <img src="/static/iread/travel/01/02.png" />
+    </div>
+{% endblock %}
+
+{% block point %}
+    <div class="left blue"><img src="/static/iread/blue_point.png"></div>
+    <div class="left grep" ><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+    <div class="left grep"><img src="/static/iread/grey_point.png"></div>
+{% endblock %}
+

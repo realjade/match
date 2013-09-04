@@ -1,0 +1,32 @@
+{% extends "/mobile/base.html" %}
+{% block scripts %}
+{% endblock %}
+{% block mainbody %}
+<div data-role="page">
+    <div data-role="header" data-theme="b">
+        <h1>背书吧--登录</h1>
+    </div>
+    {% if error %}
+    <div class="ui-body ui-body-e">
+        {{ error }}
+    </div>
+    {% endif %}
+    <form action="" method="post" data-theme="b" data-ajax="false">
+        <div data-role="content">
+            <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+                <label for="usename" class="ui-input-text">用户名:</label>
+                <input type="text" name="username" id="usename" value="{{request.values.get('username','')}}" placeholder="邮箱/手机号" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+            </div>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">
+                <label for="password" class="ui-input-text">密码:</label>
+                <input type="password" name="password" id="password" value="" placeholder="密码" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
+            </div>
+        </div>
+        <input type="checkbox" name="remember" id="remember" class="custom" />
+        <label for="remember">下次自动登录</label>
+        <button type="submit" data-theme="b" name="submit" value="submit-value" class="ui-btn-hidden" aria-disabled="false">登录</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends "iread/base.html" %}
+
+{% block title %}
+    iRead食宿
+{% endblock %}
+
+{% block stylesheets %}
+<style type="text/css">
+    .linebox{
+        padding:15px 30px;
+    }
+</style>
+{% endblock %}
+
+{% block link %}
+<a href="/iread/schedule/">
+    <a href="/iread/day1/">
+        <div class="btn right">
+            详细信息
+        </div>
+    </a>
+    <a href="/iread/schedule/">
+        <div class="btn right" style="margin-right:15px;">
+            日程安排
+        </div>
+    </a>
+</a>
+{% endblock %}
+
+{% block mainbody %}
+<div class="clearfix linebox" style="padding-bottom:0px;">
+    <div class="left" style="margin-left:50px;">
+        <span style="font-size:18px;font-weight:bold;">London Food</span>
+    </div>
+</div>
+<div class="clearfix linebox">
+    <div class="left" style="margin-left:50px;">
+        <span style="margin-left:40px;font-size:14px;">English Breakfast</span>
+        <img src="/static/iread/foodstay/01.png" />
+    </div>
+    <div class="left" style="margin-left:50px;">
+        <span style="margin-left:40px;font-size:14px;">Aternoon Tea</span>
+        <img src="/static/iread/foodstay/02.png" />
+    </div>
+    <div class="left" style="margin-left:50px;">
+        <span style="margin-left:40px;font-size:14px;">Cupcakes</span>
+        <img src="/static/iread/foodstay/03.png" />
+    </div>
+</div>
+
+
+<div class="clearfix linebox" style="padding-bottom:0px;padding-top:0px;">
+    <div class="left" style="margin-left:50px;">
+        <span style="font-size:18px;font-weight:bold;">London Hotel</span>
+    </div>
+</div>
+<div class="clearfix linebox">
+    <div class="left" style="margin-left:50px;">
+        <span style="margin-left:40px;font-size:14px;">London Airways Victoria Hotel</span>
+        <img src="/static/iread/foodstay/04.png" />
+    </div>
+    <div class="left" style="margin-left:20px;">
+        <span style="margin-left:40px;font-size:14px;"></span>
+        <img src="/static/iread/foodstay/05.png" />
+    </div>
+</div>
+
+<div class="clearfix linebox">
+    <div class="left" style="margin-left:50px;">
+        <img src="/static/iread/foodstay/06.png" />
+    </div>
+    <div class="left" style="margin-left:20px;">
+        <img src="/static/iread/foodstay/07.png" />
+    </div>
+    <div class="left" style="margin-left:20px;">
+        <img src="/static/iread/foodstay/08.png" />
+    </div>
+</div>
+
+
+<div class="clearfix right" style="padding:0px 30px;">
+本次活动最终解释权归iRead国际英语俱乐部所有
+</div>
+
+{% endblock %}

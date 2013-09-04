@@ -1,0 +1,65 @@
+{{#task}}
+<div class="task-container panel clearfix {{#ispreview}}preview{{/ispreview}}">
+    <div class="avatar left">
+        <img title="{{teacher.course}}老师{{teacher.nickname}}" src="{{teacher.smallavatar}}"/>
+    </div>
+    <div class="task-info left">
+        <div class="task-baseinfo">
+            <div class="task-title">
+                {{teacher.course}}老师{{teacher.nickname}}于{{task.updatetime}}&nbsp;发布通知&nbsp;
+                {{#classgrades}}
+                    @{{class_name}}&nbsp;
+                {{/classgrades}}
+            </div>
+            <div class="task-content">
+                {{task_content}}
+            </div>
+    
+            <div class="task-property">
+                {{#description}}
+                <div>
+                    通知说明：<span class="up-text">{{description}}</span>
+                </div>
+                {{/description}}
+                {{#deadline}}
+                <div>
+                    截止日期：<span class="task-deadline">{{deadline}}</span>
+                </div>
+                {{/deadline}}
+            </div>
+            {{#attachments}}
+                <div class="task-attachment">
+                    附件：<a href='{{path}}'>{{filename}}&nbsp;<strong>下载</strong></a>
+                </div>
+            {{/attachments}}
+        </div>
+        {{#statistics}}
+            <div class="task-state">
+                作业状态：
+                已确认<span class="tag info">{{confirmed.count}}</span>人
+                未确认<span class="task-unhandincount tag info">{{unconfirmed.count}}</span>人
+                <div class="task-unhandinstudent">
+                    {{#unconfirmed.users}}
+                        <div class="clearfix">
+                        <span class="classname">{{classname}}:</span>
+                        <ul>
+                            {{#users}}
+                                <li>{{nickname}}</li>
+                            {{/users}}
+                        </ul>
+                        </div>
+                    {{/unconfirmed.users}}
+                </div>
+            </div>
+        {{/statistics}}
+        <div class="task-op clearfix">
+            {{^user.isstudent}}
+                {{^isconfirm}}
+                    <div class="task-confirm right" data-taskbox_id="{{taskbox_id}}" >
+                    <div class="approval_icon left"></div>点击确认</div>
+                {{/isconfirm}}
+            {{/user.isstudent}}
+        </div>
+    </div>
+</div>
+{{/task}}

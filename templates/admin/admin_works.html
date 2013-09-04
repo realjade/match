@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+
+{% block scripts %}
+
+{% if not g.using_html5 %}
+<script type="text/javascript" src="{{ '/static/js/lib/flowplayer-3.2.10.min.js'|staticurl }}"></script>
+{% else %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/lib/video-js.min.css'|staticurl }}" />
+<script type="text/javascript" src="{{ '/static/js/lib/video.js'|staticurl }}"></script>
+{% endif %}
+<script type="text/javascript">
+    jQuery(function(){
+        {% for w in works %}
+        load_videoplayer("{{ w.video_id }}");
+        {% endfor %}
+    });
+</script>
+{% endblock %}
+
+{% block centerbody %}
+<div >
+   <div >
+    {% if works|length %}
+        <table class="table">
+                <thead>
+                    <th>作业内容</th>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                    <th>完成时间</th>
+                    <th>视频</th>
+                </thead>
+                {% for w in works %}
+                    <tr>
+                        <td>{{ w.task_content }}</td>
+                        <td>
+                        	{{ w.username }}
+                        </td>
+                        <td>
+                        	<a href="mailto:{{ w.email }}">{{ w.email }}</a>
+                        </td>
+                        <td>{{ w.created|datetime }}</td>
+                        <td>
+                        	{% if w.video_path %}
+                          {{ render_mustache("admin/videoitem.html", video=w) }}
+						              {% endif %}
+                        </td>
+                       	<td></td>
+                    </tr>
+                {% endfor %}
+        </table>
+    {% endif %}
+    </div>
+</div>
+{% include "admin/pagination.html" %}
+{% endblock %}

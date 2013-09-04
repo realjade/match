@@ -1,0 +1,47 @@
+{{#timeline}}
+<div class="works_teacher_correct timeline clearfix">
+    <div class="userpic left">
+        <a title="" href="">
+            <img src="{{teacher.smallavatar}}">
+        </a>
+    </div>
+    <div class="msgbox left">
+        <div class="username">
+            <a title="{{teacher.nickname}}">{{teacher.nickname}}</a>
+            批改了一条作业
+            <a title="{{student.nickname}}">@{{student.nickname}}</a>
+            ：
+        </div>
+        {{#works}}
+            {% include "inc/videoitem.html" %}
+            <div class="clearfix">
+                <div class="condition">
+                    #得分
+                    <div class="showstar" data-star="{{ star }}"></div>
+                </div>
+                <div class="condition">
+                    #批改意见：
+                    <div>{{ teacher_comment }}</div>
+                </div>
+                {{#task.need_approval}}
+                    {{#works}}
+                        {{^isapproval}}
+                            <div class="condition">#家长未评论</div>
+                        {{/isapproval}}
+                        {{#isapproval}}
+                            <div class="condition">#家长评论</div>
+                        <div>
+                            {{parent_comment}}
+                        </div>
+                        {{/isapproval}}
+                    {{/works}}
+                {{/task.need_approval}}
+            </div>
+        {{/works}}
+        {% include "inc/timeline_taskinfo.html" %}
+        <div class="pubinfo clearfix">
+            <div class="left pubtime">{{task.updatetime}}</div>
+        </div>
+    </div>
+</div>
+{{/timeline}}

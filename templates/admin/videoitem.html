@@ -1,0 +1,22 @@
+{% if g.using_html5 %}
+{{#video}}
+<video id="{{video_id}}" class="video-js vjs-default-skin beishuPlayer"  
+  controls preload="auto" width="248" height="186"
+  poster="{{thumbnail_path}}">  
+    <source src="{{video_path}}" type='video/mp4' />
+</video>
+{{/video}}
+{% else %}
+{{#video}}
+<div class="beishuVideo">
+    <a id="{{video_id}}" class="beishuPlayer"
+        href="{{video_path}}" style="width:248px;height:186px;margin:28px 0px">
+        <div style="position:relative">
+            <img src="{{thumbnail_path}}" style="width:100%;height:100%;margin:0px" alt="" />
+            <img style="position:absolute;top:40%;left:40%;margin:0px" alt="" src="/static/images/videos/play_large.png" />
+        </div>
+    </a>
+    <div class="clear"></div>
+</div>
+{{/video}}
+{% endif %}

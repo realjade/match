@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="description" content="背书吧是在线教育交流的划时代产品，旨在提高老师、家长和学生之间更加便捷的沟通" />
+        <meta name="keywords" content="背书吧,beishu8,在线教育,协作,多人协作,高效协作,效率,工作效率." />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+        <link rel="shortcut icon" type="image/x-icon" href="/static/images/icons/beishu.png">
+        <!--[if lt IE 9]><script src="{{ '/static/js/lib/html5.js'|staticurl }}"></script><![endif]-->
+        <!--[if lt IE 7]><script src="{{ '/static/js/lib/belatedpng.js'|staticurl }}"></script><![endif]-->
+        <link type="text/css" rel="stylesheet" href="{{ '/static/css/lib/jquery.ui.css'|staticurl }}" />
+        <link type="text/css" rel="stylesheet" href="{{ '/static/css/layout/header.css'|staticurl }}" />
+        <link type="text/css" rel="stylesheet" href="{{ '/static/css/layout/footer.css'|staticurl }}" />
+        <link type="text/css" rel="stylesheet" href="{{ '/static/css/icons.css'|staticurl }}" />
+        <link type="text/css" rel="stylesheet" href="{{ '/static/css/vself.css'|staticurl }}" />
+        <link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/home.css'|staticurl }}" />
+        <!--[if IE 6]><link type="text/css" rel="stylesheet" href="{{ '/static/css/ie6.css'|staticurl }}" /><![endif]-->
+        {% block stylesheets %}{% endblock %}
+        <script type="text/javascript" src="{{ '/static/js/jquery.js'|staticurl }}"></script>
+        <script type="text/javascript" src="{{ '/static/js/lib/json2.js'|staticurl }}"></script>
+        <script type="text/javascript" src="{{ '/static/js/lib/jquery.ui.js'|staticurl }}"></script>
+        <script type="text/javascript" src="{{ '/static/js/vself.js'|staticurl }}"></script>
+        <script type="text/javascript" src="{{ '/static/js/lib/mustache.js'|staticurl }}"></script>
+        <script type="text/javascript" src="{{ '/static/js/utils.js'|staticurl }}"></script>
+        <script type="text/javascript" src="{{ '/static/js/effect.js'|staticurl }}"></script>
+        <script type="text/javascript">
+            var using_html5 = {{ 'true' if g.using_html5 else 'false' }};
+            var flash_messages = {{ get_flashed_messages()|list|tojson|safe }};
+            function show_flash_messages(){
+                if (flash_messages != undefined && flash_messages != null && flash_messages != ""){
+                  var m = flash_messages.join(', ');
+                  smallnote(m);
+                }
+            }
+        </script>
+        {% block scripts %}{% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            {% include "inc/header.html" with context %}
+        {% endblock %}
+        {% block mainbody %}
+            <div class="container clearfix" id="returntop">
+                <div class="home_left clearfix">
+                    {% block leftbody %}
+                        {% set classgrades = g.user.classgrades %}
+                        {% set children=g.user.children %}
+                        {% include "inc/home_left.html" with context %}
+                    {% endblock %}
+                </div>
+                <div class="home_center clearfix">
+                    {% block centerbody %}
+                    {% endblock %}
+                </div>
+                <div class="home_right clearfix">
+                    {% block rightbody %} 
+                        {% include "inc/home_right.html" %}
+                    {% endblock %}
+                </div>
+            </div>
+        {% endblock %}
+        {% block template %}
+        {% endblock %}
+        {% block footer %}
+            {% include "inc/footer.html" %}
+        {% endblock %}
+        <script type="text/javascript">
+            window.vself = {
+                visitor: {{ g.user|fullinfo|safe }}
+            };
+        </script>
+    </body>
+</html>

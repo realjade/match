@@ -1,0 +1,23 @@
+<div class="panel demand">
+    <div class="title">
+        <div class="right_demand tilte-icon left"></div>
+        新学期及新要求
+    </div>
+    
+    <div class="content">
+        {% set demand = g.user.first_demand %}
+        {% if demand %}
+            {% include "school/class/demand_tmpl.html" %}
+        {% endif %}
+    </div>
+    {% if g.user.isstudent or g.user.isparent %}
+    <!--div class="content" style="padding:10px 0px;"> 
+        <a href="/iread/index/" target="_blank">
+            <img src="/static/iread/iread.gif" />
+        </a>
+    </div-->
+    {% endif %}
+</div>
+{% include "inc/help.html" %}
+{% include "inc/favor_box.html" %}
+

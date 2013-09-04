@@ -1,0 +1,68 @@
+{{#classitem}}
+<div id="{{class_id}}" class="class-item {{#classup}}class-item-border{{/classup}}">
+    <dl class="clearfix">
+        <dd>
+            <img src="/static/images/icons/avatar.jpg"/>
+        </dd>
+        <dd class="ddsecond">
+            <ul>
+                <h4><a href="/class/{{class_id}}/">{{class_name}}</a></h4>
+                {{#period}}
+                <li>入学年份：{{period}}</li>
+                {{/period}}
+                <li>班级序号：<span class="class-code">{{class_id}}</span></li>
+                <li>创建者：{{tname}}老师</li>
+                <li>创建时间：{{created}}</li>
+                <li>
+                    所属学校：
+                    <span id="up-school-text">{{#school}}{{school}}{{/school}}</span>
+                    {{#classup}}
+                    {{#isteacher}}
+                        <a class="right" id="up-school-btn">
+                          <div class="edit_icon left"></div>编辑
+                        </a>
+                    {{/isteacher}}
+                    {{/classup}}
+                </li>
+                {{#studentcount}}
+                <li>所有成员：学生
+                    <span class="class-count">{{studentcount}}</span>人
+                </li>
+                {{/studentcount}}
+                <li>
+                    班级简介：
+                    <span id="up-text">{{description}}</span>
+                    {{#classup}}
+                    {{#isteacher}}
+                        <a class="right" id="up-btn">
+                          <div class="edit_icon left"></div>编辑
+                        </a>
+                    {{/isteacher}}
+                    {{/classup}}
+                </li>
+                <li>
+                    班级公共邮箱：
+                    <span id="up-email-text">{{email}}</span>
+                    {{#classup}}
+                    {{#isteacher}}
+                        <a class="right" id="up-email-btn">
+                          <div class="edit_icon left"></div>编辑
+                        </a>
+                    {{/isteacher}}
+                    {{/classup}}
+                </li>
+            </ul>
+        </dd>
+    </dl>
+    {{#classup}}
+    {{#isteacher}}
+    <div class="clearfix">
+        <div class="class-invitation-btn"><span class="right">邀请信</span></div>
+        <div class="class-invitation-panel left">
+        {% include 'school/class_invitation.html' %}
+        </div>
+    </div>
+    {{/isteacher}}
+    {{/classup}}
+</div>
+{{/classitem}}

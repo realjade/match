@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} 找回密码 - 背书吧{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/feedback.css'|staticurl }}" />
+{% endblock %}
+
+{% block mainbody %}
+<div class = "container">
+<div class="reg_top">
+       <div class="reg_title">
+            <h1 class="title">找回您的密码</h1>
+       </div>
+</div>
+
+<div class="forget_middle">
+    {% if email %}
+    <div class="infotip"><span>已经向您的邮箱（{{ email }}）发送一封含有新密码的邮件，您可以通过新密码直接登录。<span></div>
+    <div class="infotip"><span>如果在1分钟之内没有收到，<a href="/forget/">点此重新找回密码。</a></span></div>
+    {% endif %}
+    {% if mobile %}
+    <div class="infotip"><span>已经向您的手机（{{ mobile }}）发送一封含有新密码的短信，您可以通过新密码直接登录。</span></div>
+    <div class="infotip"><span>如果在1分钟之内没有收到，<a href="/forget/">点此重新找回密码。</a></span></div>
+    {% endif %}
+    <div class="infotip"><span>收到新密码, <a href="/login/">点此登录</a></span></div>
+</div>
+</div>
+{% endblock %}

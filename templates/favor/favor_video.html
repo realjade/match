@@ -1,0 +1,99 @@
+{% extends "homebase.html" %}
+{% block title %}
+    老师推荐作业
+{% endblock %}
+{% block stylesheets %}
+    <link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/fav.css'|staticurl }}" />
+    <link type="text/css" rel="stylesheet" href="{{ '/static/css/lib/jquery.rating.css'|staticurl }}" />
+{% endblock %}
+{% block scripts %}
+<script type="text/javascript" src="{{ '/static/js/modules/video.js'|staticurl }}"></script>
+<script type="text/javascript" src="{{ '/static/js/lib/jquery.rating.js'|staticurl }}"></script>
+<script type="text/javascript" src="{{ '/static/js/apps/favor_video.js'|staticurl }}"></script>
+{% include "inc/videoplayer_header.html" %}
+{% endblock %}
+
+{% block centerbody %}
+{% set video = favor.Video %}
+{% set fav = favor.TeacherFavor %}
+{% set works = favor.Works %}
+
+
+<div class="favor-video"></div>
+<div class="fav_video" id="fav_video" data={{fav.works_id}}>
+    <div>
+        {{ render_mustache('inc/videoitem.html',video=video) }}
+    </div>
+    <div class="clearfix">
+        <div id="favor_love" class="left" style="margin:10px 0px;background-color: #F2F2F2;padding: 8px 7px;color:#545454;cursor: pointer;">
+            <div class="left fav_love{% if islove %}_black{% endif %}"></div>喜欢<span style="color:red;">{{ fav.love }}</span>
+        </div>
+        <div class="right" style="padding: 8px 7px;color:#545454;" title="播放">
+            <div class="left fav_click"></div>{{ fav.click }}
+        </div>
+    </div>
+    <div class="clearfix">
+        <h3 style="font-size:14px;color:#40a7ca;">{{favor.task_content}}</h3>
+    </div>
+    <div class="clearfix" style="color:#808080;">
+        <div class="left">{{ video.user.nickname }}</div>
+        <div>@{{ fav.classgrade.class_name }} {{ fav.created|datetime }} 来自：{{fav.user.nickname}}老师的推荐</div> 
+        <div>家长评语：{{ works.parent_comment }}</div>
+        <div>老师评分：{{ works.teacher_comment|default('',true) }}</div>
+        <div class="showstar" data-star="{{ works.star }}" ></div>
+    </div>
+    <div class="clearfix" style="border-bottom: 1px solid;margin:5px 0px;border-bottom-color: #c7c7c7;"></div>
+    <div class="clearfix">
+        <div class="left allcoments">所有评论({{ fav.reply }})</div>
+        <!--div class="right">查看所有评论</div -->
+    </div>
+    <div id="replydiv" style="display:none;">
+        回复：<span></span>
+        <input type="hidden" value="">
+        <div class="right close">X</div>
+    </div>
+    <div class="comment clearfix">
+         <textarea placeholder="请发表评论!"></textarea>
+    </div>
+    <div class="clearfix comment-send right" id="sendcomment">发表</div>
+    <div id="comment" class="clearfix" style="color:#545454;margin-top:15px;">
+    
+    </div>
+    
+</div>
+
+{% endblock %}
+
+
+
+{% block rightbody %} 
+<div class="panel favor">
+    <div class="title">
+        <div class="right_favor tilte-icon left"></div>
+        该学生的其他推荐
+    </div>
+    <div class="content">
+        <ul>
+            {% for works,video,task,favor in othervideos %}
+                <li>
+                    <div class="video-img">
+                        <a href="/favor/video/{{ works.works_id }}/">
+                            <img alt="" src="{{ video.thumbnail_path }}">
+                        </a>
+                    </div>
+                    <div class="fav-info">
+                        <div class="fav-title">
+                            <a href="/favor/video/{{ works.works_id }}/" title="{{ task.task_content }}">
+                                {{ task.task_content|revise_name }}
+                            </a>
+                        </div>
+                        <div class="fav-desc student">{{ video.user.nickname }}</div>
+                        <div class="fav-desc">{{ favor.user.nickname }}推荐</div>
+                        <div class="fav-desc">{{ favor.created|datetime }}</div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

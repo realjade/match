@@ -1,0 +1,462 @@
+@import "../global";
+/*邀请同学*/
+.class{
+} 
+.class-item{
+  background-color: #f1f1f1;
+  margin-bottom:5px;
+  padding:20px;
+  h4{
+    a{
+        color:#0001ec;
+        font-size:16px;
+    }
+  }
+  dl{
+    width:100%;
+    .ddsecond{
+      float:left;
+      width:438px;
+      li a{color:#1f4a7d;}
+    }
+    dd:first-child{
+      float:left;
+      padding-right:20px;
+    }
+  }
+  li{
+    margin-top:5px;
+    span{
+      textarea{
+        width:300px;
+        height:100px;
+        border: 1px solid #c1c1c1;
+      }
+    }
+  }
+  .class-code{
+    color:#0e9de1;
+    font-size:14px;
+  }
+  .class-count{
+    color:#ef471a;
+  }
+}
+.class-item-border{
+    border-left:1px solid #40a6cc;
+    border-right:1px solid #40a6cc;
+    border-bottom:1px solid #40a6cc;
+    background-color: #f1f1f1;
+}
+.class-invitation-btn{
+    margin-top:10px;
+    color:#3b86ad;
+    font-size:10px;
+    font-weight:bold;
+  }
+
+.class-invitation{
+  display:none;
+  margin-top:10px;
+  h3{
+    font-size:20px;
+    font-weight:bold;
+    span{
+        font-size:20px;
+        font-weight:bold;
+        color:red;
+    }
+  }
+  h4{font-size:14px;}
+  p{
+    text-indent:2em;
+    font-size:14px;
+    span{
+      font-size:14px;
+      color:#4f81be;
+    }
+  }
+  .content{
+    background-color:#FFFFFF;
+    padding:10px;
+    border:2px solid #87c5da;
+  }
+  .invitation-print{
+    margin-top:15px;
+    margin-left:15px;
+    text-align:center;
+    height:20px;
+  }
+}
+.class-members{
+  border-left:1px solid #40a6cc;
+  border-right:1px solid #40a6cc;
+  border-bottom:1px solid #40a6cc;
+  background-color:#F1F1F1;
+  dl{
+    padding:20px 20px 0px 20px;
+    margin-bottom:5px;
+  }
+  dt{
+    color:#4f81be;
+    font-size:16px;
+    font-weight:bolder;
+    margin-bottom:10px;
+  }
+  dd{
+    ul{
+      li{
+        float:left;
+        margin-right:12px;
+        margin-bottom:10px;
+        .member-item{
+          img{
+            .border-radius;
+            .box-shadow(1px,1px,5px);
+            width:50px;
+            height:50px;
+          }
+          .member-nickname{
+            margin-top:5px;
+            width:50px;
+            text-align:center;
+          }
+        }
+        .delete_icon{
+            position: relative;
+            top: -75px;
+            left: 45px;
+            cursor:pointer;
+            display:none;
+        }
+      }
+    }
+  }
+}
+.class-create{
+  margin-top:15px;
+  .createinfo{
+    margin-top:10px;
+    div,span{
+      font-size:14px;
+    }
+    .infoleft{
+      width:75px;
+      line-height: 27px;
+      margin-right:20px;
+    }
+    .school-type{
+      line-height: 27px;
+      span{
+        color:#7d7d7d;
+        padding:5px 10px;
+        cursor:pointer;
+        &.active{
+          background:#d9edf4;
+        }
+        &:hover{
+          background:#d9edf4;
+        }
+      }
+    }
+    .school-name{
+      width:270px;
+      height:25px;
+      border:1px solid #666666;
+      .border-radius();
+      input{
+        width:270px;
+        height:25px;
+        
+      }
+      label{
+        margin-top:5px;
+        margin-left:5px;
+      }
+    }
+    .email{
+      width:270px;
+      height:27px;
+      border:1px solid #666666;
+      .border-radius();
+      input{
+        width:270px;
+        height:25px;
+        
+      }
+      label{
+        margin-top:5px;
+        margin-left:5px;
+      }
+    }
+    .class-select{
+      select{
+        width:270px;
+        height:25px;
+        border:1px solid #666666;
+        .border-radius();
+        margin-right:10px;
+      }
+    }
+    .class-preiod{
+      select{
+        width:75px;
+        height:25px;
+        border:1px solid #666666;
+        .border-radius();
+        margin-right:10px;
+      }
+    }
+    .class-name{
+      width:270px;
+      height:27px;
+      border:1px solid #666666;
+      .border-radius();
+      input{
+        width:270px;
+        height:25px;
+        
+      }
+      label{
+        margin-top:5px;
+        margin-left:5px;
+      }
+    }
+    .class-desc{
+        width:440px;
+        height:85px;
+        border:1px solid #666666;
+        .border-radius();
+      textarea{
+        width:436px;
+        height:80px;
+      }
+      label{
+        margin:5px;
+      }
+    }
+   }
+   .createbtn{
+      margin-top:10px;
+      margin-left:95px;
+      width:30px;
+    }
+    #school{
+      position:absolute;
+      z-index:99;
+    }
+}
+.create-done{
+  display:none;
+  .desc{
+    margin-bottom:10px;
+  }
+  .class-item-border{
+    border:0;
+    margin-bottom:10px;
+  }
+}
+.class-join{
+  margin-top:15px;
+  .join-input{
+      position:relative;
+      left:2px;
+      border:1px solid #b6b6b6;
+      border-right: 0px;
+      width:480px;
+      height:26px;
+      input{
+        position:relative;
+        left:2px;
+        width:480px;
+        height:24px;
+      }
+      label{
+        margin-top:5px;
+      }
+  }
+  .joinclass{
+    margin-top:5px;
+    display:none;
+  }
+  .classgrade{
+    margin:10px 0px;
+  }
+}
+
+.class-demand{
+  background-color: #f1f1f1;
+  border-left:1px solid #40a6cc;
+  border-right:1px solid #40a6cc;
+  border-bottom:1px solid #40a6cc;
+  color:#909090;
+  .demandform{
+    h5{
+      margin-left:10px;
+      padding: 10px 0px 15px;
+      color: #3EA6CB;
+    }
+    .selectclass{
+      cursor:text;
+      color:#000000;
+      min-height: 20px;
+      width: 180px;
+      border: 1px solid #cccccc;
+      .border-radius(2px);
+      background-color: #FFFFFF;
+    }
+    ul.myclasses{
+      display:none;
+      position:absolute;
+      z-index:3;
+      width: 140px;
+      background-color: #FFFFFF;
+      .box-shadow;
+      li{
+        cursor:pointer;
+        border-top: 1px solid #d1d1d1;
+        div{
+          margin:8px 20px;
+          .font-wrap;
+        }
+      }
+    }
+    .demandtitle{
+      margin-left:10px;
+      height: 25px;
+      width:530px;
+      background-color: #FFFFFF;
+      border: 1px solid #cccccc;
+      border: #cccccc solid 1px;
+      label{
+        margin:5px;
+      }
+      input{
+        width:530px;
+        height:25px;
+      }
+    }
+    .demandcontent{
+      background-color: #FFFFFF;
+      margin:20px 10px 0px 10px;
+      height: 165px;
+      width:530px;
+      border: #cccccc solid 1px;
+      textarea{
+        width:528px;
+        height:165px;
+      }
+    }
+    .operator{
+      margin:20px 10px 0px 10px;
+      height:35px;
+    }
+  }
+  .demandlist{
+    padding:0px 10px 10px 10px;
+    .demandshow{
+      margin-top:10px;
+      .top{
+        margin-top:10px;
+        .title{
+          color:#7caec7;
+          font-weight: bold;
+        }
+        a{
+          float:left;
+        }
+      }
+      .buttom{
+        div{margin-top:5px;}
+      }
+      
+      width:530px;
+      border-top:2px #828282 dotted;
+      span{
+        margin-top:5px;
+      }
+      p{
+        margin-top:10px;
+        text-indent:2em;
+      }
+    }
+  }
+}
+
+
+.class-history{
+  background-color: #f1f1f1;
+  border-left:1px solid #40a6cc;
+  border-right:1px solid #40a6cc;
+  border-bottom:1px solid #40a6cc;
+  color:#909090;
+  .top{
+    color:#000;
+    margin: 0px 10px;
+    padding-bottom:5px;
+    border-bottom:1px solid #40a6cc;
+    .line{
+        line-height: 22px;
+        padding: 5px;
+        .title span{
+            display: inline-block;
+            text-align: right;
+            margin-right: 10px;
+            width:52px;
+        }
+        input,select{border: 1px solid #7e7e7e;}
+        input[type=text]{margin-right:10px;height: 20px;}
+        label{margin-right:20px;}
+        .btn{padding: 1px 20px;}
+        .total{
+            margin-right:10px;
+            span{color:red;}
+        }
+        span[data]{
+            display: inline-block;
+            color: #1576ba;
+            padding: 2px 5px;
+            cursor: pointer;
+            &.active{
+                background-color: #1576ba;
+                color: #ffffff;
+            }
+        }
+    }
+  }
+  .result{
+    margin: 10px;
+    .order{
+        margin-left:458px;
+        span[order]{
+            cursor: pointer;
+            color: #3FA7CB;
+            margin-left:10px;
+            &.active{
+                background: #3FA7CB;
+                color: white;
+            }
+        }
+    }
+    .empty{
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .linebox{
+        .beishuVideo{padding-right: 20px;}
+        padding:10px 0px;
+        border-bottom:1px solid #e4e7e2;
+        .line{
+            line-height:22px;
+            .title{
+                color: #323232;
+                font-size: 14px; 
+                font-weight: bolder;
+            
+            }
+        }
+    }
+    
+  }
+}

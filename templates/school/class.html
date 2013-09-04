@@ -1,0 +1,32 @@
+{% extends "homebase.html" %}
+{% block title %}
+    我的班级 -- 背书吧
+{% endblock %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/class.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/apps/class.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block centerbody %}
+<div class="class">
+    {% if innertab %}
+    <div>
+        <ul class="nav-tabs clearfix">
+            <li class="{{'active'|ifdefault(innertab=='info')}}"><a href="/class/{{subtab}}/info/">班级信息</a></li>
+            <li class="{{'active'|ifdefault(innertab=='members')}}"><a href="/class/{{subtab}}/members/">所有成员</a></li>
+            {% if g.user.isteacher %}
+            <li class="{{'active'|ifdefault(innertab=='demand')}}"><a href="/class/{{subtab}}/demand/">新学期新要求</a></li>
+            {% endif %}
+            <li class="{{'active'|ifdefault(innertab=='history')}}"><a href="/class/{{subtab}}/history/">历史学期</a></li>
+        </ul>
+    </div>
+    {% endif %}
+    <div>
+    {% block innertab %}
+    {% endblock %}
+    </div>
+</div>
+{% endblock %}

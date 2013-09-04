@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %} 找回密码 - 背书吧{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/feedback.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+  <script src="{{ '/static/js/apps/index.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block mainbody %}
+
+<div class="reg_top">
+
+       <div class="reg_title">
+            <h1 class="title">找回您的密码</h1>
+       </div>
+
+       <div class="reg_desc">
+            <a href="/">返回</a>
+       </div>
+
+</div>
+
+<div class="reg_middle">
+  <form class="form-horizontal" name="forget" action="" method=post>
+    
+    <div class="ct_warp">
+       <div class="forgetpwd newlogin clearfix">
+            <dl class="newlogindl clearfix">
+                <dt>&nbsp;&nbsp;</dt>
+                <dd id='error' style="color:red; margin:12px 0">{% if error %}{{ error }}{% endif %}</dd>
+            </dl>
+            
+            <h3 class="subtitle">通过邮箱</h3>
+            <dl class="newlogindl mt12 clearfix">
+                <dd class="widget">
+                  <div class="logininput clearfix">
+                      <input type="text" name="email" class="hinput input-text" placeholder="请输入邮箱" style="width:360px"/>
+                  </div>
+                  <div>
+                    <span>通过注册时所使用的邮箱找回密码，我们将向您的邮箱发送一封含有找回密码链接的邮件，您可以通过新链接找回您的密码。</span>
+                  </div>
+                </dd>
+            </dl>
+            <dl class="regbtn clearfix">
+                <dd class="">
+                  <input type="submit" class="btn" value="获取密码" />
+                </dd>
+            </dl>
+            <div class="mt36"></div>
+            <h3 class="subtitle">通过手机号</h3>
+            <dl class="newlogindl mt12 clearfix">
+                <dd class="widget">
+                  <div class="logininput">
+                      <div class="placeholder email-holder">
+                        <label class="holder">请输入手机号码</label>
+                        <input type="text" name="mobile" class="hinput input-text" style="width:360px"/>
+                      </div>
+                  </div>
+                  <div>
+                    <span>通过注册时所使用的手机号找回密码，我们将向您发送一条含有新密码的短信，您可以通过新密码直接登录</span>
+                  </div>
+                </dd>
+            </dl>
+
+            <dl class="regbtn clearfix">
+                <dd class="">
+                  <input type="submit" class="btn" value="获取密码" />
+                </dd>
+            </dl>
+       </div>
+
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}背书吧，中国领先的教师、家长学生的视频作业管理平台{% endblock %}</title>
+  <meta name="description" content="背书吧是在线教育交流的划时代产品，旨在提高老师、家长和学生之间更加便捷的沟通" />
+  <meta name="keywords" content="背书吧,beishu8,在线教育,协作,多人协作,高效协作,效率,工作效率." />
+  <link rel="shortcut icon" type="image/x-icon" href="/static/images/icons/beishu.png">
+  <!--[if lt IE 9]><script src="{{ '/static/js/lib/html5.js'|staticurl }}"></script><![endif]-->
+  <!--[if lt IE 7]><script src="{{ '/static/js/lib/belatedpng.js'|staticurl }}"></script><![endif]-->
+  <link type="text/css" rel="stylesheet" href="{{ '/static/css/base.css'|staticurl }}" />
+  <link type="text/css" rel="stylesheet" href="{{ '/static/css/reset.css'|staticurl }}" />
+  <link type="text/css" rel="stylesheet" href="{{ '/static/css/vself.css'|staticurl }}" />
+  <link type="text/css" rel="stylesheet" href="{{ '/static/css/layout/header.css'|staticurl }}" />
+  <link type="text/css" rel="stylesheet" href="{{ '/static/css/layout/footer.css'|staticurl }}" />
+  <!--[if IE 6]><link type="text/css" rel="stylesheet" href="{{ '/static/css/ie6.css'|staticurl }}" /><![endif]-->
+  {%- block stylesheets %}{% endblock -%}
+  <script type="text/javascript" src="{{ '/static/js/lib/json2.js'|staticurl }}"></script>
+  <script type="text/javascript" src="{{ '/static/js/jquery.js'|staticurl }}"></script>
+  <script type="text/javascript" src="{{ '/static/js/vself.js'|staticurl }}"></script>
+  <script type="text/javascript" src="{{ '/static/js/lib/mustache.js'|staticurl }}"></script>
+  <script type="text/javascript" src="{{ '/static/js/utils.js'|staticurl }}"></script>
+  {%- block scripts %}{% endblock -%}
+</head>
+<body>
+{% block header %}
+<div id="header">
+  <div class="wrapper">
+    {% block logo %}
+      <div class="logo">
+          <a href="/"><img class="fix-png" src="/static/images/logo/homelogo.png" /></a>
+      </div>
+      {% endblock %}
+      <div class="navigation">
+          <img src="/static/images/home/slogan1.jpg" alt="" />
+          <h4 class="slogan hide">中国领先的教师、家长学生家庭作业自动化管理平台</h4>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+
+<div class="center wrapper clearfix">
+  {% block mainbody %}
+  {% endblock %}
+</div>
+
+{% block footer %}
+  {% include "inc/footer.html" %}
+{% endblock %}
+</body>
+</html>

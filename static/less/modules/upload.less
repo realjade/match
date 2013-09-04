@@ -1,0 +1,54 @@
+@import "../global";
+.upload_operator{
+    margin-bottom:15px;
+    a{
+      color:#3da8ca;
+      &.disable{
+        color:#b2b2b2;
+      }
+    }
+}
+.upload_filelist{
+    border: #efefef solid 1px;
+    .border-radius;
+    padding:20px;
+    font-size:14px;
+    zoom:1;
+    .dragover{
+        border: red solid 1px;
+    }
+    .upload_droptext{
+        color:#010101;
+        font-size:16px;
+    }
+    .upload_file_item{
+      color:#010101;
+      div,a{
+        font-size:14px !important;
+      }
+    }
+    .upload_file_name{
+        float:left;
+        max-width:70%;
+        white-space:nowrap;
+        overflow:hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow:ellipsis;
+    }
+    .upload_file_status{
+        float:left;
+        margin:0px 10px;
+    }
+    .upload_file_size{
+        float:left;
+    }
+    .upload_delete{
+        float:right;
+        a{
+          color:#fe0000;
+        }
+    }
+    .upload_clearer{
+        clear: both;
+    }
+}

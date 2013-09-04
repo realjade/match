@@ -1,0 +1,297 @@
+@import "../global";
+@import "../variables";
+/* 班级加载 */
+.selectclass{
+  cursor:text;
+  min-height: 20px;
+  width: 120px;
+  border: 1px solid #d1d1d1;
+  .border-radius(2px);
+}
+ul.myclasses{
+  display:none;
+  position:absolute;
+  z-index:3;
+  width: 140px;
+  background-color: white;
+  border: #EEE solid 1px;
+  .box-shadow;
+  li{
+    cursor:pointer;
+    border-top: 1px solid #d1d1d1;
+    div{
+      margin:8px 20px;
+      .font-wrap;
+    }
+  }
+}
+
+
+.panel{
+    color:#808080;
+    .flash{
+        .pagetitle{
+            color:#0E9DE1;
+            font-size:16px;
+            margin-bottom:5px;
+        }
+        .upimgmodule{
+            margin-left: 65px;
+            .imgdivempty{
+                border:1px dotted;
+                width:80px;
+                height:60px;
+                float:left;
+                margin: 5px 12px 0px 0px;
+                .pro{
+                    margin:40px 50px;
+                    width: 100px;
+                }
+            }
+            .imgdiv{
+                float:left;
+                width:80px;
+                height:60px;
+                margin: 5px 12px 0px 0px;
+                .imgbox{
+                    width:80px;
+                    height:60px;
+                    img{
+                        width:80px;
+                        height:60px;
+                    }
+                }
+                .delete{
+                    position: relative;
+                    top: -60px;
+                    left: 70px;
+                    width: 10px;
+                    cursor: pointer;
+                }
+                
+                .upbtn{
+                    cursor: pointer;
+                    margin-top:48px;
+                    span{
+                        color: #0001EC;
+                    }
+                }
+                
+            }
+        }
+    }
+    .upinput{
+        .line{
+            margin-top:5px;
+            .send{
+                background-color:#f2f2f2;
+                color:#808080;
+                width:40px;
+                height:26px;
+                border: 1px solid #CCC; 
+                .border-radius(3px);
+            }
+            .title{width:65px;text-align: right;margin-top:4px;}
+            .placeholder{
+                border: 1px solid #CCC; 
+                .border-radius(3px);
+                background: white;
+                width: 480px;
+                height: 20px;
+                overflow: hidden;
+                label{top:3px;left:5px;}
+                input{
+                    line-height: 14px;
+                    width:470px;
+                    padding: 3px 8px 3px 5px;
+                }
+            }
+        }
+    }
+    
+    .subline{
+        border-bottom:1px solid #4cadce;
+        margin-top:10px;
+    }
+    
+    .comment{
+        .img_comment{
+            background-color: white;
+            padding: 15px 0 10px 10px;
+            border-bottom: 1px solid #DFDFDF;
+            .avatar{
+                margin-right:10px;
+            }
+            .comment{
+                .top{
+                    width:448px;
+                    padding-left:20px;
+                    color:#626262;
+                    background: #F8F8F8;
+                    .piclist{
+                        .pic{
+                            width:80px;
+                            margin-right:10px;
+                        }
+                    }
+                }
+                .status{
+                    margin-top:10px;
+                    padding-left:20px;
+                    span{color:red;}
+                }
+            }
+        }
+        
+        
+        .goodvideo_comment{
+            background-color: white;
+            padding: 15px 0 10px 10px;
+            border-bottom: 1px solid #DFDFDF;
+            .avatar{
+                margin-right:10px;
+            }
+            .comment{
+                .top{
+                    width:448px;
+                    padding-left:20px;
+                    color:#626262;
+                    background: #F8F8F8;
+                    .video{
+                        margin-right:10px;
+                    }
+                    .title{
+                        margin-top:5px;
+                        a{
+                            color:#000000;
+                            font-size:14px;
+                            font-weight: bolder;
+                        }
+                    }
+                    .reason{
+                        margin-top:5px;
+                    }
+                }
+                .status{
+                    padding-left:20px;
+                    span{color:red;}
+                }
+            }
+        }
+    }
+    
+    
+    .carouselbox{
+        padding-left:30px;
+        
+        .turnleft{
+            width:15px;
+            height:60px;
+            margin-right:10px;
+            cursor: pointer;
+            .left_icons{
+                background:url('/static/images/icons/arrow.png') no-repeat -0px 0px;
+                width:10px;
+                height:15px;
+                margin-top:22px;
+            }
+        }
+        .turnright{
+            width:15px;
+            height:60px;
+            margin-left:10px;
+            cursor: pointer;
+            .right_icons{
+                background:url('/static/images/icons/arrow.png') no-repeat -12px 0px;
+                width:10px;
+                height:15px;
+                margin-top:22px;
+            }
+        }
+        .carousel{
+            float:left;
+            position: relative;
+            width:440px;
+            height:60px;
+            overflow:hidden;
+            ul{
+                position: absolute;
+                left:0px;
+                li{
+                    float:left;
+                    cursor: pointer;
+                    margin-right:10px;
+                    img{
+                        width:80px;
+                        height:60px;
+                    }
+                    .active{
+                        border:1px solid;
+                        width:78px;
+                        height:58px;
+                    }
+                }
+            }
+        }
+    }
+    .showbox{
+        margin:10px 0px 0px 30px;
+        text-align: center;
+        vertical-align: middle;
+        background: #F7F7F7;
+        width:490px;
+        img{
+            max-width: 490px;
+            margin:20px 0px;
+        }
+    }
+    .info{
+        width: 490px;
+        margin-top:20px;
+        margin-left:30px;
+        .comment{
+              background-color: #FFFFFF;
+              margin:0px;
+              height: 55px;
+              width:490px;
+              border: #cccccc solid 1px;
+              textarea{
+                width:498px;
+                height:55px;
+              }
+        }
+    }
+}
+.page-title{
+  font-size: 14px;
+  color: @linkColor;
+  a{
+    font-size: 14px;
+    color: @linkColor;
+  }
+}
+.img-item{
+  .item{
+    margin-bottom:8px;
+  }
+}
+.allcomment{
+  font-size:14px;
+  font-weight:bolder;
+  color:@grayColor;
+  margin-bottom:5px;
+}
+.commentarea{
+  label{
+    margin:5px;
+  }
+  textarea{
+    padding:5px;
+  }
+}
+.comment-send{
+  margin-top:5px;
+}
+.viedo-status{
+  margin-top:10px;
+}

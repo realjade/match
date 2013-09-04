@@ -1,0 +1,100 @@
+{% extends "admin/base.html" %}
+
+{% block centerbody %}
+<div >
+    <div>
+      <ul class="nav nav-pills">
+        <li{% if request.path=="/admin/users/" %} class="active"{% endif %}><a href="/admin/users/">所有用户</a></li>
+        <li{% if request.path=="/admin/users/notinclass/" %} class="active"{% endif %}><a href="/admin/users/notinclass/">未加入班级的账号</a></li>
+        <li{% if request.path=="/admin/users/unusual/" %} class="active"{% endif %}><a href="/admin/users/unusual/">异常账号</a></li>
+        <li{% if request.path=="/admin/user/search/" %} class="active"{% endif %}><a href="/admin/user/search/">搜索用户</a></li>
+      </ul>
+    </div>
+    {% if request.path=="/admin/user/search/" %}
+    <div>
+        <form class="form-horizontal" method="post" action="">
+          <div class="control-group">
+            <label class="control-label" for="inputEmailNick">邮箱/手机号/昵称:</label>
+            <div class="controls">
+              <input type="text" id="inputEmailNick"  name="searchkey" class="input input-text" value="{{ request.form.get('searchkey','') }}"/>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="controls">
+              <button type="submit" class="btn btn-primary">搜索用户</button>
+            </div>
+          </div>
+        </form>
+    </div>
+    {% endif %}
+    <div >
+    {% if users|length %}
+        <table class="table table-hover">
+                <thead>
+                    <th>姓名</th>
+                    <th>邮箱</th>
+                    <th>手机号</th>
+                    <th>注册日期</th>
+                    <th>身份</th>
+                    <th>其他</th>
+                    <th></th>
+                </thead>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user.nickname }}</td>
+                        <td>
+                            {% if user.email %}
+                            {{ user.email }}
+                            {% else %}
+                            未填写
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.mobile %}
+                            {{ user.mobile }}
+                            {% else %}
+                            未填写
+                            {% endif %}
+                        </td>
+                        <td>{{ user.created|datetime }}</td>
+                        <td>
+                            {% if user.is_student %}
+                                学生
+                            {% elif user.is_teacher %}
+                                老师
+                            {% elif user.is_parent %}
+                                家长
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if user.is_student %}
+                                {% if user.parent %}
+                                <span>家长：{{ user.parent }}</span>
+                                {% endif %}
+                                {% for class in user.classgrades %}
+                                <span title="{{ class.school.fullname|safe }}">班级：{{ class.class_name }}</span>
+                                {% endfor %}
+                            {% if user.vieoworks %}
+                            <span>上交视频作业：{{ user.videoworks }}, 家长审核过：{{ user.videoworks_approved }}</span>
+                            {% endif %}
+                            {% elif user.is_teacher %}
+                                {% for class in user.classgrades %}
+                                <span title="{{ class.school.fullname|safe }}">班级：{{ class.class_name }}</span>
+                                {% endfor %}
+                            {% elif user.is_parent %}
+                                {% for child in user.children %}
+                                <span>子女：{{ user.children.get(child,'') }}</span>
+                                {% endfor %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="/admin/user/{{ user.user_id }}/" target="_blank">详细信息</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+        </table>
+    {% endif %}
+    </div>
+</div>
+{% include "admin/pagination.html" %}
+{% endblock %}

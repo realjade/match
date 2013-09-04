@@ -1,0 +1,230 @@
+{% set indexdata = g.user.indexdata %}
+<div class="left_menu">
+    <!-- Personal info -->
+    <div class="user clearfix">
+        <div class="userinfo clearfix">
+            <div class="avatarinfo">
+                <a href="/settings/avatar/">
+                    <img src="{{ g.user|avatar('big') }}">
+                </a>
+            </div>
+            <div class="roleinfo">
+                {{ g.user.nickname }}（ {{g.user.course}}{{ g.user|gettext }} ）
+            </div>
+        </div>
+    </div>
+    <div class="left-nav panel">
+        <ul class="nav">
+            <li class="item" style="display:none;">
+                <a class="{{ 'active'|ifdefault(tab=='index') }}" href="/home/">
+                    <div class="icon {{ 'home_page'|ifdefault(tab=='index','home_page_gray') }}"></div>个人主页
+                </a>
+            </li>
+            {% if g.user.isteacher or g.user.isstudent %}
+                <li class="item">
+                    <a class="dropdown {{ 'active'|ifdefault(tab=='task')}}" href="/task/">
+                        <div class="icon {{ 'home_task'|ifdefault(tab=='task','home_task_gray') }}"></div>作业
+                        {% if indexdata.get('task_new',0) !=0 %}
+                            <span class="home_task_new">{{indexdata.get('task_new',0)}}</span>
+                        {% endif %}
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        <li>
+                            <a class="{{ 'active'|ifdefault(tab=='task' and subtab=='notreaded')}}" href="/task/notreaded/">
+                                {% if g.user.isteacher %}
+                                    未批改
+                                    {% if indexdata.get('notread',0) !=0 %}
+                                        <span class="home_task_new">{{indexdata.get('notread',0)}}</span>
+                                    {% endif %}
+                                {% else %}
+                                    当前作业
+                                    {% if indexdata.get('task_todo',0) !=0 %}
+                                        <span class="home_task_todo">{{indexdata.get('task_todo',0)}}</span>
+                                    {% endif %}
+                                {% endif %}
+                            </a>
+                        </li>
+                        <li class="nav-task-readed">
+                            <a class="{{ 'active'|ifdefault(tab=='task' and subtab=='readed')}}" href="/task/readed/">
+                                {% if g.user.isteacher %}
+                                    已批改
+                                {% else %}
+                                    已完成作业
+                                {% endif %}
+                            </a>
+                        </li>
+                        
+                        {% if g.user.isteacher %}
+                            <li style="display:none;"><a href="/task/summary/">作业统计</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                
+                <li class="item">
+                    <a class="dropdown {{ 'active'|ifdefault(tab=='reportcard')}}" href="/reportcard/online/">
+                        <div class="icon {{ 'home_task'|ifdefault(tab=='reportcard','home_task_gray') }}"></div>成绩单
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        <li>
+                            <a class="{{ 'active'|ifdefault(tab=='reportcard' and subtab=='online')}}" href="/reportcard/online/">
+                                线上作业
+                            </a>
+                        </li>
+                        <li class="nav-task-readed">
+                            <a class="{{ 'active'|ifdefault(tab=='reportcard' and subtab=='classroom')}}" href="/reportcard/classroom/">
+                                课堂作业
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="item">
+                    <a class="{{ 'active'|ifdefault(tab=='notify')}}" href="/notify/">
+                        <div class="icon {{ 'home_notify'|ifdefault(tab=='notify','home_notify_gray') }}"></div>通知
+                        {% if indexdata.get('notify_new',0) !=0 %}
+                            <span class="home_notify_new">{{indexdata.get('notify_new',0)}}</span>
+                        {% endif %}
+                    </a>
+                </li>
+                
+                <li class="item">
+                    <a class="dropdown {{ 'active'|ifdefault(tab=='class')}}" href="/class/">
+                        <div class="icon {{ 'home_class'|ifdefault(tab=='class','home_class_gray') }}"></div>班级管理
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        {% for classgrade in classgrades %}
+                            <li title="{{ classgrade.school.school_name }}@{{ classgrade.class_name }}"  class="{{ 'current'|ifdefault(sub==classgrade.class_id) }}">
+                                <a class="{{ 'active'|ifdefault(tab=='class' and subtab==classgrade.class_id)}}" href="/class/{{ classgrade.class_id }}/">
+                                    {{ classgrade.class_name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                        {% if g.user.isteacher %}
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='class' and subtab=='create')}}" href="/class/create/">创建新班级</a>
+                            </li>
+                        {% endif %}
+                        {% if g.user.isstudent %}
+                        <li><a class="{{ 'active'|ifdefault(tab=='class' and subtab=='join')}}" href="/class/join/">加入班级</a></li>
+                        {% endif %}
+                    </ul>
+                </li>
+                
+                <li class="nav-favor item">
+                    <a class="{{ 'active'|ifdefault(tab=='favor')}}" href="/favor/">
+                        <div class="icon {{ 'home_favor'|ifdefault(tab=='favor','home_favor_gray') }}"></div>秀场
+                    </a>
+                    <ul class="nav dropdown-menu">
+                        <li>
+                            <a class="{{ 'active'|ifdefault(tab == 'favor' and subtab=='index')}}" href="/favor/">作业推荐</a>
+                        </li>
+                        <li>
+                        {% if g.user.isteacher %}
+                            <a class="{{ 'active'|ifdefault(tab == 'favor' and subtab=='goodvideo')}}" href="/favor/goodvideo/">
+                                发布新视频
+                            </a>
+                        {% else %}
+                            <a class="{{ 'active'|ifdefault(tab == 'favor' and subtab=='goodvideo')}}" href="/favor/student/goodvideo/">
+                                老师发布视频
+                                {% if indexdata.get('upload_video',0) !=0 %}
+                                <span class="home_task_todo">{{indexdata.get('upload_video',0)}}</span>
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                        </li>
+                        <li>
+                        {% if g.user.isteacher %}
+                            <a class="{{ 'active'|ifdefault(tab == 'favor' and subtab=='img')}}" href="/favor/img/">发布新图片</a>
+                        {% else %}
+                            <a class="{{ 'active'|ifdefault(tab == 'favor' and subtab=='img')}}" href="/favor/student/img/">
+                                老师发布图片
+                                {% if indexdata.get('upload_img',0) !=0 %}
+                                    <span class="home_task_todo">{{indexdata.get('upload_img',0)}}</span>
+                                {% endif %}
+                            </a>
+                        {% endif %}
+                        </li>
+                    </ul>
+                </li>
+                
+                {% if g.user.isstudent %}
+                    <li class="item">
+                        <a href="/videos/">
+                            <div class="icon {{ 'home_things'|ifdefault(tab=='things','home_things_gray') }}"></div>资料库
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+            
+            {% if g.user.isparent %}
+                {% for child in children %}
+                    {% set cindexdata = child.indexdata %}
+                    <li class="item">
+                        <a class="dropdown {{ 'active'|ifdefault(tab=='child' and subtab==child.user_id)}}" href="/child/{{ child.user_id }}/">
+                            <img class="icon" src="{{ child|avatar }}">{{ child.nickname }}
+                        </a>
+                        <ul class="nav dropdown-menu">
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='notreaded' )}}" href="/task/notreaded/{{child.user_id}}/">当前作业
+                                {% if cindexdata.get('task_todo',0) !=0 %}
+                                    <span class="home_task_todo">{{cindexdata.get('task_todo',0)}}</span>
+                                {% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='readed' )}}" href="/task/readed/{{child.user_id}}/">已完成作业</a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='writing')}}" href="/task/writing/{{child.user_id}}/">笔头作业
+                                {% if cindexdata.get('task_writing',0) !=0 %}
+                                    <span class="home_notify_new">{{cindexdata.get('task_writing',0)}}</span>
+                                {% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='notify')}}" href="/notify/all/{{child.user_id}}/">通知
+                                {% if cindexdata.get('notify_new',0) !=0 %}
+                                    <span class="home_notify_new">{{cindexdata.get('notify_new',0)}}</span>
+                                {% endif %}
+                                </a>
+                                
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='online')}}" href="/reportcard/online/child/{{child.user_id}}/">线上作业成绩单
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='classroom')}}" href="/reportcard/classroom/child/{{child.user_id}}/">课程作业成绩单
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='favor')}}" href="/favor/{{child.user_id}}/">作业推荐</a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='goodvideo')}}" href="/favor/student/goodvideo/{{child.user_id}}/">
+                                老师发布视频
+                                {% if cindexdata.get('upload_video',0) !=0 %}
+                                    <span class="home_task_todo">{{cindexdata.get('upload_video',0)}}</span>
+                                {% endif %}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{{ 'active'|ifdefault(tab=='child' and subtab==child.user_id and subsubtab=='img')}}" href="/favor/student/img/{{child.user_id}}/">
+                                老师发布图片
+                                {% if cindexdata.get('upload_img',0) !=0 %}
+                                    <span class="home_task_todo">{{cindexdata.get('upload_img',0)}}</span>
+                                {% endif %}
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endfor %}
+                <li class="item">
+                    <a href="/parent/addchild/">
+                        <div class="icon {{ 'home_things'|ifdefault(tab=='things','home_things_gray') }}"></div>添加子女
+                    </a>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

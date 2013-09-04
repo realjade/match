@@ -1,0 +1,39 @@
+{% extends "homebase.html" %}
+{% block title %}
+    {{ g.user|gettext }} -- {{ title }}
+{% endblock %}
+
+{% block scripts %}
+    
+{% endblock %}
+
+{% block centerbody %}
+<div class="main_wrap_center grades_conter">
+{% for c in classstudents %}   
+   <div class="grades_conter_wp">
+        <dl class="clearfix operate">
+            <dt class="avatar">
+                <ul>
+                    <li><a><img src="/static/images/home/0.png"></a></li>
+                </ul>
+            </dt>
+            <dd class="ct_oper clearfix">
+                <ul>
+                    <h4>{{classstudents[c].classinfo.class_name}},共{{ classstudents[c].count }}名学生</h4>
+                </ul>
+            </dd>
+            <dd class="lastjoin clearfix">
+                {% for s in classstudents[c].students %}
+                    <div class="member">
+                            <div class="avatar"><img src="{{ s.studentavatar }}" /></div>
+                            <div class="name">
+                                <div>{{s.nickname}}</div>
+                            </div>
+                    </div>
+                {% endfor %}
+            </dd>
+        </dl>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %} 重置密码 - 背书吧{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/feedback.css'|staticurl }}" />
+{% endblock %}
+
+{% block mainbody %}
+
+<div class="reg_top">
+
+       <div class="reg_title">
+            <h1 class="title">重置您的密码</h1>
+       </div>
+
+       <div class="reg_desc">
+            <a href="/">返回</a>
+       </div>
+
+</div>
+
+<div class="reg_middle">
+  <form class="form-horizontal" name="forget" action="" method=post>
+    
+    <div class="ct_warp">
+       <div class="forgetpwd newlogin clearfix">
+            <dl class="newlogindl clearfix">
+                <dt>&nbsp;&nbsp;</dt>
+                <dd id='error' style="color:red; margin:12px 0">{% if error %}{{ error }}{% endif %}</dd>
+            </dl>
+            
+            <h3 class="subtitle">请输出新密码</h3>
+            <dl class="newlogindl mt12 clearfix">
+                <dd class="widget">
+                  <div class="logininput clearfix">
+                      <input type="password" name="password" class="hinput input-text" placeholder="请新密码" style="width:360px"/>
+                  </div>
+                <br />
+                  <div class="logininput clearfix">
+                      <input type="password" name="password2" class="hinput input-text" placeholder="确认新密码" style="width:360px"/>
+                  </div>
+                </dd>
+            </dl>
+            <dl class="regbtn clearfix">
+                <dd class="">
+                  <input type="submit" class="btn" value="保存" />
+                </dd>
+            </dl>
+            <div class="mt36"></div>
+       </div>
+
+    </div>
+  </form>
+</div>
+{% endblock %}

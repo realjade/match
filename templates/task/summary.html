@@ -1,0 +1,55 @@
+{% extends "homebase.html" %}
+{% block title %}
+    {{ g.user|gettext }} -- {{ title }}
+{% endblock %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/task_summary.css'|staticurl }}" />
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/apps/export.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block centerbody %}
+<div class="main_wrap_center">
+    <!--有新作业－点击查看作业-->
+    <div class="see_work">
+        <!--编辑-->
+        <div class="grades_conter">
+            <div class="timelinetop"></div>
+                 <div class="grades_conter_wp clearfix">
+            {% for c in classes %}
+                    <dl class="clearfix operate">
+                        <dt class="avatar">
+                            <ul>
+                                <li><a href="/parent/handin/id/"><img src="/static/images/home/0.png"></a></li>
+                            </ul>
+                        </dt>
+                        <dd class="ct_oper" style="position:relative">
+                            <input type="hidden" value='{{ c.class_id }}' />
+			                 <ul>
+                                <h4>{{ c.class_name }}，{{ c.studentcount }}</h4>
+                                <div style="position:absolute;top:0;right:0;">
+                                    <input type="checkbox" />
+                                </div>
+                                {% for task in c.tasks%}
+                                    <li><p class="infobox">{{ task.task_content }}</p></li>
+                                    <li>已提交数{{ task.submited }}，未提交数{{ task.notsubmit }}</li>
+                                    <li>已审批数{{ task.readed }}，未审批数{{ task.notreaded }}</li>
+                                {% endfor %}
+                                <li><!--input type="button" class="btn-primary" value="导出" /-->
+                                	<a href='/teacher/export/?classid={{ c.class_id }}' class="btn-primary">导出</a>
+                                </li>
+                            </ul>
+                        </dd>
+                    </dl>
+            {% endfor %}
+                    <!-- repeat dl -->
+                    <div style="margin:12px;float:right;" class="clearfix">
+                        <input type="button" class="btn-primary" id="exportall" value="导出所选班级" />
+                    </div>
+                </div>
+            <div class="timelinebottom"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,188 @@
+/*基本类和函数*/
+/***************border圆角**********************/
+/***************方块阴影**********************/
+/***************元素过度效果**********************/
+/****************旋转，转换***********************/
+/****************线性颜色渐变***********************/
+/****************快速颜色渐变***********************/
+/****************镜像效果***********************/
+/****************透明效果***********************/
+/****************处理越界***********************/
+.font-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.container {
+  width: 960px;
+  margin: 0 auto;
+  padding: 55px 0 0;
+  _padding: 20px 0 0;
+}
+/****************left-panel************************/
+/* left */
+.home_left {
+  float: left;
+  overflow: hidden;
+  width: 160px;
+}
+.home_left .home_task_new, .home_left .home_notify_new {
+  margin-left: 10px;
+  color: #ff0200;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.home_left .home_task_todo {
+  margin-left: 10px;
+  font-size: 14px;
+}
+/* user info*/
+.left_menu .user .userinfo {
+  border: 1px solid #d6d6d6;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 15px 15px 2px 15px;
+}
+.left_menu .user .userinfo .avatarinfo a {
+  display: block;
+}
+.left_menu .user .userinfo .avatarinfo img {
+  width: 127px;
+  height: 120px;
+}
+.left_menu .user .userinfo .roleinfo {
+  margin-top: 10px;
+  text-align: center;
+}
+.left_menu .menu {
+  margin-top: 10px;
+}
+.left-nav {
+  margin-top: 20px;
+}
+/****************center-panel************************/
+.home_center {
+  float: left;
+  width: 550px;
+  overflow: hidden;
+  margin: 0px 15px;
+}
+/*我的孩子*/
+.account_found {
+  float: left;
+  width: 240px;
+}
+.found {
+  border: #cfdfb4 solid 1px;
+  padding: 10px 0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.found h3 {
+  font-size: 18px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  color: #333;
+  font-weight: normal;
+}
+.found img {
+  padding: 5px 10px;
+}
+.pinless {
+  margin: 20px 0 40px 20px;
+}
+/*孩子的信息*/
+.main_wrap_center {
+  border: 1px solid #40A6CC;
+}
+.main_wrap_center .child {
+  margin: 20px;
+}
+.main_wrap_center .child img {
+  vertical-align: bottom;
+}
+.main_wrap_center .member {
+  border-top: 1px solid #40A6CC;
+  margin: 20px;
+}
+.main_wrap_center .member .member-top {
+  margin-top: 20px;
+}
+.main_wrap_center .member ul {
+  margin-top: 20px;
+}
+.main_wrap_center .member ul li {
+  float: left;
+  margin-right: 12px;
+  margin-bottom: 10px;
+}
+.main_wrap_center .member ul li img {
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  width: 50px;
+  height: 50px;
+}
+.main_wrap_center .member .member-nickname {
+  margin-top: 5px;
+  width: 50px;
+  text-align: center;
+}
+/****************right-panel************************/
+.home_right {
+  float: right;
+  width: 218px;
+  overflow: hidden;
+}
+.home_right .title {
+  height: 30px;
+  line-height: 30px;
+  background: #f2f2f2;
+  font-size: 14px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+}
+.home_right .title .tilte-icon {
+  margin: 7px 5px 0px 15px;
+}
+.home_right .content {
+  color: #808080;
+  padding: 10px 15px;
+}
+.home_right .demand .title {
+  color: #ff945e;
+}
+.home_right .demand .content .demand-title {
+  color: #323232;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.home_right .demand .content .demand-content {
+  text-indent: 2em;
+}
+.home_right .favor .title {
+  color: #0e9de1;
+}
+.home_right .favor .video-img img {
+  width: 80px;
+  height: 55px;
+}
+.home_right .favor .fav-title {
+  margin-top: 10px;
+  color: #323232;
+  font-size: 14px;
+  font-weight: bolder;
+}
+.home_right .favor .fav-desc.student {
+  color: #0e9de1;
+}
+.home_right .help .title {
+  color: #439a76;
+}

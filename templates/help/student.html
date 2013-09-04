@@ -1,0 +1,36 @@
+{% extends "homebase.html" %}
+{% block title %}帮助{% endblock %}
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/help_video.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{{ '/static/js/modules/help_video.js'|staticurl }}"></script>
+    {% include "inc/videoplayer_header.html" %}
+{% endblock %}
+
+{% block centerbody %}
+    <div class="seemore">
+        <a href="/task/">^</a>
+    </div>
+    <h2>老师使用指南</h2>
+    <div class="thumlist">
+        {% for video in videolist %}
+        <div class="videothum {% if loop.index%3==0 %}br{% endif %}">
+            <a href="/help/student/video/{{loop.index-1}}/">{{video[2]}}</a>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <div class="video">
+        <div class="beishuVideo clearfix">
+            <a id="videoteacher" class="beishuPlayer clearfix" href="/static/images/main/{{videolist[index|int][0]}}">
+                <div style="position:relative">
+                    <img src="/static/images/main/{{videolist[index|int][1]}}" style="width:100%;height:100%;margin:0px" alt="{{videolist[index|int][2]}}" />
+                    <img class="videostartbtn" style="position:absolute;top:38%;left:41%;margin:0px;height: 110px;" src="/static/images/main/ready.png" />
+                </div>
+            </a>
+        </div>
+        
+    </div>
+{% endblock %}

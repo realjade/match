@@ -1,0 +1,71 @@
+/*基本类和函数*/
+/***************border圆角**********************/
+/***************方块阴影**********************/
+/***************元素过度效果**********************/
+/****************旋转，转换***********************/
+/****************线性颜色渐变***********************/
+/****************快速颜色渐变***********************/
+/****************镜像效果***********************/
+/****************透明效果***********************/
+/****************处理越界***********************/
+.font-wrap {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.upload_operator {
+  margin-bottom: 15px;
+}
+.upload_operator a {
+  color: #3da8ca;
+}
+.upload_operator a.disable {
+  color: #b2b2b2;
+}
+.upload_filelist {
+  border: #efefef solid 1px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 20px;
+  font-size: 14px;
+  zoom: 1;
+}
+.upload_filelist .dragover {
+  border: red solid 1px;
+}
+.upload_filelist .upload_droptext {
+  color: #010101;
+  font-size: 16px;
+}
+.upload_filelist .upload_file_item {
+  color: #010101;
+}
+.upload_filelist .upload_file_item div, .upload_filelist .upload_file_item a {
+  font-size: 14px !important;
+}
+.upload_filelist .upload_file_name {
+  float: left;
+  max-width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+}
+.upload_filelist .upload_file_status {
+  float: left;
+  margin: 0px 10px;
+}
+.upload_filelist .upload_file_size {
+  float: left;
+}
+.upload_filelist .upload_delete {
+  float: right;
+}
+.upload_filelist .upload_delete a {
+  color: #fe0000;
+}
+.upload_filelist .upload_clearer {
+  clear: both;
+}

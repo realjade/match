@@ -1,0 +1,30 @@
+{% extends "homebase.html" %}
+{% block title %}
+    加入班级 -- 背书吧
+{% endblock %}
+
+{% block stylesheets %}
+<link type="text/css" rel="stylesheet" href="{{ '/static/css/apps/class.css'|staticurl }}" />
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript" src="{{ '/static/js/apps/class.js'|staticurl }}"></script>
+{% endblock %}
+
+{% block centerbody %}
+<div class="class-join panel">
+    <div class="clearfix">
+        <div class="join-input left">
+            <input type="text" name="classcode" value="" placeholder="请输入班级邀请码"/>
+        </div>
+        <div id="join-search" class="btn left">查找</div>
+    </div>
+    <div id="class_info"></div>
+    <div id="join-ok" class="joinclass btn right">加入该班级</div>
+</div>
+{% endblock %}
+{% block template %}
+<script id="vselfTempl" class="mustache-template" type="text/template">
+{{ include_mustache('school/class_item_tmpl.html',scriptag=False) }}
+</script>
+{% endblock %}

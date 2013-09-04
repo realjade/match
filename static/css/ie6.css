@@ -1,6 +1,0 @@
-@charset "utf-8";
-/* fix ie6 bugs */
-#header .logo{ padding-top: 6px; }
-#header .navigation{ } 
-#header .wrapper .navigation img{ margin-top: 0; }
-#header .wrapper .quick-menu .devide{ margin-left: 0; }

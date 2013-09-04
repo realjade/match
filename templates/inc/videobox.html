@@ -1,9 +1,0 @@
-<div class="videobox clearfix">
-    {% include "inc/videoitem.html" %}
-    {{#video}}
-    <div class="op">
-        <a class="selectthis video-btn" videoid="{{video.video_id}}"><input type="radio" name="selectvideo" value="{{video.video_id}}"/>选这个</a>
-        <a class="deletethis video-btn" videoid="{{video.video_id}}">删除</a>
-    </div>
-    {{/video}}
-</div>

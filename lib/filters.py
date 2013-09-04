@@ -6,7 +6,6 @@ import pystache
 from flask import current_app, json, request
 from jinja2 import evalcontextfilter, Markup, contextfunction, Environment
 import os
-import datawrappers as dw
 
 def format_datetime(value, format='medium'):
     if not value:
@@ -90,9 +89,6 @@ def avatar(user, size='small'):
         fname = '150.jpg'
     return '%s/%s?ver=%s'%(user.avatar, fname,int(time.time()))
 
-def favor_box():
-    from models.favor_video import TeacherFavor
-    return TeacherFavor.box()
 
 def gettext(user):
     if isinstance(user,dict):
@@ -117,7 +113,7 @@ def gettext(user):
 def fullinfo(user):
     if user is None:
         return json.dumps({})
-    return json.dumps(dw.wrap_user(user))
+    return json.dumps(user.tojson())
 
 def revise_name(name,length = 19):
     name = name.encode("gb18030")
@@ -140,6 +136,5 @@ def setup(app):
     app.jinja_env.globals['context'] = get_context
     app.jinja_env.filters['avatar'] = avatar
     app.jinja_env.filters['revise_name'] = revise_name
-    app.jinja_env.globals['favor_box'] = favor_box
     app.jinja_env.filters['gettext'] = gettext
     app.jinja_env.filters['fullinfo'] = fullinfo

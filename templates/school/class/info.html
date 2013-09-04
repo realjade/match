@@ -1,8 +1,0 @@
-{% extends "school/class.html" %}
-{% block innertab %}
-    {% for classgrade in classes %}
-        {{ render_mustache('school/class_item_tmpl.html',classitem=classgrade) }}
-    {% else %}
-        <div class="noitem panel info">您还没有加入任何班级</div>
-    {% endfor %}
-{% endblock %}

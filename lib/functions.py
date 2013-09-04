@@ -3,19 +3,16 @@ import os
 import utils as ut
 from flask import json, g, request, session
 import models as m
-from models.tables import User, Admin, Classgrade, Task, Video, Works, School, TeacherFavor, \
-        Taskbox, ClassTask, UserClass, TimeLine, TimeLineEvent, IndexVideo
+from models.tables import User
 from sqlalchemy import or_, func, distinct
 from sqlalchemy import desc, asc
 from sqlalchemy.orm import aliased
 import time
 from datetime import datetime
 import types
-import datawrappers as dw
 import lib.filters as ft
 import math
 from cache import context_cached, redis_cached
-import xlwt,StringIO
 
 
 def succeed(data):
@@ -24,78 +21,6 @@ def succeed(data):
 def failed(code, message):
     return json.dumps({"code":code, "message":message})
 
-
-class SchoolTerm(object):
-    """学期类 学期相关的时间和逻辑"""
-    starttime = (2,15,)  # 学期开始时间
-    endtime = (8,15,)    # 学期结束时间
-    firstterm = datetime(2012,9,1)  # 学期列表最初时间计算位置
-    _termlist = None
-    @property
-    def currentterm(self):
-        """根据当前时间获取当前学期 返回本学期开始时间戳"""
-        dtime = self._SchoolTerm__currentterm()
-        return time.mktime(dtime.timetuple())*1000
-    
-    @property
-    def termlist(self):
-        if self._termlist:
-            return self._termlist
-        """学期列表 返回格式 例 [(2013,1),(2012,2),(2012,1), ...]"""
-        stime = self._SchoolTerm__currentterm(self.firstterm)
-        etime = self._SchoolTerm__currentterm()
-        result = []
-        for year in range(stime.year,etime.year+1):
-            if year == stime.year:
-                if stime.month == self.starttime[0]:
-                    result.append((year,1,))
-                if stime.year != etime.year:
-                    result.append((year,2,))
-            elif year == etime.year:
-                result.append((year,1,))
-                if etime.month == self.endtime[0]:
-                    result.append((year,2,))
-            else:
-                result.append((year,1,))
-                result.append((year,2,))
-        self._termlist = result
-        return result
-    
-    @property
-    def yearlist(self):
-        li = []
-        for x,y in zip(range(len(self.termlist)),self.termlist):
-            if x == 0:
-                if y[1] == 1:
-                    li.append(y[0]-1)
-                else:
-                    li.append(y[0])
-            elif y[1]==2:
-                li.append(y[0])
-        li.reverse()
-        return li
-    
-    def analyze(self,year,month):
-        """year month 返回当前学期的时间戳时段 (stime,etime)"""
-        stime = self._SchoolTerm__currentterm(datetime(year,month,1))
-        if stime.month <= 6:
-            etime = datetime(year,*self.endtime)
-        else:
-            etime = datetime(year+1,*self.starttime)
-        return time.mktime(stime.timetuple())*1000, time.mktime(etime.timetuple())*1000
-    
-    def __currentterm(self,dtime = None):
-        """根据时间获取时间所在学期 返回时间所在学期开始时间datetime"""
-        dtime = dtime if dtime else datetime.now()
-        stime = datetime(dtime.year,*self.starttime)
-        etime = datetime(dtime.year,*self.endtime)
-        if dtime < stime:
-            result = datetime(dtime.year-1,*self.endtime)
-        elif dtime < etime:
-            result = stime
-        else:
-            result = etime
-        return result
 
 
 ###############################所有和角色没有关系或者通用的函数#########################################
@@ -264,132 +189,6 @@ def task_summary(user):#TODO
         d['tasks'] = ts
         ret.append(d)
     return ret
-
-def teacher_task_export(user,task_id=None,class_id = None):
-    #TODO 有错误 导出数据和网页显示不一致
-    filename = 'export.xls'
-    wb = xlwt.Workbook()
-    font = xlwt.Font()
-    font.name = 'Times New Roman'
-    font.bold = True
-    align = xlwt.Alignment()
-    align.wrap = True
-    align.horz = xlwt.Alignment.HORZ_LEFT
-    align.vert = xlwt.Alignment.VERT_TOP
-    style = xlwt.XFStyle()
-    style.font = font
-    style.alignment = align
-    if task_id:
-        task = m.session.query(Task).filter(Task.creator == user.user_id,Task.task_id == task_id).first()
-        filename = u'%s老师%s%s.xls'%(g.user.nickname,task.task_content,datetime.now().strftime('%Y%m%d'))
-        classes = task.classgrades_model()
-        title = [u'学生姓名',u'完成情况']
-        classtag = 1
-        for cg in classes:
-            sheet = wb.add_sheet(str(classtag)+'.'+cg.class_name)
-            sheet.write_merge(0,0,1,2,filename,style)
-            classtag += 1
-            for index in range(len(title)):
-                sheettitle = title[index]
-                sheet.write(1, index+1, sheettitle,style)
-            result = m.session.query(Taskbox,User,Works).filter(Taskbox.task_id == task_id,Taskbox.class_id == cg.class_id) \
-                        .join(User,Taskbox.user_id == User.user_id).filter(User.is_student == 1) \
-                        .outerjoin(Works,Taskbox.works_id == Works.works_id)
-            rowstart = 2
-            font = xlwt.Font()
-            font.name = 'Times New Roman'
-            font.bold = False
-            align = xlwt.Alignment()
-            align.wrap = True
-            align.horz = xlwt.Alignment.HORZ_CENTER
-            align.vert = xlwt.Alignment.VERT_TOP
-            style = xlwt.XFStyle()
-            style.font = font
-            style.alignment = align
-            
-            for taskbox,user,works in result:
-                sheet.write(rowstart,1,user.nickname)
-                if task.iswriting:
-                    if taskbox.confirm == 1:
-                        sheet.write(rowstart,2,u'已确认',style)
-                    else:
-                        sheet.write(rowstart,2,u'未确认',style)
-                if task.isvideo:
-                    if works:
-                        sheet.write(rowstart,2,str(int(works.star))+u'朵小红花',style)
-                    else:
-                        sheet.write(rowstart,2,u'未完成',style)
-                rowstart += 1
-        wbfile = StringIO.StringIO()
-        wb.save(wbfile)
-        wbfile.seek(0)
-        return wbfile, filename
-    else:
-        term = SchoolTerm()
-        filename = u'%s老师所有班级背书成绩统计%s.xls'%(g.user.nickname,datetime.now().strftime('%y%m%d'))
-        if class_id:
-            classes = m.session.query(Classgrade).filter(Classgrade.class_id == class_id).all()
-        else:
-            classes = user.classgrades_model()
-        classtag = 1
-        for cg in classes:
-            sheet = wb.add_sheet(str(classtag)+'.'+cg.class_name)
-            classtag +=1
-            tasks = m.session.query(Task,ClassTask).filter(Task.creator == user.user_id,Task.task_type ==1,Task.created >= term.currentterm) \
-                             .join(ClassTask,Task.task_id == ClassTask.task_id).filter(ClassTask.class_id == cg.class_id).order_by(desc(Task.created)).all()
-            sheet.write_merge(0,0,1,len(tasks)+1,filename,style)
-            
-            users = m.session.query(UserClass,User).filter(UserClass.class_id == cg.class_id,UserClass.valid == True, UserClass.identity == 0) \
-                                .join(User,UserClass.user_id == User.user_id).filter(User.is_student == 1).order_by(asc(User.nickname)).all()
-            col = 2
-            for task,ct in tasks:
-                sheet.write_merge(1,1,col, col+1,task.task_content,style)
-                sheet.write(2,col,u'小红花')
-                sheet.write(2,col+1,u'是否完成')
-                col += 2
-            row = 3
-            for uc,suser in users:
-                sheet.write(row,1,suser.nickname)
-                row += 1
-            taskarray = map(lambda x:x.Task.task_id,tasks)
-            taskdict = dict(map(lambda x:(x.Task.task_id,x.Task),tasks))
-            
-            font = xlwt.Font()
-            font.name = 'Times New Roman'
-            font.bold = False
-            align = xlwt.Alignment()
-            align.wrap = True
-            align.horz = xlwt.Alignment.HORZ_CENTER
-            align.vert = xlwt.Alignment.VERT_TOP
-            style = xlwt.XFStyle()
-            style.font = font
-            style.alignment = align
-            
-            row = 3
-            for uc,suser in users:
-                result = m.session.query(Taskbox,Works).filter(Taskbox.user_id == suser.user_id,Taskbox.task_id.in_(taskarray)) \
-                                .outerjoin(Works,Taskbox.works_id == Works.works_id).all()
-                col = 2
-                
-                resultdict = dict(map(lambda x:(x.Taskbox.task_id,x),result))
-                for taskid in taskdict:
-                    task = taskdict[taskid]
-                    rtask = resultdict.get(taskid,None)
-                    if not rtask:
-                        sheet.write(row,col,u'无',style)
-                    else:
-                        if rtask.Works:
-                            sheet.write(row,col,int(rtask.Works.star),style)
-                            sheet.write(row,col+1,u'\u221a',style)
-                        else:
-                            sheet.write(row,col+1,u'\u00d7',style)
-                    col += 2
-                row += 1
-        wbfile = StringIO.StringIO()
-        wb.save(wbfile)
-        wbfile.seek(0)
-        return wbfile, filename
-
 ###########################老师相关结束#################################
 ###########################家长相关#################################
 def add_student_account(puser,user):

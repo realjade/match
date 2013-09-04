@@ -12,8 +12,8 @@ from models.tables import User
 module = Blueprint('login', __name__)
 
 
-@module.route('/', methods=['GET', 'POST'])
-def index():
+@module.route('/xx', methods=['GET', 'POST'])
+def xx():
     """Logs the user in."""
     error = None
     if request.method == 'POST':
@@ -50,19 +50,3 @@ def login():
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('.index'))
-
-
-@module.route("/demo/teacher/login/", defaults = {"identity":"teacher"})
-@module.route("/demo/student/login/", defaults = {"identity":"student"})
-@module.route("/demo/parent/login/", defaults = {"identity":"parent"})
-def demo_login(identity):
-    if request.environ['HTTP_HOST'] == "demo.beishu8.com":
-        dt = {"teacher":"1128645876","student":"1275953415","parent":"1948556306"}
-        session['user_id'] = dt[identity]
-        return redirect(url_for('home.home'))
-    elif request.environ['HTTP_HOST'] == "0.0.0.0:9000":
-        dt = {"teacher":"1231282854","student":"1956016767","parent":"1173149772"}
-        session['user_id'] = dt[identity]
-        return redirect(url_for('home.home'))
-    else:
-        abort(404)

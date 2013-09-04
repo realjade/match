@@ -1,9 +1,0 @@
-<div data-role="header" data-theme="a" data-position="fixed">
-    {% if back == 'index' %}
-        <a href="/m/home/" data-icon="home">首页</a>
-    {% elif back == 'back' %}
-        <a data-rel="back" data-direction="reverse" data-icon="back">返回</a>
-    {% endif %}
-    <h1>{% if title %}{% if g.parent %}{{g.user.nickname}} -- {% endif %}{{ title }}{% else %}{% if g.parent %}{{g.user.nickname}} -- {% endif %}背书吧{% endif %}</h1>
-</div>
-<div style="height:20px;"></div>

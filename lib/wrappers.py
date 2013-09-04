@@ -3,7 +3,6 @@ from functools import wraps
 from flask import request,Response, g, session, redirect, url_for, current_app, json
 import types
 import models as m
-from models.admin import Admin
 
 def jsonp_wrapper(r):
     cb = request.values.get('callback')

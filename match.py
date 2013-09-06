@@ -23,10 +23,12 @@ assets = Assets(app)
 import models
 models.setup(app)
 
-from views import login, home
+from views import login, home, team, match
 
 app.register_blueprint(login.module)
 app.register_blueprint(home.module)
+app.register_blueprint(team.module)
+app.register_blueprint(match.module)
 
 
 from lib import filters

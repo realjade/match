@@ -3,8 +3,8 @@
 import os
 from fabric.api import hosts, run, env, local, cd, get, lcd
 
-env.hosts = ["vself@42.121.65.179","vself@42.121.89.234"]
-env.passwords = {"vself@42.121.65.179":"vself2045","vself@42.121.89.234":"vself2045"}
+env.hosts = ["share@112.124.32.90","vself@42.121.89.234"]
+env.passwords = {"share@112.124.32.90":"thepass","vself@42.121.89.234":"vself2045"}
 # 179  v.beishu8.com
 # 234  beishu8.com
 
@@ -59,5 +59,3 @@ def stoponline():
     """停止beishu8.com服务"""
     with cd("/home/vself/services/vself"):
         run("./beishu8 stop")
-
-

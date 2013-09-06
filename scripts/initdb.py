@@ -15,7 +15,7 @@ create table `user` (
   `avatar` varchar(300),
   `height` smallint(6),
   `weight` float,
-  `team_id` varchar(20) not null default '-1',
+  `team_id` bigint(20) not null,
   `role` varchar(20) comment 'player 普通球员，captain 队长、vice-captain 副队长、leader 领队、coach 教练',
   `position` varchar(20) comment '大前锋、小前锋、中锋、得分后卫、控球后卫',
   `extra_f` blob,
@@ -25,9 +25,7 @@ create table `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ''',
 '''
-ALTER TABLE `user` 
-ADD UNIQUE INDEX `user_id_index` (`user_id` ASC)
-, ADD UNIQUE INDEX `user_mobile_index` (`mobile` ASC) ;
+ALTER TABLE `user` ADD UNIQUE INDEX `user_mobile_index` (`mobile` ASC) ;
 ''',
 '''
 create table `team` (
@@ -73,12 +71,12 @@ create table `match` (
   `home_team_id` bigint(20) not null,
   `away_team_id` bigint(20) not null,
   `playingtime` bigint(20) not null,
-  `playplace` varchar(20) not null comment '比赛地点，school id',
+  `playplace` bigint(20) not null comment '比赛地点，school id',
   `stage` varchar(20) not null comment '小组赛、淘汰赛、决赛、半决赛、总决赛',
-  `result` varchar(20) comment '比赛结果，主客场的team id，代表输赢'，
-  `mvp` varchar(20) comment 'MVP，user id',
-  `scoring` varchar(20) comment '得分王，user id',
-  `assists` varchar(20) comment '助攻王，user id',
+  `result` bigint(20) comment '比赛结果，主客场的team id，代表输赢',
+  `mvp` bigint(20) comment 'MVP，user id',
+  `scoring` bigint(20) comment '得分王，user id',
+  `assists` bigint(20) comment '助攻王，user id',
   `extra_f` blob,
   `created` bigint(20),
   `updated` bigint(20),

@@ -18,8 +18,8 @@ if os.uname()[1] == "sun-pc":
     config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root:111111@127.0.0.1:3306/vself?charset=utf8'
 elif os.uname()[1] == "beishu801":
     config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://vself:vself2012@127.0.0.1:3306/vself?charset=utf8'
-elif os.uname()[1] == "vself-one":
-    config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://vself:vself2012@42.121.65.179:3306/vself?charset=utf8'
+elif os.uname()[1] == "AY130905205113098d87Z":
+    config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root:537e4b6c@127.0.0.1:3306/match?charset=utf8'
 else:
     config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqldb://root:111111@127.0.0.1:3306/match?charset=utf8'
 config['SQLALCHEMY_POOL_SIZE'] = 3

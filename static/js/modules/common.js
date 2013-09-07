@@ -688,8 +688,8 @@ CommonDialog.prototype={
         this.show();
 	},
 	getElement: function () {
-        var fragment = ['<div class="common-dialog">', '<div class="wrapper">', '<header>', '<h3 class="title">',
-        this.options.title, '</h3>',
+        var fragment = ['<div class="common-dialog">', '<div class="wrapper">', '<header>', '<div class="title">',
+        this.options.title, '</div>',
         this.options.minify ? '<a class="minify">最小</a>' : '', '<a class="aicon-close close"></a>', '</header>', '<section>',
         this.options.message, '</section>', '</div>', '</div>'].join('');
         var element = jQuery(fragment);
@@ -697,8 +697,8 @@ CommonDialog.prototype={
         	element.find('.wrapper').append('<footer><button class="input-ok"><span>' + this.options.okText + '</span></button></footer>');
         }
         if(this.options.isConfirm){
-        	element.find('.wrapper').append('<footer><button class="input-ok"><span>' + this.options.okText + '</span></button></footer>');
-        	element.find('footer').append('<button class="input-cancel"><span>'+ this.options.cancelText +'</span></button>');
+        	element.find('.wrapper').append('<footer><button class="btn btn-primary"><span>' + this.options.okText + '</span></button></footer>');
+        	element.find('footer').append('<button class="btn btn-default"><span>'+ this.options.cancelText +'</span></button>');
         }	
         // 设置样式
         element.css({
@@ -756,7 +756,7 @@ CommonDialog.prototype={
 
     confirm:function(){
         var self = this;
-        self.element.find('footer .input-ok').trigger('click');
+        self.element.find('footer .btn-primary').trigger('click');
     },
 
     bindEvent: function () {
@@ -768,12 +768,12 @@ CommonDialog.prototype={
         this.find('header .minify').click(function () {
             self.hide();
         });
-        this.element.find('footer .input-ok').click(function () {
+        this.element.find('footer .btn-primary').click(function () {
             if (self.options.okCallback.call(self) !== false) {
             	self.close();
             }
         });
-        this.element.find('footer .input-cancel').click(function () {
+        this.element.find('footer .btn-default').click(function () {
             if (self.options.cancelCallback.call(self) !== false) {
             	self.close();
             }

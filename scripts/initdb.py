@@ -3,6 +3,9 @@ from alter_db import alter_tables
 
 create_sqls = [
 '''
+CREATE SCHEMA `match` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+''',
+'''
 create table `user` (
   `id` bigint(20) NOT NULL auto_increment,
   `mobile` varchar(50) not null,
@@ -33,7 +36,7 @@ create table `team` (
   `school_id` bigint(20) not null,
   `name` varchar(100) not null,
   `area` varchar(300),
-  `avatar` varchar(300),
+  `logo` varchar(300),
   `extra_f` blob,
   `created` bigint(20),
   `updated` bigint(20),

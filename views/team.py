@@ -15,3 +15,27 @@ module = Blueprint('team', __name__)
 @admin_required
 def team():
     return render_template('team/team.html',tab='team')
+
+
+@module.route('/team/list/', methods=['GET', 'POST'])
+@admin_required
+def team_list():
+    return render_template('team/team.html',tab='team')
+
+
+@module.route('/team/add/', methods=['GET', 'POST'])
+@admin_required
+def team_add():
+    return render_template('team/team.html',tab='team')
+
+
+@module.route('/team/remove/', methods=['GET', 'POST'])
+@admin_required
+def team_remove():
+    return render_template('team/team.html',tab='team')
+
+
+@module.route('/team/update/', methods=['GET', 'POST'])
+@admin_required
+def team_update():
+    return render_template('team/team.html',tab='team')

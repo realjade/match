@@ -159,7 +159,7 @@ textarea:-moz-placeholder{
 .common-dialog .wrapper header {
   margin: 2px;
   margin-bottom: 0px;
-  height:23px;
+  height:35px;
   padding: 5px 15px;
   background:#39599D;
 }
@@ -198,62 +198,8 @@ textarea:-moz-placeholder{
 .common-dialog .wrapper section .input-item{
     width: 280px;
 }
-.input-ok.disabled,.input-cancel.disabled{
-  cursor: default;
-  border: 1px solid #999;
-  padding: 0;
-}
-.input-ok.disabled span,.input-ok.disabled a,
-.input-cancel.disabled span,.input-cancel.disabled a{
-  display: inline-block;
-  border-top: 1px solid #e8e8e8;
-  border-bottom: 1px solid #d1d1d1;
-  padding:2px 15px 3px 15px;
-  color:#999;
-  background:#d1d1d1;
-  font-weight: normal;
-}
-.input-ok{
-  border: 1px solid #214781;
-  padding: 0;
-  cursor: pointer;
-  display: inline-block;
-}
-div.input-ok span,
-div.input-ok a,
-div.input-cancel span,
-div.input-cancel a{
-  padding:4px 15px 5px 15px;
-}
-button.input-ok span,
-button.input-ok a,
-button.input-cancel span,
-button.input-cancel a{
-  padding:2px 15px 3px 15px;
-}
-.input-ok span,.input-ok a{
-  display: inline-block;
-  border-top: 1px solid #acbcd6;
-  border-bottom: 1px solid #617baf;
-  color:#fff;
-  background:#617baf;
-  font-weight: bold;
-}
-.input-cancel{
-  border: 1px solid #999;
-  padding: 0;
-  cursor: pointer;
-  display: inline-block;
-}
-.input-cancel span,.input-cancel a{
-  display: inline-block;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #ececec;
-  padding:2px 15px 3px 15px;
-  color:#333;
-  background:#ececec;
-}
-.common-dialog .wrapper footer .input-cancel{
+
+.common-dialog .wrapper footer .btn-default{
   margin-left: 30px;
 }
 .common-dialog .wrapper footer {

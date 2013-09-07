@@ -1,12 +1,42 @@
 $(function(){
     var template =  '{{#schools}}'+
                     '<tr>'+
-                    '  <td>Mark</td>'+
-                    '  <td>Otto</td>'+
-                    '  <td>@mdo</td>'+
-                    '  <td>@mdo</td>'+
+                    '  <td>{{name}}</td>'+
+                    '  <td>{{city.name}}</td>'+
+                    '  <td><a class="btn btn-primary btn-sm">修改</></td>'+
                     '</tr>'+
-                    '{{#schools}}';
+                    '{{#schools}}'+
+                    '{{#school_add}}'+
+                    '<div></div>'+
+                    '{{/school_add}}';
+    //添加学校
+    $('#school_add').click(function(){
+        var dialog = new CommonDialog({
+            title: '添加学校',
+            message: Mustache.render(template, {school_add:true}),
+            isConfirm:true,
+            okCallback: function(){
+                jQuery.ajax({
+                    url: visitor.rootPath+"/cancelAuthorization.json",
+                    data:{id:id},
+                    type: "post",
+                    dataType: 'json',
+                    success: function(response){
+                        if(response.result && response.result == "success"){
+                            smallnote("恭喜您，取消授权成功");
+                            self.parents('.auth-item').remove();
+                            $('.auth-item').length || noItem();
+                        } else {
+                            smallnote(response.return_msg,{patter:'error'});
+                        }
+                    },
+                    error:function(){
+                        smallnote("对不起，取消授权失败");
+                    }
+                });
+            }
+        });
+    });
     $.fn.school = function(o){
         var self = $(this);
         init();

@@ -50,170 +50,181 @@
 })(jQuery);
 window.app = {view:{}};
 $(function(){
-	// 全局AJAX请求失败处理
-	jQuery(document).ajaxError(function (e, xmlhttp, opt) {
-        smallnote(xmlhttp.responseText,{pattern:'error'});
-        if(xmlhttp.status == 401){
-            window.location.href=visitor.rootPath+'/logout';
+    // 全局AJAX请求失败处理
+    jQuery(document).ajaxError(function (e, xmlhttp, opt) {
+        if (xmlhttp.readyState == 4) smallnotes('网络异常，请稍候再试！');
+    });
+    
+    // 全局AJAX请求异常处理
+    jQuery(document).ajaxSuccess(function (e, xmlhttp, opt) {
+        if(opt.dataType != 'json') return false;
+        var res = JSON.parse(xmlhttp.responseText);
+        if (jQuery.isNumeric(res.code) && res.code != 0) {
+            if (res.code == 10460 || res.code == 9460) {
+                location.href = '/login/';
+            }
+            else {
+                smallnote(res.message || '服务器异常，请稍后再试！',{pattern:'error'});
+            }
         }
-	});
+    });
 
-	/*// 全局AJAX请求异常处理
-	jQuery(document).ajaxSuccess(function (e, xmlhttp, opt) {
-	    if(opt.dataType != 'json') return false;
-	    var res = JSON.decode(xmlhttp.responseText);
-	    if (jQuery.isNumeric(res.code) && res.code != 0) {
-	        if (res.code == 10460 || res.code == 9460) {
-	            location.href = '/login/';
-	        }
-	        else {
-	            smallnotes(res.message || '服务器异常，请稍后再试！');
-	        }
-	    }
-	});*/
-	//扩展系统方法
-	//为funciton添加bind方法
-	if(!Function.prototype.bind) {
-	    Function.prototype.bind = function(thisArg) {
-	        var bargs = Array.prototype.slice.call(arguments, 1);
-	        var method = this;
-	        return function() {
-	            var args = bargs.slice(0);
-	            args.push.apply(args, arguments);
-	            var ret = method.apply(thisArg, args);
-	            return ret;
-	        };
-	    };
-	}
-	if(!Date.now){
-	    Date.now = function(){
-	        return new Date().valueOf();
-	    };
-	}
-	//工具代码
-	tools = {
-	    cookie:{
-	        set:function(name,value){
-	            var exp  = new Date();
-	            exp.setTime(exp.getTime() + 30*24*60*60*1000);   
-	            document.cookie = name + '='+ escape (value) + ';expires=' + exp.toGMTString()+';path=/';
-	        },
-	        get:function(name){
-	            var arr = document.cookie.match(new RegExp('(^| )'+name+'=([^;]*)(;|$)'));
-	            if(arr != null) return unescape(arr[2]); return null;
-	        },
-	        del:function(name){
-	            var exp = new Date();
-	            exp.setTime(exp.getTime() - 1);
-	            var cval=api.cookie.getCookie(name);
-	            if(cval!=null){
-	                document.cookie= name + '='+cval+';expires='+exp.toGMTString()+';path=/';
-	                document.cookie= name + '='+cval+';expires='+exp.toGMTString();
-	            }
-	        }
-	    },
-	    log:function(_message){
-	        if('console' in window && 'log' in window.console){
-	            console.log(_message);
-	        }
-	    },
-	    // 纵向滚动到指定位置
-	    scrollTween: function(y, callback) {
-	        jQuery('html, body').animate({
-	                scrollTop: (y || 0)
-	        }, 500, 'easeOutExpo', function () {
-	            return callback && callback();
-	        });
-	    },
-	    
-	    // 取消选中的文本
-	    clearSelect: function() {
-	        if(document.selection && document.selection.empty) {
-	            document.selection.empty();
-	        }
-	        else if(window.getSelection) {
-	            window.getSelection().removeAllRanges();
-	        }
-	    },
-	    
-	    // 计算字符串的字节长度
-	    countByte: function(str) {
-	        var size = 0;
-	        for (var i = 0, l = str.length; i < l; i++) {
-	            size += str.charCodeAt(i) > 255 ? 2 : 1;
-	        }
+    /*// 全局AJAX请求异常处理
+    jQuery(document).ajaxSuccess(function (e, xmlhttp, opt) {
+        if(opt.dataType != 'json') return false;
+        var res = JSON.decode(xmlhttp.responseText);
+        if (jQuery.isNumeric(res.code) && res.code != 0) {
+            if (res.code == 10460 || res.code == 9460) {
+                location.href = '/login/';
+            }
+            else {
+                smallnotes(res.message || '服务器异常，请稍后再试！');
+            }
+        }
+    });*/
+    //扩展系统方法
+    //为funciton添加bind方法
+    if(!Function.prototype.bind) {
+        Function.prototype.bind = function(thisArg) {
+            var bargs = Array.prototype.slice.call(arguments, 1);
+            var method = this;
+            return function() {
+                var args = bargs.slice(0);
+                args.push.apply(args, arguments);
+                var ret = method.apply(thisArg, args);
+                return ret;
+            };
+        };
+    }
+    if(!Date.now){
+        Date.now = function(){
+            return new Date().valueOf();
+        };
+    }
+    //工具代码
+    tools = {
+        cookie:{
+            set:function(name,value){
+                var exp  = new Date();
+                exp.setTime(exp.getTime() + 30*24*60*60*1000);   
+                document.cookie = name + '='+ escape (value) + ';expires=' + exp.toGMTString()+';path=/';
+            },
+            get:function(name){
+                var arr = document.cookie.match(new RegExp('(^| )'+name+'=([^;]*)(;|$)'));
+                if(arr != null) return unescape(arr[2]); return null;
+            },
+            del:function(name){
+                var exp = new Date();
+                exp.setTime(exp.getTime() - 1);
+                var cval=api.cookie.getCookie(name);
+                if(cval!=null){
+                    document.cookie= name + '='+cval+';expires='+exp.toGMTString()+';path=/';
+                    document.cookie= name + '='+cval+';expires='+exp.toGMTString();
+                }
+            }
+        },
+        log:function(_message){
+            if('console' in window && 'log' in window.console){
+                console.log(_message);
+            }
+        },
+        // 纵向滚动到指定位置
+        scrollTween: function(y, callback) {
+            jQuery('html, body').animate({
+                    scrollTop: (y || 0)
+            }, 500, 'easeOutExpo', function () {
+                return callback && callback();
+            });
+        },
+        
+        // 取消选中的文本
+        clearSelect: function() {
+            if(document.selection && document.selection.empty) {
+                document.selection.empty();
+            }
+            else if(window.getSelection) {
+                window.getSelection().removeAllRanges();
+            }
+        },
+        
+        // 计算字符串的字节长度
+        countByte: function(str) {
+            var size = 0;
+            for (var i = 0, l = str.length; i < l; i++) {
+                size += str.charCodeAt(i) > 255 ? 2 : 1;
+            }
 
-	        return size;
-	    },
-	    
-	    // 根据字节截取长度
-	    substrByByte: function (str, limit) {
-	        for (var i = 1, l = str.length + 1; i < l; i++) {
-	            if (this.countByte(str.substring(0, i)) > limit) {
-	                return str.substring(0, i - 1);
-	            }
-	        }
-	        return str;
-	    },
-	    
-	    //获得URL中键值对
-	    paramOfUrl: function (url) {
-	        url = url || location.href;
-	        var paramSuit = url.substring(url.indexOf('?') + 1).split("&");
-	        var paramObj = {};
-	        for (var i = 0; i < paramSuit.length; i++) {
-	            var param = paramSuit[i].split('=');
-	            if (param.length == 2) {
-	                var key = decodeURIComponent(param[0]);
-	                var val = decodeURIComponent(param[1]);
-	                if (paramObj.hasOwnProperty(key)) {
-	                    paramObj[key] = jQuery.makeArray(paramObj[key]);
-	                    paramObj[key].push(val);
-	                }
-	                else {
-	                    paramObj[key] = val;
-	                }
-	            }
-	        }
-	        return paramObj;
-	    },
-	    
-	    cancelBubble: function(_event) {
-	        if (_event && _event.stopPropagation)
-	            _event.stopPropagation();
-	        else
-	            window.event.cancelBubble=true;
-	    },
-	    
-	    cancelDefault: function(_event) {
-	        if(_event && _event.preventDefault){
-	            _event.preventDefault();
-	        } else{
-	            window.event.returnValue = false;
-	        }
-	        return false;
-	    },
-	    
-	    reflow: function(obj) {
-	        jQuery(obj).each(function() {
-	            jQuery(this).hide().show();
-	        });
-	    },
-	    
-	    dateformat:function(datetime,type){
-	        if(type=='full'){
-	            return new Date(datetime).strftime('%Y年%m月%d日, %H:%M:%S');
-	        }
-	        if(!type||type=='medium'){
-	            return new Date(datetime).strftime('%m月%d日%H:%M');
-	        }
-	    },
-	    emailGoto:function(email){
-	    	if(!this.isEmail(email)){
-	    		return email;
-	    	}
-	    	var emailList = {
-	    		"gmail.com":"http://gmail.com",
+            return size;
+        },
+        
+        // 根据字节截取长度
+        substrByByte: function (str, limit) {
+            for (var i = 1, l = str.length + 1; i < l; i++) {
+                if (this.countByte(str.substring(0, i)) > limit) {
+                    return str.substring(0, i - 1);
+                }
+            }
+            return str;
+        },
+        
+        //获得URL中键值对
+        paramOfUrl: function (url) {
+            url = url || location.href;
+            var paramSuit = url.substring(url.indexOf('?') + 1).split("&");
+            var paramObj = {};
+            for (var i = 0; i < paramSuit.length; i++) {
+                var param = paramSuit[i].split('=');
+                if (param.length == 2) {
+                    var key = decodeURIComponent(param[0]);
+                    var val = decodeURIComponent(param[1]);
+                    if (paramObj.hasOwnProperty(key)) {
+                        paramObj[key] = jQuery.makeArray(paramObj[key]);
+                        paramObj[key].push(val);
+                    }
+                    else {
+                        paramObj[key] = val;
+                    }
+                }
+            }
+            return paramObj;
+        },
+        
+        cancelBubble: function(_event) {
+            if (_event && _event.stopPropagation)
+                _event.stopPropagation();
+            else
+                window.event.cancelBubble=true;
+        },
+        
+        cancelDefault: function(_event) {
+            if(_event && _event.preventDefault){
+                _event.preventDefault();
+            } else{
+                window.event.returnValue = false;
+            }
+            return false;
+        },
+        
+        reflow: function(obj) {
+            jQuery(obj).each(function() {
+                jQuery(this).hide().show();
+            });
+        },
+        
+        dateformat:function(datetime,type){
+            if(type=='full'){
+                return new Date(datetime).strftime('%Y年%m月%d日, %H:%M:%S');
+            }
+            if(!type||type=='medium'){
+                return new Date(datetime).strftime('%m月%d日%H:%M');
+            }
+        },
+        emailGoto:function(email){
+            if(!this.isEmail(email)){
+                return email;
+            }
+            var emailList = {
+                "gmail.com":"http://gmail.com",
                 "hotmail.com":"http://www.hotmail.com",
                 "live.com":"http://www.hotmail.com",
                 "126.com":"http://mail.126.com",
@@ -229,16 +240,16 @@ $(function(){
                 "sohu.com":"http://mail.sohu.com",
                 "yeah.net":"http://wwww.yeah.net",
                 "189.cn":"http://mail.189.cn"
-	    	};
-	    	var domain = email.split('@')[1];
-	    	return emailList[domain] || 'http://mail.'+ domain;
-	    },
-	    isEmail:function(email){
-	    	return /^([a-z0-9A-Z]+[-|._]*)*[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?.)+[a-zA-Z]+$/.test(email);
-	    },
-	    isMobile:function(mobile){
-	    	return /^\d{11}$/.test(mobile);
-	    },
+            };
+            var domain = email.split('@')[1];
+            return emailList[domain] || 'http://mail.'+ domain;
+        },
+        isEmail:function(email){
+            return /^([a-z0-9A-Z]+[-|._]*)*[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?.)+[a-zA-Z]+$/.test(email);
+        },
+        isMobile:function(mobile){
+            return /^\d{11}$/.test(mobile);
+        },
         isTelephone:function(telephone){
             return /^(0[0-9]{2,3}-?)?([2-9][0-9]{6,7})+(-?[0-9]{1,4})?$/.test(telephone);
         },
@@ -255,9 +266,9 @@ $(function(){
                 return /^\d+$/.test(digit);
             }
         },
-	    uniqueID:function(){
-	    	return Date.now().toString(36);
-	    },
+        uniqueID:function(){
+            return Date.now().toString(36);
+        },
         setStore:function(key,value){
             var storage = window.localStorage;
             if(!storage) return '';
@@ -349,7 +360,7 @@ $(function(){
             }
             container.css('min-height',h);
         }
-	};
+    };
 });
 /** 全局模板 **/
 window.Template = null;
@@ -584,12 +595,12 @@ $(function(){
                 callback.apply(self,bargs);
             }
         });
-    }
+    };
 });
 /**弹层组建**/
 //遮罩层
 MaskLayer={
-	getElement:function(){
+    getElement:function(){
         if (!this.element) {
             this.element = jQuery('#masklayer');
             if (this.element.size() == 0) {
@@ -619,16 +630,16 @@ DialogManager = {
         this.bindEvent();
     },
 
-	escCancel: function (e) {
-		if (e.keyCode == 27 && DialogManager.present) {
-			var dialog = DialogManager.present,
-				element = dialog.element;
+    escCancel: function (e) {
+        if (e.keyCode == 27 && DialogManager.present) {
+            var dialog = DialogManager.present,
+                element = dialog.element;
 
-			if (element.is(':visible') && parseInt(element.css('top'),10) > 0) {
-				dialog.hide();
-			}
-		}
-	},
+            if (element.is(':visible') && parseInt(element.css('top'),10) > 0) {
+                dialog.hide();
+            }
+        }
+    },
 
     bindEvent: function () {
         jQuery(document).keydown(this.escCancel);
@@ -638,8 +649,8 @@ DialogManager = {
 
 // 弹窗
 CommonDialog = function(o){
-	this.options={
-		width: 560,
+    this.options={
+        width: 560,
         title: '提示',
         message: '你木有事做吗？你真的木有事做吗？那你替我写封情书给布娃娃吧~',
         isFixed: true,
@@ -659,8 +670,8 @@ CommonDialog = function(o){
     this.init();
 };
 CommonDialog.prototype={
-	init:function(message, options){
-	    //做个参数格式兼容 方便调用
+    init:function(message, options){
+        //做个参数格式兼容 方便调用
         if (typeof message === 'object') {
             this.setOptions(message);
         }
@@ -686,20 +697,20 @@ CommonDialog.prototype={
 
         // 显示
         this.show();
-	},
-	getElement: function () {
+    },
+    getElement: function () {
         var fragment = ['<div class="common-dialog">', '<div class="wrapper">', '<header>', '<div class="title">',
         this.options.title, '</div>',
         this.options.minify ? '<a class="minify">最小</a>' : '', '<a class="aicon-close close"></a>', '</header>', '<section>',
         this.options.message, '</section>', '</div>', '</div>'].join('');
         var element = jQuery(fragment);
         if(this.options.isAlert){
-        	element.find('.wrapper').append('<footer><button class="input-ok"><span>' + this.options.okText + '</span></button></footer>');
+            element.find('.wrapper').append('<footer><button class="input-ok"><span>' + this.options.okText + '</span></button></footer>');
         }
         if(this.options.isConfirm){
-        	element.find('.wrapper').append('<footer><button class="btn btn-primary"><span>' + this.options.okText + '</span></button></footer>');
-        	element.find('footer').append('<button class="btn btn-default"><span>'+ this.options.cancelText +'</span></button>');
-        }	
+            element.find('.wrapper').append('<footer><button class="btn btn-primary"><span>' + this.options.okText + '</span></button></footer>');
+            element.find('footer').append('<button class="btn btn-default"><span>'+ this.options.cancelText +'</span></button>');
+        }   
         // 设置样式
         element.css({
             width: this.options.width
@@ -770,12 +781,12 @@ CommonDialog.prototype={
         });
         this.element.find('footer .btn-primary').click(function () {
             if (self.options.okCallback.call(self) !== false) {
-            	self.close();
+                self.close();
             }
         });
         this.element.find('footer .btn-default').click(function () {
             if (self.options.cancelCallback.call(self) !== false) {
-            	self.close();
+                self.close();
             }
         });
     }

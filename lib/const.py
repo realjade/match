@@ -23,11 +23,8 @@ ACCOUNT_NOT_PARENT = (3005,u'该账户不是家长账户')
 ACCOUNT_NOT_TEACHER = (3006,u'该账户不是老师账户')
 ACCOUNT_HAS_PARENT = (3007,u'该账户已经有其他家长')
 
-CLASSGRADE_EXIST = (4000,u'该班级已经存在')
-CLASSGRADE_NOT_EXIST = (4001,u'该班级不存在')
-SCHOOL_NOT_EXIST = (4002,u'学校不存在')
-ClASS_NOT_EXIST = (4003,u'班级不存在')
-ClASS_EMAIL_NOT_EXIST = (4004,u'未设置班级公共邮箱')
+SCHOOL_EXIST = (4000,u'学校名称已经存在')
+SCHOOL_NOT_EXIST = (4001,u'学校不存在')
 
 HANDIN_EXIST = (5000,u'该作业已经提交')
 HANDIN_NOT_EXIST = (5001,u'没有该作业的提交信息')
@@ -53,6 +50,3 @@ APPROVAL_EXIST = (8000,u'该作业已经提交')
 APPROVAL_NOT_EXIST = (8001,u'没有该作业的提交信息')
 APPROVAL_NOT_YOURCHILD = (8002,u'不能给其他孩子审批')
 
-
-RECORD_ID_NOT_EXISTS = (90001, u'record id not exists or record time too long')
-RECORD_SAVE_ERROR = (90002, u'record save error')

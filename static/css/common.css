@@ -36,28 +36,6 @@
     color: red;
     margin-left: 10px;
 }
-.panel{
-    font-size: 14px;
-}
-.panel .panel-left{
-    display: inline-block;
-    width:100px;
-    text-align: right;
-}
-.panel .panel-right{
-    display: inline-block;
-}
-.panel.info{
-  text-align: center;
-  font-weight: bold;
-  padding: 15px;
-}
-.panel.error{
-  text-align: center;
-  font-weight: bold;
-  padding: 15px;
-  color:red;
-}
 /**smallnote组件**/
 .smallnote {
   background-color: #eaeaea;
@@ -69,15 +47,15 @@
   -moz-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
   color: #333333;
-  line-height: 15px;
-  padding: 5px 14px 4px;
+  line-height: 30px;
+  padding: 0px 20px;
   position: fixed;
   text-align: center;
   top: 0;
   z-index: 2000;
   _position: absolute;
   font-weight: bold;
-  height: 18px;
+  height: 30px;
   overflow: hidden;
 }
 .smallnote.smallnote-error {

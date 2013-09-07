@@ -1,14 +1,89 @@
 $(function(){
     var template =  '{{#schools}}'+
-                    '<tr>'+
+                    '<tr data-id="{{id}}" data-name="{{name}}">'+
                     '  <td>{{name}}</td>'+
                     '  <td>{{city.name}}</td>'+
-                    '  <td><a class="btn btn-primary btn-sm">修改</></td>'+
+                    '  <td><a class="updateBtn btn btn-primary btn-sm">修改</></td>'+
                     '</tr>'+
-                    '{{#schools}}'+
+                    '{{/schools}}'+
                     '{{#school_add}}'+
-                    '<div></div>'+
+                    '<div class="school-add form-horizontal">'+
+                    '{{^isUpdate}}'+
+                    '  <div class="form-group">'+
+                    '    <label class="col-lg-3 control-label">所属城市：</label>'+
+                    '    <div class="col-lg-8">'+
+                    '      <select class="city form-control"></select>'+
+                    '    </div>'+
+                    '  </div>'+
+                    '{{/isUpdate}}'+
+                    '  <div class="form-group">'+
+                    '    <label class="col-lg-3 control-label">学校名称：</label>'+
+                    '    <div class="col-lg-8">'+
+                    '      <input class="form-control" name="schoolname" placeholder="学校名称" value="{{schoolname}}"/>'+
+                    '    </div>'+
+                    '  </div>'+
+                    '</div>'+
                     '{{/school_add}}';
+    var schoolList = $('#school_list');
+    bindEvent();
+    initSchoolList();
+    //初始化
+    function initSchoolList(){
+        $.ajax({
+            url: '/school/list/',
+            type: "get",
+            dataType: 'json',
+            success: function(resp){
+                if(resp && resp.code == 0){
+                    var schools = resp.data,
+                        tmpl = Mustache.render(template, {schools:schools});
+                    schoolList.html(tmpl);
+                }
+            }
+        });
+    }
+    //添加事件
+    function bindEvent(){
+        schoolList.on('click','.updateBtn',updateSchool);
+    }
+    //更新学校
+    function updateSchool(){
+        var schoolItem = $(this).parents('tr'),
+            schoolName = schoolItem.attr('data-name'),
+            schoolId = schoolItem.attr('data-id');
+        var dialog = new CommonDialog({
+            title: '更新学校',
+            message: Mustache.render(template, {school_add:{isUpdate:true,schoolname:schoolName}}),
+            isConfirm:true,
+            okCallback: function(){
+                var nameInput = this.find('input[name="schoolname"]'),
+                    name = $.trim(nameInput.val());
+                if(!name){
+                    smallnote("请输入学校名称");
+                    nameInput.parents('.form-group').addClass('has-error');
+                    return false;
+                }
+                if(name == schoolName){
+                    return true;
+                }
+                $.ajax({
+                    url: '/school/update/',
+                    data:{schoolid:schoolId,name:name},
+                    type: "post",
+                    dataType: 'json',
+                    success: function(resp){
+                        if(resp && resp.code == 0){
+                            smallnote("更新学校成功");
+                            initSchoolList();
+                        }
+                    }
+                });
+            }
+        });
+        dialog.find('input[name="schoolname"]').focus().inputEnter(function(){
+            dialog.confirm();
+        });
+    }
     //添加学校
     $('#school_add').click(function(){
         var dialog = new CommonDialog({
@@ -16,26 +91,46 @@ $(function(){
             message: Mustache.render(template, {school_add:true}),
             isConfirm:true,
             okCallback: function(){
-                jQuery.ajax({
-                    url: visitor.rootPath+"/cancelAuthorization.json",
-                    data:{id:id},
+                var cityId = this.find('.city').val(),
+                    nameInput = this.find('input[name="schoolname"]'),
+                    name = $.trim(nameInput.val());
+                if(!name){
+                    smallnote("请输入学校名称");
+                    nameInput.parents('.form-group').addClass('has-error');
+                    return false;
+                }
+                $.ajax({
+                    url: '/school/add/',
+                    data:{cityid:cityId,name:name},
                     type: "post",
                     dataType: 'json',
-                    success: function(response){
-                        if(response.result && response.result == "success"){
-                            smallnote("恭喜您，取消授权成功");
-                            self.parents('.auth-item').remove();
-                            $('.auth-item').length || noItem();
-                        } else {
-                            smallnote(response.return_msg,{patter:'error'});
+                    success: function(resp){
+                        if(resp && resp.code == 0){
+                            smallnote("添加学校成功");
+                            initSchoolList();
                         }
-                    },
-                    error:function(){
-                        smallnote("对不起，取消授权失败");
                     }
                 });
             }
         });
+        dialog.find('input[name="schoolname"]').focus().inputEnter(function(){
+            dialog.confirm();
+        });
+        var citySelect = dialog.find('.city');
+        $.ajax({
+                url: '/city/list/',
+                type: "get",
+                dataType: 'json',
+                success: function(resp){
+                    if(resp&&resp.code == 0){
+                        var data = resp.data;
+                        for(var i = 0,len = data.length;i<len;i++){
+                            var city = data[i];
+                            $('<option value='+city.id+'>'+city.name+'</option>').appendTo(citySelect);
+                        }
+                    }
+                }
+            });
     });
     $.fn.school = function(o){
         var self = $(this);

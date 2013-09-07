@@ -3,7 +3,7 @@ import os
 import utils as ut
 from flask import json, g, request, session
 import models as m
-from models.tables import User
+from models.tables import User, School, Team, Match, City
 from sqlalchemy import or_, func, distinct
 from sqlalchemy import desc, asc
 from sqlalchemy.orm import aliased
@@ -16,7 +16,7 @@ from cache import context_cached, redis_cached
 
 
 def succeed(data):
-    return json.dumps({"code":'0', "data":data})
+    return json.dumps({"code":0, "data":data})
 
 def failed(code, message):
     return json.dumps({"code":code, "message":message})
@@ -48,6 +48,14 @@ def pages(func, *args, **kwargs):
 @context_cached()
 def load_user(user_id):
     return m.session.query(User).filter(User.id == user_id).first()
+
+@context_cached()
+def load_school(school_id):
+    return m.session.query(School).filter(School.id == school_id).first()
+
+@context_cached()
+def load_school_by_name(school_name,city_id):
+    return m.session.query(School).filter(School.name == school_name,School.city_id == city_id).first()
 
 
 def allowed_file(filename):

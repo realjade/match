@@ -43,5 +43,5 @@ class School(Base, buildmixin('extra')):
     def tojson(self):
         return {'id':self.id,
                 'name':self.name,
-                'city':self.city.tojson
+                'city':self.city.tojson()
                 }

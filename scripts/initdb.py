@@ -15,7 +15,7 @@ create table `user` (
   `avatar` varchar(300),
   `height` smallint(6),
   `weight` float,
-  `team_id` bigint(20) not null,
+  `team_id` bigint(20),
   `role` varchar(20) comment 'player 普通球员，captain 队长、vice-captain 副队长、leader 领队、coach 教练',
   `position` varchar(20) comment '大前锋、小前锋、中锋、得分后卫、控球后卫',
   `extra_f` blob,

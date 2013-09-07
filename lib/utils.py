@@ -6,47 +6,6 @@ from math import ceil
 import os
 import Image
 
-def create_user_id():
-    return '1' + ''.join([choice(string.digits) for i in range(0, 9)])
-
-def create_admin_id():
-    return '2' + ''.join([choice(string.digits) for i in range(0,9)])
-
-def create_class_id():
-    return '3' + ''.join([choice(string.digits) for i in range(0, 11)])
-
-def create_task_id():
-    return '4' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-def create_school_id():
-    return '5' + ''.join([choice(string.digits) for i in range(0,9)])
-
-def create_video_id():
-    return '6' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-def create_works_id():
-    return '7' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-def create_annotator_id():
-    return '8' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-def create_favimg_id():
-    return '9' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-def create_reportcard_id():
-    return '10' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-
-def create_multitask_id():
-    return '11' + ''.join([choice(string.digits + string.letters) for i in range(0, 12)])
-
-def create_demand_id():
-    return 'a' + ''.join([choice(string.digits) for i in range(0,9)])
-
-
-def create_notice_id():
-    return 'b' + ''.join([choice(string.digits) for i in range(0,9)])
-
 def random_filename():
     return ''.join([choice(string.letters) for i in range(0, 12)])
 
@@ -59,7 +18,7 @@ def is_email(email):
 def is_mobile(phone):
     if not phone :
         return False
-    p = re.compile("^(1(3|5|8))\d{9}$")
+    p = re.compile("^\d{11}$")
     return p.match(phone) != None
 
 

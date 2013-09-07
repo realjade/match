@@ -27,9 +27,9 @@ class User(Base, buildmixin('extra')):
         return self.user_id
         
     @property
-    def isteacher(self):
-        """是否是老师"""
-        return self.is_teacher != 0
+    def isAdmin(self):
+        """是否是管理员"""
+        return self.isadmin == 1
     
     @property
     def isparent(self):
@@ -95,17 +95,15 @@ class User(Base, buildmixin('extra')):
     
     # 静态方法 与模型相关的功能性函数
     @staticmethod
-    def get_user(username):
+    def get_user(mobile):
         """根据邮箱或者手机号 获取用户"""
-        if ut.is_email(username):
-            return session.query(User).filter(User.email == username).one()
-        elif ut.is_mobile(username):
-            return session.query(User).filter(User.mobile == username).one()
+        if ut.is_mobile(mobile):
+            return session.query(User).filter(User.mobile == mobile).first()
         return None
     
     def tojson(self):
         import lib.filters as ft
-        return {'user_id':self.user_id,
+        return {'id':self.id,
                 'course':self.course,
                 'isstudent':self.isstudent,
                 'isteacher':self.isteacher,

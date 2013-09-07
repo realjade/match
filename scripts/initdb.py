@@ -3,9 +3,6 @@ from alter_db import alter_tables
 
 create_sqls = [
 '''
-CREATE SCHEMA `match` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-''',
-'''
 create table `user` (
   `id` bigint(20) NOT NULL auto_increment,
   `mobile` varchar(50) not null,

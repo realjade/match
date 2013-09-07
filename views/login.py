@@ -25,12 +25,14 @@ def login():
             error = u'手机号不正确'
         elif not user.check_password_hash(password):
             error = u'密码不正确'
+        elif not user.isAdmin:
+            error = u'您不是管理员'
         else:
             session['user_id'] = user.id
             if remember:
                 session.permanent = True
             return redirect(url_for('team.team'))
-    if g.user:
+    if g.user and g.user.isAdmin:
         return redirect(url_for('team.team'))
     return render_template('login.html', error=error)
 

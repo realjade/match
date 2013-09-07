@@ -9,8 +9,9 @@ from lib.wrappers import admin_required
 import lib.functions as f
 
 # Flask 模块对象
-module = Blueprint('home', __name__)
+module = Blueprint('team', __name__)
 
-@module.route('/', methods=['GET', 'POST'])
-def index():
-    return render_template('index.html')
+@module.route('/team/', methods=['GET', 'POST'])
+@admin_required
+def team():
+    return render_template('team/team.html',tab='team')

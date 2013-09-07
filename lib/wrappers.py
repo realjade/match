@@ -34,9 +34,7 @@ def admin_required(fn):
     @wraps(fn)
     def admin_wrapped(*argt, **argd):
         admin = None
-        if g.user:
-            admin = m.session.query(Admin).filter(Admin.user_id == g.user.user_id).first()
-        if not g.user or not admin:
+        if not g.user or not g.user.isAdmin:
             return redirect(url_for('login.login',next = request.url))
         ret = fn(*argt, **argd)
         return ret
@@ -50,34 +48,6 @@ def login_required(fn):
         ret = fn(*argt, **argd)
         return ret
     return login_wrapped
-
-def parent_required(fn):
-    @wraps(fn)
-    def parent_wrapped(*argt, **argd):
-        if g.user is None or not g.user.isparent:
-            return redirect(url_for('login.login', next=request.url))
-        ret = fn(*argt, **argd)
-        return ret
-    return parent_wrapped
-
-def teacher_required(fn):
-    @wraps(fn)
-    def teacher_wrapped(*argt, **argd):
-        if g.user is None or not(g.user.isteacher):
-            return redirect(url_for('login.login', next=request.url))
-        ret = fn(*argt, **argd)
-        return ret
-    return teacher_wrapped
-
-
-def student_required(fn):
-    @wraps(fn)
-    def student_wrapped(*argt, **argd):
-        if g.user is None or not g.user.isstudent:
-            return redirect(url_for('login.login', next=request.url))
-        ret = fn(*argt, **argd)
-        return ret
-    return student_wrapped
 
 
 
